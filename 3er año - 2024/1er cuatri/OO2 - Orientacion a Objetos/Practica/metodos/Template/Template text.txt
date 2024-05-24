@@ -1,0 +1,6 @@
+emplate method
+
+
+Sirve para cuando los hijos tienen un comportamiento comun, entonces en vez de repetir codigo se implementa un metodo en el padre, que los hijos despues implementan y mod-+
+-+
+ifican a su necesidad

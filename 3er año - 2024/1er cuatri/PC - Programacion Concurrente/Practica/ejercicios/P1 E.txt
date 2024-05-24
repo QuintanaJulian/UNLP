@@ -1,0 +1,156 @@
+5- A-
+boolean imp-ocupada = false;
+
+
+
+Process Persona (ID = [0..N]) {
+	<Await (not imp-ocupada); imp-ocupada = true>
+	Imprimir (documento)
+	imp-ocupada = false;
+}
+
+
+
+
+5- B-
+boolean imp-ocupada = false;
+cola espera;
+int turno = 1;
+
+Process Persona (ID = [0..N]) {
+
+	if (not isEmpty(espera)) or (imp-ocupada) {
+		Push (espera, ID)
+		<Await (turno = ID)>
+	}
+	<imp-ocupada = true;>
+	Imprimir (documento)
+	imp-ocupada = false;
+	Pop (espera, turno);
+}
+
+
+
+
+5- C-			NO SE COMO TRABAJAR UNA LSITA ORDENADA Y EN LA PRACTICAS QUE VI SE INVENTAN UNA COLA ESPECIAL
+boolean imp-ocupada = false;
+cola espera;
+int turno = -1;
+
+Process Persona (ID = [0..N]) {
+
+	if (not isEmpty(espera)) or (imp-ocupada) {
+		Push (espera, ID)
+		<Await (turno = ID)>
+	}
+	<imp-ocupada = true;>
+	Imprimir (documento)
+	imp-ocupada = false;
+	Pop (espera, turno);
+}
+
+
+
+
+
+
+5- D-
+int turno = 0;
+
+
+Process Persona [ID = 0..N-1] {
+	<Await turno = ID >
+	Imprimir (documento)
+	turno = turno + 1;
+}
+
+
+
+
+
+5- E-			NO SE COMO TRABAJAR UNA LSITA ORDENADA Y EN LA PRACTICAS QUE VI SE INVENTAN UNA COLA ESPECIAL
+boolean imp-ocupada = false;
+cola espera;
+int turno = -1;
+
+Process Persona (ID = [0..N]) {
+	Push (espera, ID)
+	<Await (turno = ID)>
+	Imprimir (documento)
+	termino = true;
+}
+
+Process Coordinador {
+	
+	while (true){
+		if (not isEmpty(cola)) {
+			//<Await (not imp-ocupada)>
+			//im
+			Pop (cola, turno)
+			<Await (termino)>
+			termino: false;
+			//imp-ocupada  = false
+		}
+	}
+}
+
+
+
+
+
+6- 
+int presentes = 0;
+cola entregaron;
+boolean termino[] = 0..N-1 = false;
+boolean nota[] = 0..N-1 = false;
+boolean empezar = false
+boolean listaOcupada = false;
+
+Process Alumno [ID = 0..N-1]{
+	<presentes = presentes + 1;>
+	
+	<Await (empezar)>
+	//resuelve examen
+	<Push (entregaron, ID)>
+	
+	<Await (nota[ID])>
+}
+
+Process Profesor [ID = 0..2]{
+	int corrigiendo;
+	<Await (presentes = N); empezar = true>
+	
+	while (presentes <> 0){
+		<Await (not listaOcupada); listaOcupada = true>
+		if (not isEmpty(entregaron)){
+			<Pop (entregaron, corrigiendo)>
+			listaOcupada = false;
+			//corigiendo a corrigiendo
+			nota[ID] = true;
+		}
+	}
+}
+
+
+
+
+8-
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

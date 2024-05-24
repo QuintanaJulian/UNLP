@@ -1,0 +1,35 @@
+
+DESIGN PATTERNS
+	Decorator: Sirve para modificar dinamicamente los comportamientos o responsabilidades  de un SOLO objeto
+	
+	Adapter: Adaptador, permite el acceso de una clase a otra clase, donde sin el no serian compatibles
+	
+	Proxy: middleware, implementa un punto medio entre ambas clases, para agregar funcionalidad o algo
+
+	Composite: Permite la recursividad o trabajar en forma arbol, logrando trabajar con una o muchas instancias si cambiar la implementacion
+
+	Singleton: Es una clase que posee una unica instancia, siempre se va a trabajar con la misma instancia.
+
+
+
+CREATIONAL METHODS
+	Factory: Permite directamente la instanciacion de un objeto
+
+	Builder: permite intanciar un objeto pero delegando en otras clases para lograr distintas inicializaciones / objetos
+
+
+BEHAIVORAL PATTERNS:
+	Template: sirve para cuando en los hijos se repite el codigo, entonces el padre lo decalra y los hijos lo implementan
+
+	Strategy: Permite modificar el comportamiento del objeto segun como se instancie, hace intercambiables los algoritmos de respuesta
+
+	State: Para que un objeto tenga distintos estados, donde cada estado posible es una clase distinta
+
+	Null objetct: Se usa cuando se requiere un colaborador, pero en caso de que no este se quiere implementar la respuesta null, va a seguir danod null pero se va a permitir darlo de distintas formas
+
+
+
+
+
+
+Ej: 19
