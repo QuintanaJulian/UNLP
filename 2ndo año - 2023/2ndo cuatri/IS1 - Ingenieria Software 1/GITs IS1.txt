@@ -1,0 +1,11 @@
+https://github.com/Fabo-University/Ingenieria-de-Software1.git
+
+
+https://github.com/ssofiaavila/Ingenieria-de-software-1-Informatica--UNLP.git
+
+
+https://github.com/agusrnfr/ING-1/tree/main
+
+
+Simulador de PETRI(?:
+	https://petri.hp102.ru/

@@ -1,0 +1,29 @@
+package ar.edu.unlp.objetos.uno.Ejercicio14;
+
+import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
+
+public class DateLapse {
+	private LocalDate from;
+	private LocalDate to;
+	//private static final ChronoUnit DAYS
+	
+	
+	public LocalDate getFrom() {
+	return from;
+	}
+	
+	public LocalDate getTo() {
+		return to;
+	}
+	
+	public int sizeInDays() {
+		
+		return (int) from.until(to, ChronoUnit.DAYS);
+	}
+
+	
+	public boolean includesDate (LocalDate other) {
+		return from.isBefore(other) && to.isAfter(other);
+	}
+}

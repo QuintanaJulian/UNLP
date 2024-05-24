@@ -1,0 +1,37 @@
+//dado un arbol general, encontras los caminos desde la raiz a la hoja, tales que la cantidad ded nodos en el camino sea un numero par. Escribir el siguiente //metodo dentro de la clase Parcial "public ?? caminoPares (ArbolGeneral<Character> arbol)"
+
+//En resumen devolver todos los caminos que tengan una cantidad par de nodos.
+
+import ListaGenerica.*;
+import ArbolGeneral;
+
+public class Pparcial {
+	public static ListaGenerica<ListaEnlazadaGenerica<Integer>> caminosPares (ArbolBinario<Integer> arbol){
+            ListaGenerica<ListaEnlazadaGenerica<Integer>> SuperLista = new ListaEnlazadaGenerica<ListaEnlazadaGenerica<Integer>>();
+            if (!arbol.esVacio()){
+                ListaEnlazadaGenerica<Integer> ListaT = new ListaEnlazadaGenerica<Integer>();
+                ListaT.agregarFinal(arbol.getDato());
+                if (arbol.tieneHijoIzquierdo()) caminosParesAux (SuperLista, ListaT, arbol.getHijoIzquierdo());
+                if (arbol.tieneHijoDerecho()) caminosParesAux (SuperLista, ListaT, arbol.getHijoDerecho());
+            }
+            return SuperLista;
+        }
+
+        private static void caminosParesAux (ListaGenerica<ListaEnlazadaGenerica<Integer>> SuperLista, ListaEnlazadaGenerica<Integer> ListaT, ArbolBinario<Integer> AB){
+
+            ListaT.agregarFinal (AB.getDato());
+            if (AB.esHoja()){
+                if ((ListaT.tamanio() % 2) == 0){
+                    ListaEnlazadaGenerica<Integer> ListaOK = (ListaEnlazadaGenerica<Integer>) ListaT.clonar();
+                    SuperLista.agregarFinal(ListaOK);
+                }
+            } else {
+                if (AB.tieneHijoIzquierdo()) caminosParesAux (SuperLista, ListaT, AB.getHijoIzquierdo());
+                if (AB.tieneHijoDerecho()) caminosParesAux (SuperLista, ListaT, AB.getHijoDerecho());
+            }
+            ListaT.eliminarEn(ListaT.tamanio());
+      }
+}
+		
+						
+		

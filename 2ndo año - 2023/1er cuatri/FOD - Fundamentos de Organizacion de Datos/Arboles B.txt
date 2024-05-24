@@ -1,0 +1,100 @@
+Arbol binario:
+Muy costoso de mantener balanceado
+Busqueda peor caso Log²(N + 1)
+
+
+Arboles AVL (BA) (arboles balanceados en altura):
+Arbol binario casi balanceado
+Para TODO nodo su altura de ambas ramas varia en N. Para un BA(1) la diferencia de altura para cada nodo es <= a 1
+Busqueda para peor caso: 1.44 Log² (N + 2)
+
+
+Arbol binario paginado:
+Se separa el arbol en paginas (de arboles) donde el tamaño de cada pagina cambia dependiendo el tamaño ram
+Permite llevar el arbol a RAM
+Muy costosa de implementar.
+Requieren alto nivel computacional
+
+
+Arboles multicamino (Arboles generales):
+Siempre N = M - 1;
+Con 2 datos / claves. (N)
+Con 3 hijos para: (orden M = 3)
+.    1 menor a ambos datos.
+.    1 intermedio entre los 2 datos.
+.    1 mayor a ambos datos
+
+
+
+Arboles multicamino (Arboles generales):
+Siempre N = M - 1;
+Con 2 datos / claves. (N)
+Con 3 hijos para: (orden M = 3)
+.    1 menor a ambos datos.
+.    1 intermedio entre los 2 datos.
+.    1 mayor a ambos datos
+
+
+
+Arboles multicamino (Arboles generales):
+Son arboles de claves primarias.
+Se crean de abajo para arriba.
+Siempre N = M - 1;
+Con 2 datos / claves / registros. (N)
+Con 3 hijos para: (orden M = 3)
+.    1 menor a ambos datos.
+.    1 intermedio entre los 2 datos.
+.    1 mayor a ambos datos
+Cada nodo tiene como minimo [M/2] hijos (menos raiz y hojas)
+La raiz tiene minimo 2 hijos o ninguno
+Todos los nodos terminales/hojas estan al mismo nivel
+Nodos no terminales con K hijos tienen K - 1 registros
+Nodos terminales:
+.     Minimo [M/2] - 1 registros
+.     Maximo M - 1 registros
+Se llenan de izq a derecha los nodos
+Se agregan losndatos SIEMPRE en hojas
+
+Cuando se llena un nodo ocurre overflow.
+Cuando hay overflow se debe dividir y luego promocionar
+
+
+
+
+
+
+
+
+
+Bajas:
+Se debe llevar a una hoja
+
+-Si no esta en una hoja.
+		-Se permuta a un nodo terminal (hoja), ermutando el elemento por cualquer elemento inmediato superior / inferior
+		-Se borra desde la hoja	
+
+	Mejor de los casos:
+		-La cantidad de elementos de la hoja es > [M/2] - 1  
+		En este caso se borra y se reacomodan los elemetnos
+
+	Peor de los caso:
+		Se produce under-flow cuando elementos < [M/2] - 1	
+		Se puede redistribuir elemtnos de los hermanos adyacentes.
+		Es decir se pasa un elemento de un hermano a otro logrando queno haya underflow.
+
+		Se puede concatenar. 
+		Es decir cuando no se se puede conseguir elementos del hermano adyacente. Se concatenan los nodos juntando los datos en un nodo superior.
+		La concatenacion se realiza con 2 hermanos y el nodo padre. Juntando 3 elementos en un nodo
+
+
+
+Arbol B:
+M hijos
+M - 1 datos
+
+Cada nodo esta conformado por:
+.   Cantidad de claves: int;
+.   Claves: array [] of tiponde dato
+.   Hijos: array [] of integer
+
+Arbolb : file of nodo;

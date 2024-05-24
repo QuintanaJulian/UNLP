@@ -1,0 +1,34 @@
+Js Obicuo
+	Son librerias que trabajan del lado cliente y servidor
+
+
+srver side
+mongo, sql litel y express
+
+nodejs 
+base de datos mongo
+
+client side
+	html, js css
+	framework react, angular
+	
+
+
+
+stack mean y mern
+
+
+no dogmatico (unopinionated), es decir que no tiene una estructura fija de orden.
+
+Express
+
+app all "secret" ... via de accesso mas 'secreta' para login, etc.
+
+get
+
+post/put hacen modificaciones lado servidor	
+
+req.body para recupear datos que manda cliente
+
+si vamos a trabajar / recibir con JSON en express app.use(express.json())
+

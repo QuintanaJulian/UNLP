@@ -1,0 +1,45 @@
+Colision = cuando 2 archivos reciben misa ubicacion.
+intruso = cuando un elemento esta guardado en un ubicacion que no le corresponde segun la clave de dispersion.
+
+ Tecnicas de resolucion de overflow
+
+N = cantidad de direccines del archivo.
+
+
+
+
+F(x) = x mod N
+funciona mejor cuando N = primo.
+
+
+Cuanod se procede a eliminar un dato se debe leer el siguiente archivo para ver si este esta lleno, en caso de que este se debera clocaruna marca de borrado
+
+
+
+Saturacion progresiva encadenada
+
+En caso de overflow se busca la proxima direccion de memoria con espacio y se guarda la dir. Mem en su direccion inicial
+
+bajas: 
+baja archivo en medio de la cadena:
+-Se debera poner a la direccion anterior de la cadena la direccion del sig del elemento a borrar.
+baja archivo cabecera de la cadena:
+-Se copia todo el registro del siguiente sinonimo, se guarda el siguiente sinonimo en la direccion base
+
+
+
+Saturacion progresiva con area de desborde separado:
+
+En caso de overflow el dato se guardara en el area de desborde. La primer ubicacion lbre se agarra y se guarda la direccion 
+
+
+En caso de baja de un dato en el area principal, se realia la baja sin inconveniente y se deja la direccion de enlaze. NO SE REORDENA.
+
+
+Dispersion doble:
+F(x) = (x mod N) 
+F2(x) =((x mod 5) + 1)
+
+Cuando hay overflow se hace un desplazamiento de F2(x)
+
+Cuando hay bajas se coloca marca de borrado.

@@ -1,0 +1,28 @@
+https://www.youtube.com/watch?v=J-lJC_Zl-Rs&t=327s
+
+http://latentflip.com/loupe/
+
+setTimeout(function() {
+	console.log("me tarde 2s");
+},2000);
+
+console.log("Ejecutado luego de inovcar a 2");
+
+setTimeout(function() {
+	console.log("me tarde 3s");
+}, 3000);
+
+console.log("Ejecutado luego de inovcar a 3");
+
+
+
+// Se ve la pila de ejecución
+function uno() {
+	console.log("estoy en uno");
+}
+
+function dos() {
+	uno();
+	}
+
+dos();

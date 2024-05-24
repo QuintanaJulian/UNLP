@@ -1,0 +1,260 @@
+let a = 1;
+let b = true;
+let c = "Hola";
+let d = null;
+let e;
+let f = 2n ** 60n;
+let g = new Date();
+let h = [1,2,3,4];
+let i = 'Hola';
+let j = { x: 2.0, y: -3.6 };
+let k = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+<<<<<<< HEAD
+let names = ["John", "Paul", "George", "Ringo"];
+let numbers = [1.2, 2, 22, -33, 12, 0.0, "13", Math.PI];
+/*
+console.log(typeof a);
+console.log(typeof b);
+console.log(typeof c);
+console.log(typeof d);
+console.log(typeof e);
+console.log(typeof f);
+console.log(typeof g);
+console.log(typeof h + " este");
+console.log(typeof i);
+console.log(typeof j);
+console.log(typeof k);
+*/
+let z = 24;
+console.log(z++);
+console.log(++z);
+/*
+console.log("-----------");
+console.log(max(h));
+console.log(min(h));
+console.log(avg(h));
+console.log(sum(h));
+console.log(leer(h));
+*/
+console.log(names[0].concat(names[3]));
+//console.log(names.reduce(concat));
+
+function max(D) {
+  let max = -99;
+
+  let a = D.length;
+  /*  console.log(typeof D);
+  console.log(Array.isArray(D));
+  console.log(D.lenght);*/
+
+  for (let i = 0; i < a; i++) {
+    //  console.log(max);
+    if (D[i] > max) {
+      max = D[i];
+    }
+  }
+  return max;
+}
+
+/* function min(D) {
+  let long = D.length;
+  let min = 9999;
+  if (Array.isArray(D)) {
+    for (let i = 0; i < long; i++) {
+      if (D[i] < min) {
+        min = D[i];
+      }
+    }
+  }
+  return min;
+} */
+
+function min(D) {
+  return Math.min(D, D.length);
+}
+
+function avg(D) {
+  let total = 0;
+  let long = D.length;
+  /* for (let i = 0; i < long; i++) {
+    total = total + D[i];
+  }*/
+  return sum(D) / D.length;
+  //return total / long;
+  // retorna el valor promedio
+}
+
+function sum(D) {
+  let total = 0;
+  for (let i = 0; i < D.length; i++) {
+    total = total + Number(D[i]);
+  }
+  return total;
+  // retorna la sumatoria de los valores
+}
+
+function leer(D) {
+  var i = 0;
+  console.log("Los datos del vector son: ");
+  while (i < D.length) {
+    console.log(D[i]);
+    i++;
+  }
+  console.log("Eso fue la totalidad del vector ");
+}
+
+if (Number.isInteger(a) && !Number.isNaN(a)) {
+  //EJERCICIO 6
+  console.log("Es integer distinto a null");
+}
+
+var prices = {
+  //EJERCICIO 8
+  MILK: 48.9,
+  BREAD: 90.5,
+  BUTTER: 130.12,
+};
+
+var amounts = {
+  MILK: 1,
+  BUTTER: 0.2,
+  BREAD: 0.5,
+};
+/*
+console.log(typeof prices);
+console.log(prices.BREAD);
+console.log(amounts["MILK"], "------");
+console.log(total(prices, amounts));
+*/
+function total(precio, cantidad) {
+  const values = Object.keys(cantidad); //Object.values  Object.entries
+  let i = 0;
+  let total = 0;
+
+  for (let i = 0; i < values.length; i++) {
+    const key = values[i];
+    total = total + precio[key] * cantidad[key];
+
+    console.log(key, " ", precio[key], " ", cantidad[key]);
+  }
+  return total;
+}
+
+var words = [
+  //EJERCICIO 19
+  "perro",
+  "gato",
+  "casa",
+  "á,rbol",
+  "á,rbol",
+  "nube",
+  "día",
+  "no.che",
+  "zanahoria",
+  "babuino",
+];
+
+//ztoa(words);
+
+function ztoa(words) {
+  words.sort((b, a) => a.localeCompare(b, "es", { ignorePuntuation: true })); //ignore puntuaction ignore los puntos   //b,a / a,b change the orden in which the objets are saved
+  words.sort;
+  for (let i = 0; i < words.length; i++) {
+    console.log(words[i]);
+  }
+}
+
+//ordenLongitud(words);
+function ordenLongitud(words) {
+  //EJERCICIO 10
+  words.sort((a, b) => {
+    if (a.length > b.length) {
+      return 1;
+    }
+    if (a.length < b.length) {
+      return -1;
+    }
+    return 0;
+  });
+
+  words.forEach((element) => {
+    console.log(element);
+  });
+}
+
+numbers = [1, 3, 4, 6, 23, 56, 56, 67, 3, 567, 98, 45, 480, 324, 546, 56]; //EJERCICIO 12
+var sum = (x, y) => x + y;
+//console.log(numbers.reduce(sum, 0));
+console.log(reduce(numbers, sum, 0));
+
+function reduce(numbers, sum, inicio) {
+  sum = inicio;
+  numbers.forEach((element) => {
+    sum = sum + element;
+  });
+  return sum;
+}
+
+{
+  var alice = {
+    name: "Alice",
+    dob: new Date(2001, 3, 4),
+    height: 165,
+    weight: 68,
+  };
+  var bob = {
+    name: "Robert",
+    dob: new Date(1997, 0, 31),
+    height: 170,
+    weight: 88,
+  };
+  var charly = {
+    name: "Charles",
+    dob: new Date(1978, 9, 15),
+    height: 188,
+    weight: 102,
+  };
+  var lucy = {
+    name: "Lucía",
+    dob: new Date(1955, 7, 7),
+    height: 155,
+    weight: 61,
+  };
+  var peter = {
+    name: "Peter",
+    dob: new Date(1988, 2, 9),
+    height: 165,
+    weight: 99,
+  };
+  var luke = {
+    name: "Lucas",
+    dob: new Date(1910, 11, 4),
+    height: 172,
+    weight: 75,
+  };
+}
+
+const personas = [alice, bob, charly, lucy, peter, luke];
+
+imcMayor = grupoIMC25(personas);
+for (let i = 0; i < personas.length; i++) {
+  console.log(personas[i]);
+}
+
+function grupoIMC25(personas) {
+  let imcMayor = [];
+  let i = 0;
+  personas.forEach((element) => {
+    console.log(
+      element.height,
+      element.weight,
+      (element.weight / element.height) * element.height
+    );
+    if (element.weight / (element.height * element.height) > 25) {
+      imcMayor[i] = element.name;
+    }
+  });
+  return imcMayor;
+}
+console.log("Se termino de ejecutar");/
+

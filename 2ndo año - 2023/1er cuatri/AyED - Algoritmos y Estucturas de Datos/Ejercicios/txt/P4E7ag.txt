@@ -1,0 +1,32 @@
+public class RedDeAguaPotable{
+
+	private ArbolGeneral<Char> AG;
+	
+	//geters and setters
+
+	public double minimoCaudal (double caudal){
+		double resultado = 0;
+		if (caudal > 0){
+			if (!this.getDato().esHoja()){
+				resultado = minimoCaudalAux (this.getDato(), caudal);
+			} else resultado = caudal;
+				
+		}
+		return resultado;
+	}
+
+	private double minimoCaudalAux (ArbolGeneral<Char> AG, double caudal){
+		ListaGeneral<ArbolGeneral<Char>> Lhijos = AG.getHijos();
+		caudal = caudal / LHijos.tamanio();
+		double minCaudal = caudal;
+		
+		LHijos.comenzar();
+		while (!LHijos.fin()){
+			ArbolGeneral<Char> hijo = LHijos.proximo();
+			if (!hijo.esHoja()){
+				double respuesta = minimoCaudalAux (hijo, caudal);
+				minCaudal = Math.min(minCaudal, respuesta);
+			}
+		}
+		return respuesta;
+	}

@@ -1,0 +1,8 @@
+INDEX VERSION 1.132+C:\Users\NLUKY\OneDrive\FACU\2023\1er cuatri\AyED\Ejercicios\.metadata\.plugins\org.eclipse.jdt.core
+1829879417.index
+1921277972.index
+358920302.index
+3856658982.index
+92491906.index
+700696408.index
+1865797976.index

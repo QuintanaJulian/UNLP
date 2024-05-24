@@ -1,0 +1,44 @@
+
+if [! $# -eq 1 ]; then
+	echo "Se requiere el nombre de un usuario"
+	exit 1
+fi
+
+
+usuarios=($(echo /etc/passwd | cut -d: -f1))
+
+for user in $usuarios; do
+	if [ user = $1 ]; then
+		echo "Usuario encontrado"
+		break
+	fi
+done
+
+if [ ! $user = $1 ]; then
+	echo "El usuario recibido no existe."
+	exit 1
+fi;
+
+
+
+while (! who | grep $1 ); do
+	echo "Usuario $1 no esta conectado"
+	sleep 30
+done
+
+file=(acces-$1.log)
+archivo=(/log/$file)
+
+touch $archivo
+
+echo "$1 $DATE" >> $archivo
+
+for (i=0; i<=30; i++); then
+	if [! who | grep $1]; then
+		echo "El usuario se desconecto"
+		exit 1
+	fi
+done
+
+echo "El usuario aguanto conectado"
+exit 0

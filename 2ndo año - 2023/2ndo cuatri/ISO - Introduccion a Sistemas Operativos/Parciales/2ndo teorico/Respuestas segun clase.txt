@@ -1,0 +1,156 @@
+un mayor tamaño del proceso implica que la tabla de paginas es mas grande?
+	La tabla deun nivel siempre tiene el mismo tamano sin importar el tamano de un proceso
+por otro lado las tablas  multinivel pueden ser mas grandes o mas chicas dependiendo el tamano del proceso
+	
+
+en la free list y la hash queue tienen punteros a headers o bloques?
+	-tiene punteros a headers
+
+
+¿el tamaño de los marcos de la RAM los define el SO?, tiene alguna limitacion?
+	-Lo define el HW
+
+
+si vos tenes un espacio de direcciones de x bits y cada entrada en la tabla de pagina es 4bytes (por ejemplo). Si aumentamos o incrementamos la cantidad de bits que utilizamos para representar las direcciones no necesariamente varía el tamaño de las entradas de la tabla de página, no? Como ocurre en las filminas.
+
+	-El tamano de la entrada de paginas no varia , si puede cambia la pagina entera. Depende de la arquitectura
+
+
+La utilizacion de clausters de 8 sectores de disco hara que la tabla de bits sea mas chica que si se utilliza clausters de 4 sectores de disco. es verdadero pero no entiendo por que
+
+	-si vos tenes clusters de 8 ponele q tengas 256 sectores / 8 es la canttidad de clustrs y vos tenes que guardar si estan libres o ocupados
+
+si tenes 256 / 4 tenes la tabla mas grande
+
+
+
+--------------
+
+1- Verdadero
+
+2- Falso
+
+3- paginas grandes -> pueden ser mas beneficioso si tiene un solo proceso
+paginas chicas  -> Con muchos procesos puede generar menos PF,
+
+4-
+
+5- Se puede tener acceso directo si la tabla esta cargada pero puede ser requerido mas de uno.
+
+
+6- Baja la productividad por uqe el procesador se la pasa ejecutando codigo de administracion de memoria, ademas de la saturacion de los buses y area de intercambio
+
+7- se asocia con la teoria de localidad. si es chico no se puede mantener la localidad que requiere por lo uqe va  atender a generar mas PF. Si es grande vamos a desperdiciar RAM manteniendo una localidad no usada, sacandole RAM a otros procesos. Como consecuencia se puede llegar a la hiperpaginacion
+
+8- El remplazo de paginas global lo que hace es que cuando hay un PF se busca el marco victima de entre todos los marcos segun el algoritmo pero sin importar a quien esta asosiado dicho marco. Por otro lado en el remplazo local se busca un marco segun el algoritmo pero que pretenezca al mismo procesos que el que realiza el PF.
+
+
+9- 
+
+10- Son ambas teoricas. La cantidad de procesos varia constantemente
+La asignacion equitativa divide la totalidad de marcos entre la cantidad  de programas y a cada programa le asigna una misma cantidad de marcos. Por otro lado la distribucion proporcional le asigna a cada proceso una cantida de marcos segun la cantida dtotal de paginas de cada proceso, quedando de esta forma cada programa con uan cantidad distinta de marcos
+
+11- determinar donde va la pag del PF, frame libre o remplazar
+generar operacion de E/S mediante DMAa mem principal, mientras aasignar cpu a otro proceso 
+actualizar datos, tabla de paginas con los marcos y bits (realizado por el OS), actualiza la TLB
+vuelve el proceso a competir por el CPU
+
+Si se determina un PF el marco no se encuentra en la TLB, Por que si se encuentra se accede directo a la direccion
+
+
+12- Lo optimo seria con bit R y M en 0, es decir no modificado y no referenciado. Por que no se lo uso desde que se lo cargo y no fue modificado por lo que no se requiere de operacion de E/S
+
+
+
+
+
+13- En el open, se indica con que permisos se desea abrir y si se posee dichos permisos se da acceso
+
+14- Si, se puede modificar lso permisos el propietario, etc
+
+15- No, minimo se actualiza la fecha de modificacion
+
+16- Si,no tenemso la sobrecarga de recorrer dichas estructuras
+
+17- Si, a partir de calculos se puede llegar a daterminar en que posicion esta el bllque que interesa obtener
+
+18- No, en el superbloque esta el mapa de bits que mantiene el estado del medio de almacenamiento
+
+19- No, el inodo es la clave de todo
+
+20- El directorioa l que pertenece el superbloque y la tabla de i-noodos (marcar a linodo como ocupado o aumentar el contador para marcar ocupado)
+La cantidad de inodos no cambia desde que se creo, pero el inodo tiene un contador que indica la cantidad de puntos que referencia a un inodo. Por eso se modifica algo en la tabla de inodos. La tabla no crece ni nada per oel contenido de la tabla si por que un inodo se modifica
+
+21- No , siempre se necesite que este en algun lugarp para llegar por el path
+
+22- Falsa, El tamano ded bloque es fijo, pero pued cambiar la unidad de asignacion del cluster
+
+23- No, pero no hay que darle mucha bola no se da mas
+
+24- si, el archivo es una construccion logica, el file system son lso datos que implementan dicha operacion logica , es decir ahi marco los limites entre ellos el tama;o 
+
+25- Verdadero tambien lo mismo que el tamano, la estructura de datos (el file system) establece esto
+
+un file system es una abstraccion que modela la estructura archivo
+Es decir modela limites, por mas que se maneje de forma dinamica requeire mas complejidad lo que puede llegar a generar errores
+El file system determina los formatos y las operaciones disponibles (espacio disponible para nombre de un archivo , etc.)
+
+Fat 32 esta limitado a 4gb por que esta limitado a 32 bits
+
+
+sector: es el sector de disco que modela el HW
+
+bloque o cluster: son varios bloques consecutivos, con un cluster puedo identificar a varios bloques o sectores de datos consecutivos
+
+
+----------- E / S -----------
+saber idea de los que se busca
+
+
+
+forma de utilizar dispositivos (linux tod es un archivo)
+catching, buffer
+
+
+
+
+---------------------------------
+
+
+26- Verdadero. Vos tenes un bloque en memoria y la escribis esta modificada y tambien ocupada por que todavia no la ocupo
+
+27- falsa
+buufer cache se utiliza para bloques de datos, no bloques de control
+file system trabaja a partir de buffe cache para trabajar con el i-nodo
+las modificaciones al i - nodo
+
+Una cosa es buffer cache para bloque de datos
+otra es la lectura de i-nodos o file system
+
+28- falsa, pero no necesariamente debe volver a ser escrito en disco
+
+29-falsas  No conviene mezclar las cosas de gestion con 
+
+
+30- falsa
+
+31-F, Sirve para buscar por bloque, no buffer
+
+32-F, Sirve para buscar libres
+
+33- F, puede haber lo que sea
+
+34- F, 
+
+35- F, o esta ocupado o esta libre. Libre no es vacio, libre es disponible para usar
+
+36- Al final de la free list, se usa el algoritmo LRU
+
+37- Falso, se queda en espera / bloqueado a que se pueda cargar el bloque necesario
+
+38- Verdadero, si la hash esta vacia hay que traer el bloque. se usa la free queue para buscar un buffer, se selecciona el que este primero y se pone en la hash queue pudiendo terminar en 
+
+39- No, la tabla de paginas por mas que se pueda guardar en disco o lo que sea no pasa por buffer cache por que se requeriria mucho quilombo
+
+40- Mas cantidad ded hash queues mejor. Mientras mejor la dispersion menos desborde por lo que sera una hashing mas eficiente. Pero va a requerir la tabla mas grande
+

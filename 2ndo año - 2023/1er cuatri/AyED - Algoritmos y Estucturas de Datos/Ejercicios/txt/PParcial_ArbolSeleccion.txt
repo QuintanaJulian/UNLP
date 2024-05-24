@@ -1,0 +1,50 @@
+//Arbol de seleccion devuelve true si todos los nodos tienen el valor del menor de sus hijos
+
+import ArbolGeneral;
+import ColaGenerica; 
+
+public class AnalizarArbol {
+	
+
+	public static boolean EsDeSeleccion (ArbolGeneral<Integer> arbol){
+	boolean respuesta = true;
+	
+	if (arbol.tieneHijos()){
+		ListaGenerica<ArbolGeneral<Integer>> LHijos;
+		ColaGenerica<ArbolGeneral<Integer>> cola = new ColaGenerica<ArbolGeneral<Integer>>();
+		int minHijo = 999999;
+		int valorActual = arbol.getDato();
+		LHijos = arbol.getHijos();
+		LHijos.comenzar();
+		
+		while ((!LHijos.fin()) && (respuesta){
+			ArbolGeneral<Integer> hijo = LHijos.proximo();
+			minHijo = Math.min(minHijo, hijo.getDato());
+			if (!minHijo < valorActual){
+				cola.encolar (hijo);
+			else respuesta = false;
+		}
+		if (minHijo != valorActual) respuesta = false;
+
+		while ((!cola.esVacia()) && (respuesta)){
+			ArbolGeneral<Integer> AG = cola.desencolar();
+			if (AG.tieneHijos()){
+				valorActual = AG.getDato();
+				LHijos = AG.getHijos;
+				LHijos.comenzar();
+				while ((!Lhijos.fin()) && (respuesta)){
+					ArbolGeneral<Integer> hijo = AG.getHijo();
+					minHijo = Math.min (minHijo, hijo.getDato());
+					if (!minHijo < AG.getDato()){
+						cola.encolar(hijo)
+					else respuesta = false;
+				}
+				if (minHijo != valorActual) respuesta = false;
+			} else respuesta = false;
+		}
+				
+	}else respuesta + false;
+		
+	return respuesta;	
+
+}

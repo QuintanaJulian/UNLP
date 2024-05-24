@@ -1,0 +1,38 @@
+//parcia lprogramacion 3 ejercicio zig zag
+// se recibe una lista de string, donde cada string esta conformado UNICAMENTE por 0 y 1's.
+//El caracter 0 indica izquierda y el caracter 1 derecha.
+//Conseguir la palabra conformada
+
+import ArbolBinario;
+
+public calss PParcial{
+	
+
+	public ListaGenerica<Character> descifrarCodigo (ArbolBinario<Character> arbol, ListaGenerica<String> listaDeSecuencias){
+		ListaGenerica<Character> Respuesta = new ListaEnlazazdaGenerica <Character>();
+		if (!arbol.esVacio()){
+			listaDeSecuencias.comenzar();
+			while (!listaDeSecuencias.fin()){
+				Respuesta.agregarFinal(recorrerArbol(listaDeSecuencias.proximo(), arbol));
+			}
+		}
+		return Respuesta;
+	}
+
+
+	private Character recorrerArbol (String cadena, ArbolBinario<Character> AB){
+		Character Respuesta;
+		while ((!AB.esHoja()) || (cadena != null)){
+			Character letra = String.toChar();
+			if (letra == 0){
+				AB = AB.getHijoIzquierdo();
+			}else if (letra == 1){
+				AB = AB.getHijoDerecho();
+			} else System.out.println ("El string recibido no es valido.");
+		}
+		if (AB.esHoja()){
+			Respuesta = AB.getDato();
+		} else Respuesta = null;
+		return Respuesta;
+	}
+}

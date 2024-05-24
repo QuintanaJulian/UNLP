@@ -1,0 +1,59 @@
+Tipos de variables primitivos:
+Integer	Boolean	String	UnlimitedNatural	Real
+
+Tipos de atributos / visibilidad
++publicos	
+-privados
+#protegidos
+
+Atributo de clase (underline), son comun para toda las instancias de clase (contador global de clases)
+
+
+Tipos de metodos
+	Operaciones de clase (underline), son para metodos que trabajan con la clase completa (es decir todas las instancias)
+	<<Create>> crearClase (var: integer), un constructor
+	<<Abstract>> procedure; o procedure en cursiva, marca que procedure es un procedure abstracto
+
+
+Sintaxis:
+	visibilidad nombre (lista parametros): tipo de retorno {propiedades}
+
+
+propiedades:
+	-isQuery: Cuando es una operacion de consulta
+
+
+
+
+Relaciones entre clases
+Se puede decir de cuantos a cuantos es la relacion (1..1) (0..*), etc.
+Se puede escribir con que nombre va a llamar esa relacion, junto con su visibilidad
+
+Se puede establecer navigabilidad, con una flecha, para limitarlo en una sola direccion
+
+Agregacion: son relaciones debiles, se puede eliminar una instancia que la otra perdura
+	Se representan con un rombo vacio al final de la coneccion/linea
+Composicion: Son relaciones fuertes, si uno desaparece, desaparece todo
+	Se representa con un rombo lleno
+
+
+
+
+	-Asosiacón (Relacion de conocimiento):
+	Se marca con una linea
+	Por defecto es una relacion 1 a 1. 
+
+	-Generalizacion (Relacion de herencia)
+	Se marca con flecha apuntando a la superclase (pueden ser abstractas o no)
+
+	-Interfaz (Relacion clase interfaz y ortra que implementa)
+	Se representa con una linea punteada, con una flecha en el final que apunta a la clace interface
+	<<Interface>>
+	Son abstractas, siempre
+	Otras clases implementan todos lso metodos de la interfaz
+
+
+
+Tipos:
+	En java y UML un tipo es una clase
+	Una instancia de una clase, es del tipo de esa clase

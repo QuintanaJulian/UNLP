@@ -1,0 +1,301 @@
+<!doctype html>
+<html lang="es">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Seminario de Lenguajes JavaScript</title>
+
+		<link rel="stylesheet" href="dist/reset.css">
+		<link rel="stylesheet" href="dist/reveal.css">
+		<link rel="stylesheet" href="dist/theme/black.css">
+        <link rel="stylesheet" href="css/custom.css">
+		<!-- Theme used for syntax highlighted code -->
+		<link rel="stylesheet" href="plugin/highlight/monokai.css">          
+        
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section>                                        
+                    <section>
+                        <h1>Seminario de Lenguajes. JavaScript</h1>
+                    </section>
+                    <section>
+                        <h2>JS - Server Side</h2>
+                        <p class="r-fit-text">
+                            Cuando programos una aplicación Web server-side, estamos programando una aplicación que reciba peticiones HTTP del navegador o cliente y retorne datos. <br>
+                            La aplicación determina qué datos retornar según la acción a ejecutar de acuerdo a la estructura de la URL y la información indicada en la misma (opcional) según los métodos GET y POST . <br>
+                            Según la acción, puede acceder a una base de datos o a un archivo para atender la petición y retornar en un HTML los datos solicitados. <br>                            
+                        </p>
+                    </section>                    
+                    <section>
+                        <h2>Modelo MVC</h2>
+                        <ul class="r-fit-text">
+                            <li>Patrón de arquitectura de software para separar los datos y la lógica de negocio de su representación y el módulo encargado de gestionar los eventos y las comunicaciones.</li> 
+                            <li>Modelo: Es la representación de la información.</li>
+                            <li>Controlador: Responde a eventos (usualmente acciones del usuario) e invoca peticiones al 'modelo' . Intermediario.</li>
+                            <li>Vista: Presenta el 'modelo' (información y lógica de negocio) en un formato adecuado para interactuar                            </li>
+                        </ul>                                                
+                    </section>
+                    <section>
+                        <h2>Modelo MVC</h2>
+                        <img class="background-white" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/ModelViewControllerDiagram_es.svg/1920px-ModelViewControllerDiagram_es.svg.png" alt="Modelo MVC">               
+                    </section>
+                    <section>
+                        <h2>Stack MEAN y MERN</h2>
+                        <p>Permiten crear aplicaciones Web utilizando todas herramientas JS.</p>
+                        <div id="contenedor">
+                            <div id="left">
+                                <img src="https://www.campusmvp.es/recursos/image.axd?picture=MEAN_750_1.png" alt="MEAN" aria-describedby="https://www.campusmvp.es/recursos/post/Que-es-el-stack-MEAN-y-como-escoger-el-mejor-para-ti.aspx">
+                            </div>
+                            <div id="right">
+                                <img src="https://sp-ao.shortpixel.ai/client/to_webp,q_lossy,ret_img,w_943/https://www.bocasay.com/wp-content/uploads/2020/03/MERN-stack-1.png" alt="MERN" aria-describedby="https://www.bocasay.com/how-does-the-mern-stack-work/">
+                            </div>
+                        </div>
+                    </section>
+                    <section>
+                        <h2>Express JS</h2>
+                        <ul class="r-fit-text">
+                            <li>Es el framework más popular de Node, liberado en 2010, actualmente en la versión 4.17.1</li>
+                            <li>Facilita la creación de aplicaciones Web, del lado del servidor. </li>
+                            <li>Construido a partir de NodeJS.</li>
+                            <li>Modular a través de npm, evita verbosity.</li>
+                            <li>Single thread, asincrónico</li>
+                            <!--Que tenga un sólo thread es super eficiente siempre que no lo demoremos con peticiones sincrónicas-->
+                            <li>Javascript Universal. Hisomórfico. Se comparten librerías,  entre el cliente y el servidor. Por ejemplo timing, loadge, o fechas.</li>                            
+                        </ul>
+                        <a href="https://expressjs.com/en/resources/frameworks.html">Frameworks alternativos a Express</a>
+                    </section>
+                    <section>
+                    <h2>Express JS</h2>
+                        <ul class="r-fit-text">
+                            <li>Permite escribir manejadores de rutas (URLs) para los diferentes verbos HTTP.</li>
+                            <li>Se integra con renderizaciones de vistas para generar respuestas a través de introducir datos en plantillas.</li>
+                            <li>Añade procesamiento de peticiones middleware en cualquier punto dentro del manejo de la petición.</li>
+                            <li>Aplicaciones MVC. Model View Controler.</li>                            
+                            <li>Es muy sencillo de aprender los conceptos y utilizar un servidor Web.</li> 
+                            <li>Es no dogmático (unopinionated).</li>
+                            <!--dogmático es que es muy estricto para hacer las cosas de una determinada manera, en general para un dominio particular.
+                            Ser no dogmático es un problema algunas veces por todas las posibilidades que ofrece.-->                           
+                        </ul>
+                    </section>
+                    <section>
+                        <h2>Express JS</h2>
+                        <p>
+                            Posee métodos para especificar que función usar dependiendo del verbo usado en la petición y la estructura de la URL <strong>(ruta)</strong>. <br>
+                            También tiene métodos para especificar plantillas <strong>(views) </strong>que se usaran para armar el documento HTML con la respuesta. <br>
+                            Los <strong>middlewares </strong> se utilizan para añadir funcionalidad como sesiones de usuario, cookies, logging, etc. 
+                        </p>
+                    </section>
+                    <section>
+                        <h2>Express JS - instalación </h2>
+                        <p>Es necesario instalarlo ejecutando npm
+                            <pre><code>npm install express</code></pre>
+                            Node incluye módulos de todo tipo en su instalación.
+                            Express es necesario instalarlo y se puede modificar el archivos package.json                            
+                        </p>
+                    </section>      
+                    <section>
+                        <h2>Módulos en JS - npm</h2>
+                        <p>Un módulo es una librería de JS que puede ser importada en otro código usando require()
+                            También podemos crear nuestros propios módulos, cuanto más modular más óptimo para reusar y encapsular.
+                        </p>
+                    </section>   
+                    <section>
+                        <h2>Express JS - instalación </h2>
+                        <img src="./clase-express/express-instalacion-package-json.png" alt="package.json con parametros que se pueden modificar">
+                    </section>          
+                    <section>
+                        <h2>Creando un servidor </h2>
+                        <div id="contenedor">
+                            <div id="left">
+                                <img src="./clase-express/node-crear-servidor.png" alt="comandos para crear un servidor con node">
+                            </div>
+                            <div id="right">
+                                <img src="clase-express/express-crear-servidor-code.png" alt="comandos para crear un servidor con express">
+                            </div>
+                        </div> 
+                    </section>
+                    <section>
+                        <h2>Creando un servidor </h2>
+                        <img src="clase-express/express-crear-servidor.png" alt="Crear servidor - Cliente">                        
+                        <!--La función 'callback' recibe como argumentos una petición y una respuesta, y ejecuta un send(), para enviar la cadena de caracteres como respuesta -->
+                    </section>
+                    <section>
+                        <h2>Creando un servidor </h2>
+                        <p>Haciendo una petición desde un cliente a nuestro servidor obtenemos: </p>
+                        <img src="clase-express/express-crear-servidor-code-cliente.png" alt="Crear servidor - Cliente"> 
+                        <h3> ¿Por qué? </h3>                       
+                    </section>
+                    <section>
+                    <h2>Creando una respuesta </h2>
+                        <div id="contenedor">
+                            <div id="left">
+                                <img src="./clase-express/node-crear-respuesta.png" alt="comandos para crear una respuesta con node">
+                            </div>
+                            <div id="right">
+                                <img src="clase-express/express-crear-respuesta.png" alt="comandos para crear una respuesta con express">
+                            </div>
+                        </div>
+                    </section> 
+                    <section>
+                        <h2>Express - Rutas</h2>
+                        <img src="clase-express/express-crear-ruta.PNG" alt="Respuesta al cliente con una ruta.">
+                    </section>
+                    <section>
+                        <h2>Express - Enrutamiento</h2>
+                        <ul>
+                            <li>Las rutas definen la navegación del usuario a partir de los verbos http.</li>
+                            <li>Determina la respuesta de una aplicación a una solicitud de cliente, establecida en la URL. </li>
+                            <li>Es la base de toda aplicación Web.</li>
+                            <li>Es necesario configurar un manejador.</li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h2>Express - Enrutamiento</h2>
+                        <p class="r-fit-text">Soporte a los métodos de direccionamiento que se corresponden con los métodos HTTP: get, post, put, head, delete, options, trace, copy, lock, mkcol, move, purge, propfind, proppatch, unlock, report, mkactivity, checkout, merge, m-search, notify, subscribe, unsubscribe, patch, search y connect.
+                        </p>
+                    </section>
+                    <section>
+                        <h2>Express - Enrutamiento</h2>
+                        <div id="contenedor">
+                            <div id="left">
+                                <img src="./clase-express/express-rutas.png" alt="comandos para crear una respuesta con node">
+                            </div>
+                            <div id="right">
+                                <img src="clase-express/express-rutas-cliente.png" alt="comandos para crear una respuesta con express">
+                            </div>
+                        </div>
+                    </section>
+                    <section>
+                        <h2>Express - Enrutamiento</h2>
+                        <p> Es posible incluir expresiones regulares como * y ? </p>
+                        <img src="clase-express/express-rutas-expresiones-regulares.png" alt = "Express JS - Rutas - Expresiones regulares">                                                
+                        <a href="https://expressjs.com/es/guide/routing.html">Guide Express JS - Routes</a>
+                    </section>
+                    <section>
+                        <h2>Express - Enrutamiento - app.all() </h2>
+                        <p> No se deriva de ningún método HTTP. Este método se utiliza para cargar funciones de middleware en una vía de acceso para todos los métodos de solicitud. <br>
+                            El manejador se ejecutará para las solicitudes a “/secret”, tanto si utiliza GET, POST, PUT, DELETE, como cualquier otro método de solicitud HTTP.
+                        </p>                        
+                    </section>
+                    <section>
+                        <h2>Express - Enrutamiento </h2>
+                        <pre><code>
+                            app.get('/user', (req, res) => {
+                                res.json({
+                                    username: 'pamadeo',
+                                    lastname: 'Amadeo'
+                                    });
+                            });                            
+                        </code></pre>
+                        <img src="./clase-express/express-res-json.png" alt="Retorna un objeto json">
+                    </section>
+                   <section>
+                    <h2>Express - Enrutamiento - req.body</h2>
+                        <p>Objeto JS que provee express y permite gestionar los datos enviados por el cliente</p>
+                        <img src="clase-express/express-post-talend-api.png" alt="POST para invocar a mi API">
+                   </section>                    
+                   <section>
+                    <h2>Express - Enrutamiento </h2>
+                    <pre><code>
+                        app.post('/user', (req, res) => {    
+                            console.log(req.body);
+                        });                         
+                    </code></pre>
+                    <p>Y también:</p>
+                    <pre><code>
+                        // Para indicarle a express que le estamos enviando un objeto JSON
+                        app.use(express.json());
+                    </code></pre>
+                    <p>Cuando una petición coincida con el content-type entiende que es un json e interpreta el objeto</p>
+                   </section>
+                   <section>
+                        <h2>Express - Rutas dinámicas</h2>
+                        <p>Permite manipular parámetros en la URL a través del objeto Request.params</p>
+                        <img src="clase-express/express-rutas-dinamicas.png" class="background-white" alt="Rutas dinámicas">
+                    </section>
+                    <section>
+                        <h2>Express - Rutas dinámicas</h2>
+                        <img src="clase-express/express-request-params-put.png"  alt="Rutas dinámicas">                                        
+                    </section>                   
+                    <section>
+                        <h2>Express - Middleware</h2>
+                        <img src="clase-express/express-req-body-middleware.png" alt="Express Middleware">
+                    </section>
+                    <section>
+                        <h2>Express - Middleware</h2>
+                        <p class="r-fit-text">Es un manejador de peticiones, útil para procesar datos antes de ejecutar las rutas. Por esto es que se incluyen al inicio.<br>
+                            Funciona para todas las rutas definidas en la aplicación.<br>
+                            Por ejemplo, el logueo o la autenticación de usuarios. <br>
+                            Se llaman en el orden que son declaradas, en algunos casos el orden es importante. <br>
+                            <!--Por ejemplo si el middleware para el manejo de sesiones es imporante para la gestión de cookies entonces este moddleware debe ser invocado antes.-->
+                        </p>
+                    </section>
+                    <section>
+                        <h2>Express - Middleware</h2>
+                        <img src="clase-express/express-midleware-propio.png" alt="Middleware propio">                  
+                    </section>
+                    <section>
+                        <h2>Express - Middleware</h2>
+                        <p class="r-fit-text">
+                            <ul>
+                                <li>Módulos de terceras partes, como Morgan </li>
+                                <li>Para subir imágenes, cambiar datos, autenticación.</li>
+                                <li>npmjs.com/ </li>
+                                <li>Un ejemplo de middleware es <a href="https://www.npmjs.com/package/morgan">morgan</a> para loguear todas las peticiones.</li>
+                            </ul>                            
+                            <pre><code>app.use(morgan('dev'));</code></pre>
+                            <img src="clase-express/express-morgan-respuesta.png" alt="Ejemplo de respuesta usando morgan para loggueo">
+                        </p>
+                    </section>
+                    <section>
+                        <h2>Express - Middlewares de terceros</h2>
+                        <img src="clase-express/express-nmp.png" alt="npm con ejemplo de búsquedas">                        
+                        <a href="http://expressjs.com/en/resources/middleware.html">Middlewares soportados por el equipo de Express </a><br> 
+                    </section>
+                    <section>
+                        <h2>Express - Middleware express.static</h2>
+                            <p>Es un middleware que se incluye en el core de Express para gestionar los archivos estáticos como css, el HTML, JS, etc.
+                            <pe><code>app.use(express.static('public'));</code></pe>
+                            <img src="clase-express/express-archivos-estaticos.png" alt="Archivos estáticos">
+                        </p>
+                    </section>
+                    <section>
+                        <p>Existen paquetes de middleware para abordar casi cualquier requerimiento, el tema es decidir cuales son los paquetes adecuados . <br>
+                            No necesariamente existe una única forma correcta de estructurar una aplicación y muchos ejemplos sólo muestran una parte mínima de lo que es necesario hacer para desarrollar una aplicación web.</p>
+                    </section>                   
+                    <section>
+                        <h2>Nodemon</h2>
+                        <p> Vigila el código de JS para alertar cuando este modificado el JS sin necesidad de volver a iniciarlo cada vez. <br>
+                            npm i nodemon -D <br>
+                            npx nodemon index.js
+                        </p>
+                    </section>
+                    <section>
+                        <h2>Referencias</h2>                        
+                        <a href="https://www.npmjs.com/search?q=middleware">npm middlewares </a><br>
+                        <a href="https://developer.mozilla.org/es/docs/Learn/Server-side/Express_Nodejs/Introduction">Introducción a Express/Node. MDN</a>
+                        <a href="https://nodejs.org/es/docs/guides/anatomy-of-an-http-transaction/">Node- Anatomía de una transacción HTTP</a>
+                        <a href="https://lenguajecss.com/css/cascada-css/que-es-cascada/">Cascada CSS </a><br>
+                        <a href="https://es.wikipedia.org/wiki/Bootstrap_(framework)">BootStrap. Wikipedia</a>
+                    </section>
+                </section>                
+		<script src="dist/reveal.js"></script>
+		<script src="plugin/notes/notes.js"></script>
+		<script src="plugin/markdown/markdown.js"></script>
+		<script src="plugin/highlight/highlight.js"></script>
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+			Reveal.initialize({
+				hash: true,
+
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
+			});
+		</script>
+	</body>
+</html>

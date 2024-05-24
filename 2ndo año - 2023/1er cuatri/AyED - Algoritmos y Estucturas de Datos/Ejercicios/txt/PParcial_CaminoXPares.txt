@@ -1,0 +1,80 @@
+
+//recibe arbol binario enteros positivos
+//recibe un integer (N)
+//devuelve un camino que: tenga como minimo N nodos pares
+//devolver el primer camino que cumpla
+
+//firma public ListaGenerica<integer> resolver (ArbolBinario<Integer> ab, int min)
+
+import ArbolBinario;
+import ListaGenerica.*;
+
+public class PParcial{
+    private boolean encontrado;
+    //construir getters and setters de encontrado
+    public boolean isEncontrado () {return encontrado;}
+    public void setEncontrado (boolean encontrado){ this.encontrado = encontrado;}
+
+
+    public ListaGenerica<Integer> resolver (ArbolBinario<Integer> ab, int min){
+		ListaGenerica<Integer> Respuesta = new ListaEnlazadaGenerica<Integer>();
+		setEncontrado(false);
+	      if (!ab.esVacio()){
+      	      int pares = 0;
+            	resolverAux (Respuesta, ab, min, pares);
+	      }
+      	if (!isEncontrado()) Respuesta = null;
+	      return Respuesta;
+	}
+
+	private void resolverAux (ListaGenerica<Integer> Respuesta, ArbolBinario<Integer> AB, int min, int pares){
+		int dato = AB.getDato();
+		Respuesta.agregarFinal(dato);
+		if ((dato % 2) == 0) pares++;
+		if (AB.esHoja()){
+      		if (min <= pares) setEncontrado(true);
+	      }else {
+      		if (AB.tieneHijoIzquierdo()) resolverAux(Respuesta, AB.getHijoIzquierdo(), min, pares);
+	            if ((AB.tieneHijoDerecho()) && (!isEncontrado())) resolverAux (Respuesta, AB.getHijoDerecho(), min, pares);
+      	}
+	
+      	if ((dato % 2) == 0) pares--;
+	      if (!isEncontrado()) Respuesta.eliminarEn(Respuesta.tamanio());
+    	}	
+}
+
+
+
+
+
+
+
+
+/*
+
+public class PParcial{
+
+
+
+	public ListaGenerica<Integer> resolver (ArbolBinario<Integer> ab, int min){
+		ListaGenerica<Integer> Respuesta;
+		if (!AB.esVacio()){
+			int pares = 0;
+			ListaGenerica<Integer> 
+			Respuesta = resolverAUX (actual, ab, min, pares);
+		}else Respuesta = null;
+		return Respuesta;
+	}
+
+	private void resolverAux (ListaGenerica<Integer> actual, ArbolBinario<Integer> AB, int min, int pares){
+		
+		
+			int dato = AB.getDato();
+			Respuesta.agregarFinal(dato);
+			if ((dato % 2) == 0) pares++;
+			
+
+
+
+
+*/	

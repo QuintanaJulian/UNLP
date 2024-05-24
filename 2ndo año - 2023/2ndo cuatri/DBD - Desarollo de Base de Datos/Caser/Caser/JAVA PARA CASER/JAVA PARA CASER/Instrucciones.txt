@@ -1,0 +1,6 @@
+1. Instalar JAVA 32 bits
+2. copiar el bat a la carpeta del caser donde esta el exe
+3. modificar el .bat con la ruta de donde se instalo el java ej : C:\Program Files (x86)\Java\jre1.7.0_21\bin\java.exe"
+								  |	modificar esta parte |
+4. ejercutar el .bat sin administrador sino saltara error
+By Juliana Delle Ville ;)

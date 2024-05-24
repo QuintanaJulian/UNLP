@@ -1,0 +1,9 @@
+INDEX VERSION 1.134+C:\Users\Juli\OneDrive\FACU\2023\2ndo cuatri\OO1\Ejercicios\.metadata\.plugins\org.eclipse.jdt.core
+1513731006.index
+3274760708.index
+439421449.index
+2131516773.index
+1865797976.index
+1829879417.index
+1171348729.index
+1644512785.index

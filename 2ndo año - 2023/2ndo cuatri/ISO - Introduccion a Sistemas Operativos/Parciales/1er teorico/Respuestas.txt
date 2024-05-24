@@ -1,0 +1,82 @@
+1- Si, lo usa para hacer mas eficiente al proceso. Es software, osea necesita CPU.
+
+2- Si, procesos batch no suelen requerir interaccion del usuario y suelen ejecutarse en segundo plano. Los procesos interactivos son los que involucran directamente al usuario. Los procesos bach son como procesos en segundo plano, no requieren interaccion de usuario
+
+3- Si. No tiene nada que ver ser monousuario con multitarea. Un sistema mono-usuario es un sistema el cual acepta unicamente un usuario en el sistema al mismo tiempo, por otro lado los sistem+as multi-tarea son lso sistemas que van ejecutando muyltiples procesos en simultaneo
+
+4- No, Un sistema monotarea puede ejecutar un solo proceso por vez, por lo tanto no podria atender lso multi usuarios.
+
+5- No, --------------- se requiere siempre de RAM.
+
+6- Si, con la memoria principal ya es suficiente para planificar el uso de la CPU
+
+7- Si, entre otras cosas las interrupciones sirven para interrumpir procesos en ejecucion y evitar que se aduenen de la CPU
+
+8- Si, las interrupcions son parte del SO
+
+9- Si.
+
+10- No, debe estar en modo super usuario
+
+11- Si, genera un proceso, pero procesos establecidos por el OS
+
+12- Si
+
+13- Flaso, estaran llenas
+
+14- Si
+
+15- No, el kernel es una parte de SO, el nucleo
+
+16- No, la multiplexacion no es una tecnica usada para las memorias
+
+17- Si, el cpu es un recurso que se multiplexa, es decir que el procesador se comparte entre multiples procesos de manera secuencial.
+
+18- Si, se suele implementar con systems calls 
+
+19- Falso, existe un stack de usuario y un stack de supervisor, pero cada stack tiene distinta direccion de memoria
+
+20- Vedadero, PCB significa Process Control Block
+
+21- V, un proceso puede crear a otro a traves de una llamada al OS, este llamado se suele llamar fork.
+
+22- F, La cola de procesos o listos se encuentra en memoria principa / RAM.
+
+23- F, Cuando se crea un proceso se carga dicho procesos en memoria principal.
+
+24- V, generalmente en un principio cuando un proceso crea un proceso hijo, el hijo hereda el espacio de direcciones del padre.
+
+25- V, La tabla de archivos es una parte del contexto de los procesos
+
+26- V, Cuando se inicia un proceso y se carga en memoria, se carga la PCB
+
+27- F, Cuando se crea un fork se incializa la PCB del proceso hijo con los mismos valores que la PCB del padre, pero a medida que se ejecuta el proceso van cambiando
+
+28- F, las system calls sirven para otras cosas como lectura disco, gestion de procesos, comunicacion entre procesos, etc.
+
+29- V, en modo supervisor el SO tiene acceso a todos los recursos del sistema, incluso espacio de direcciones de cualquier proceso
+
+30- F, el contexto de un proceso guarda todos los datos neceesarios para la ejecucion del proceso, el espacio de direcciones es la porcion de memoria virtual que se asigna a un proceso
+
+31- B, el aging es una tecnica que aumenta el nivel de prioridad de un proceso a medida que aumenta el tiempo del proceso en espera
+
+32- F, no siempre un cambio de modo implica un cambio de contexto, hay veces que cuando se cambia de modo no es necesario cambiar de todo el contexto ---------------------------------------------------
+
+
+
+
+33- F, cuando se cambia de un contexto de una aplicacion a otra no se necesita cambiar de modo
+
+34- V / F, no es exactamente lo mismo, un cambio de proceso implica un cambio ded contexto, el camnio de contexto significa guarda el estado de la instruccioon actual y cargar la siguiente instrucccion a memoria
+
+35- F, cambio de contexto es el cambio de una instruccion a otra, el cambio de modo es el cambio de nivel de ejecucion de usuario y usuario kernel y viceversa
+
+36- Cuando se produce un fork el proceso padre almacena el PID del hijo
+
+37- El espacio de direcciones de un procecso esta delimitado por los registros BASE y LIMITE
+
+38- El fork devuelve 2 valores, al padre el PID del hijo y al hijo se le devuelve el valor 0 para que sepa que es un proceso hijo del fork
+
+39- B, El hardware del sistema incluye el MMU (memory Managment Unit) que se encarga de controlar la memoria
+
+40- V, se ejecutan en modo privilegiado / supervisor / kernel

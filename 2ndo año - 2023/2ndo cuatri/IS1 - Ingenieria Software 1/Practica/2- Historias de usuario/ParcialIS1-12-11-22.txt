@@ -1,0 +1,63 @@
+
+ID Pedir presupuesto
+Titulo Como Usuario quiero presupuestar una carpa para ver si alquilarla
+Regla de negocio 
+	-La fecha debe ser dento del ano actual.
+Criterios de aceptacion:
+	Escenario 1: Escenario exitoso
+
+	escenario 2: Escenario erroneo por fecha de otro ano
+
+
+
+ID Registrarse
+Titulo Como usuario quiero registrarme para poder alquilar una carpa
+Regla de negocio
+	-Ser mayor de 21
+	-El DNI debe se unico en el sistema
+	-La contrasena debe tener como minimo 6 caracteres
+Criterios de aceptacion:
+	Escenario 1: Escenario exitoso
+
+	Escenario 2: Escenario erroneo por DNI en el sistema
+
+	Escenario 3: Escenario erroneo por contrasena menor a 6 caractere
+
+	Escenario 4: Escenario erroneo por menor de 21 anos.
+
+
+
+ID Alquilar carpa
+Titulo Como ususario registrado quiero alquilar mi carpa para Asegurarme la carpa
+Regla de negocio
+	-La sena debe ser de entre el 50% y el 100% del monto total
+	-El pago debe ser unicamente mediante tarjeta credito
+Criterios de aceptacion:
+	Escenario 1: caso exitoso
+
+	Escenario 2: Escenario erroneo por sena menor al 50%
+
+	Escenario 3: Escenario erroneo por pago con tarjeta de debito
+
+	Escenario 4: Escenario erroneo por codigo de presupuesto incorrecto
+
+	Escenario 5: Escenario erroneo por error de conexion con servido externo
+
+	Escenario 6: Caso erroneo por pago rechazado
+
+
+
+ID Terminar pagar carpa
+Titulo Como usuario registrado quiero terminar ded pagar mi carpa para poder usarla
+Regla de negocio
+	-El pago sera mdiante tarjeta de credito
+Criterios de aceptacion:
+	Escenario 1: Caso Exitoso
+
+	Escenario 2: Caso Erroneo por pago con debito
+
+	Escenario 3: Caso Erroneo por carpa pagada totalmente
+
+	Escenario 4: Caso Erroneo por error de conexion con el servidor externo
+
+	Escecnario 5: Caso erroneo por pago rechazado

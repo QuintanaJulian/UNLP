@@ -1,0 +1,217 @@
+		-----------	MEMORIA		--------------
+
+TIPO DE FRAGMENTACION DE TECNICAS DE ADMINISTRACION DE ARCHIVOS:
+	Continua		->	Externa				-> Bloques de
+	Enlazada		->	Ni interna ni externa		-> Bloques con puntero al siguiente bloque del archivo, malo para acceso reandom
+	Indexada o inversa		->	Ni interna ni externa	-> Bloque con puntero a otros bloques
+
+TIPOS DE FRAGMENTACION
+	Particiones fijas	->	Fragmentacion interna
+	Particiones dinamicas	->	Fragmentacion externa
+	Segmentacion		->	Fragmentacion externa
+	Paginacion		->	Fragmentacion interna
+	Segmentacion paginada	->	Fragmentacion interna
+
+
+
+TABLA DE PAGINAS 
+	La tabla de paginas forma parte del CONTEXTO del programa
+	toda tabla contiene:
+		-entrada, es decir numero de marco de memoria asosiado
+		-bit de control. Bit V (de validez es decir si esta en memoria o no) y Bit M (de modificacion). y otros como W (owner), A (accessed), etc.
+
+	La TABLA DE PAGINAS puede ser una global para todos los procesos o puede cada proceso tener su tabla.
+	TABLA INDIVIDUAL	->	paginacion por demanda
+	TABLA GENERAL		->	Segmentacion por demanda
+
+Page fault
+	ocurre cuando la pagina no esta cargada en RAM, osea cuando el bit V en 0. Se pone el proceso en estado de blocked
+
+
+tamaño de paginas
+	a MENOR tamaño de pagina. menos fragmentacion interna, mas paginas requeridas por proceso -> tabla de paginas mas grandes, mas paginas en memoria
+	a MAYOR pagina. Mayor fragmentacion interna. La memoria secundaria trabaja mejor transifriendo grandes bloques de datos -> mas rapido mover una paagina grande que muchas chicas
+
+TLB Translation Lookaside Buffer
+	almacena entradas a pagina, para obtener la entrada a la tabla de paginas
+	tiene las entradas mas recientemente usadas
+	si busdcando una entrada a paginas se encuentra la entrada en la TLB, se llama un HIT y se obtiene y arma la direccion fisica
+
+
+Algoritmos de remplazo
+	optimo (teorico), FIFO (sensillo), LRU, 2nd chance (fifo mejorado), NRU
+
+
+Prevencion del TRASHING o HIPERPAGINACION
+	Se puede prevenir con e luso de algoritmos de REMPLAZO LOCAL
+	Trabaja con un WORKINGSET (WS) y el principio de localidad
+	Mediente PFF (Paaage Fault Frecuency). Si PFF alta -> requiere mas frames. Si PFF baja -> sobran frames. Si no hay marcos disponibles y todos los procesos estaan en PFF maximo se tience que suspender procesos.
+
+
+
+COW (Copy On Write) (Copia en escriturra)
+	Permite a procesos compartir inicialmente una misma pagina de memoria
+	Es ma sefficiente ya que solo duplica laaas paginas modificadas
+
+
+
+
+			-------------		ENTRRADA / SALIDA		----------------
+
+CACHING
+	de cache. Mantiene en memoria los datos de reciente acceso para mejorar performance
+
+SPOOLING		demonioo de impresion
+	mecanismo para administrar el acceso concurrente aa un dispositivo
+
+
+FORMA DE REALIZAR I/O
+	BLOQUEANTE: El proceseo se duspende hasta que el requeriemiento de I/O se cumple
+	NO BLOQUEANTE: El requerimiento de I/O retorna cuando sea posible. Ej: teclado, mouse
+
+
+DISEÑO:
+	Software de E/S de capa de usuario: Libreria de apoyo (permnite SysCalls y servicios ajenosal kernel) y Procesos de apoyo (Spooling)
+
+	Sosftware de OS independiente del dispoitivo: Brinda los principalesservicios de E/S (Interfaz, bufffer, planificacion, asignacion de recursos y manejode errores)
+
+	Controladores de dispositivos: Codigo dependiente de cada dispositivo, traduce requerimientos abstractos en comandos para el dispositivo
+
+	Manejadores de interrupciones:Atiende las interrupciones y las deriva al driver correspondiente y resguarda la informacion
+
+	Hardware
+
+
+TIPOS DE DISPOSITIVOS I/O
+	Legibles para el usuario	-> Para comunicarse con el usuario (terminales, pantalla, teclado, mouse, etc)
+	Legible para la maquina		-> Para componentes electronicos (discos, cintas, sensores, etc)
+	Comunicacion			-> para dispositivos remotos (modems, interfacees dee red)
+	
+	
+MEMORY MAPPED I/O
+	Dispositivo y memoria compraten espacio de direcciones, no hay instrucciones especiales de I/O
+
+ISOLATED I/O	(usa puertos de E/S)
+	Espacio separado de direcciones, se necesitan lineas y puertos de E/S y tiene instrucciones especiales (conjunto limitado)
+
+
+TECNICAS DE I/O
+
+	POLLING: Tecnica que se basa en consulta constante de estado de lso dispositivos, muy costoso para esperas largas
+	
+	INTERRUPCIONES: Se evita consultas constantes, el componente emite interrupcion cuando esta disponible
+
+	DMA: Un componente del DMA se encarga del intercambio de datos, el procesador es interrumpido luego que el bloque fue transferido
+
+
+
+			--------------		ARCHIVOS		-----------------
+
+
+Volatilidad: Un archivo con gran volatilidad es una archivo muy propenso a constantes cambios
+
+Referencia: Un archivo con gran referencai es un archhivo con gran actividad pero
+
+
+Formas de asignacion de aarchivos
+	Asignacion continua	tabla con direccion de bloque de inicio y cantidad de bloques que componene el archivo
+	Asignacion encadenada	cada bloque tiene la direccion al proximo bloque del archivo (estilo lista enlaazada)
+	Asignacion indexada 	un nodo base en vez de guardar datos guarda la direccion de todos los nodos que conforman al archivo (basicamente un nodo base almacena array de direcciones)
+		variante asignacion por secciones: Ademas de posseer la direccion del nodo se guarda la cantidad de nodos de manera contigua que tambien forman parte (es decir que queda el array de direcciones a nodo, donde cada nodo conforma una lista)
+		variante niveles de indireccion: (i-nodos): el nodo base con el array puede apuntar a otro nodo que tambien puede ser un array que almecena la direccion a mas nodos, pudiendo de esta forma tener X indirecciones. Un array de un nodo puede estar compuesto por datos o por direcciones a otros nodos
+
+
+
+Gestion de espacio libre:
+	Tabla de bits: Se tiene un string tan largo como cantidad de nodos haya en memoria. Donde cada bit indica un espacio de memoria. donde si este bit esta en 0 inbdica que el nodo esta vacio y 1 lleno
+			Desventajas se debe tener un vector en memoria. Ventaja facil de encontrar bloques o conjuntos
+	Bloque libre encadenado: Lista enlazada de los bloques libres disponibles. Desventajas la dificultad de encontrar bloques libres consecutivos y problemas con la predida de enlaze 
+	
+	Indexacion: El primer bloque libre contiene la direccion a N-1 bloques libres y en la posicion N se tiene referencia a otro bloque que almacena mas direcciones libres y el siguiente bloque de direcciones
+	
+
+
+
+
+
+		-----------------		BUFFFER CACHE		-------------------------
+
+La victima se suele elegir por LRU (Least Recently Used) aunque pude se puede usar el algoritmo de LFU (Least Frecuently Used) 
+
+Heder:	Tien el Nro. de dispositivo, Nro de bloque, 2 punteros a hash queue (1 puntero para el anterior en la lista y 1 Ptr para siguiente), 2 punteros a free list (igual que en hst, anterior y siguiente), 1 puntero a bloque de memoria
+
+Free List: Lista de los buffers con los procesos ya terminados. Se selecciona el siguiente a usar segunr LRU. Puede que en esta lista aparezca un buffer en estado de DW (delayed write) es decir que todavia no escribio sus cambios en disco.
+
+Hash Queue: Son colas para optimizar las busqueda de un buffer en particular. Al #dispoitivo / #bloque se le aplica la funcion de hash. Se busca una funcion de hash con alta dispercion para que las colas no sean tan extensas.
+
+El headeer de un buffer siempre va a estar en la Hash y cuando el proceso que referenciaba termina pasa a estar en la Hash queue y en la Free List.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

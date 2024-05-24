@@ -1,0 +1,16 @@
+como hacemos los ejericios grupales? en una bran y hacmos merge
+
+for X in object literal
+
+for of ??
+
+JSON.stringfy()
+
+como ocultar imagenes ejercicio 1 practica
+
+
+let persona2 = Objeto.create(persona1) //crea un objeto con las propiedades persona1
+ console __proto__
+${} 	
+if n<2 (1): else (2+2)
+n<2 ? 1: 2+2

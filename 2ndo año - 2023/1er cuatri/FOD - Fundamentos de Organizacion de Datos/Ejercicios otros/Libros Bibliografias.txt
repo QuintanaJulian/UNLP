@@ -1,0 +1,4 @@
+Introducción a las bases de datos. conceptos básicos (bertone, thomas)
+Estructuras de Archivos (Folk-Zoellick)
+Files & Databases: An Introduction (Smith-Barnes)
+Fundamentos de Bases de Datos (Korth Silvershatz)
