@@ -1,7 +1,0 @@
-https://github.com/sofiarod2002/DBD/tree/main
-
-https://github.com/ssofiaavila/DBD--Informatica-UNLP/tree/main/Pr%C3%A1cticas
-
-
-Algebra relacional:
-https://dbis-uibk.github.io/relax/landing

@@ -1,4 +1,0 @@
-Nombre: j					|  Apellido: h					|  Edad: 12					|  DNI: 456					|  Numero:3
-Nombre: gf					|  Apellido: df					|  Edad: 96					|  DNI: 65					|  Numero:69
-Nombre: y					|  Apellido: t					|  Edad: 30					|  DNI: 22					|  Numero:36
-Nombre: f					|  Apellido: g					|  Edad: 69					|  DNI: 0					|  Numero:63

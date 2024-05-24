@@ -1,3 +1,0 @@
-Uso para cuadno tenes que usar una o mas librerias y puede que tengas q trabajar distinto para cada libreria
-
-Por ejemplo tenes q ecriptar un mensaje y hay 3 librerias que podes usar para encriptar

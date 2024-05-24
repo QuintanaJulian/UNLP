@@ -1,3 +1,0 @@
-Es para cuando tenes una instncia que va a ser referenciada por muchas otras iontancias.
-
-Por ejemplo vos tenes una pelicula "La Era del Hielo", per odespues va a haber miles de copias de esa perlicual La Era de Hielo

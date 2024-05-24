@@ -1,3 +1,0 @@
-JAVA
-
-Character.getNumericValue (char var);		//Nos transforma una variable texto a integer

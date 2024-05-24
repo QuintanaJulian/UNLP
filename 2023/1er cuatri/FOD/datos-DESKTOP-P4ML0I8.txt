@@ -1,4 +1,0 @@
-los nodos vacios de un hashing estatico, se considera fragmentacion interna.
-
-
-pag 75

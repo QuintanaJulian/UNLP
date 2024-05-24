@@ -1,8 +1,0 @@
-
-
-
----------		DISCO		----------
-
-fdisk		--para ver las particiones del disco
-
-fips		--se usa para reparticionar el disco, una vez montado el disquete boot-dos622.img

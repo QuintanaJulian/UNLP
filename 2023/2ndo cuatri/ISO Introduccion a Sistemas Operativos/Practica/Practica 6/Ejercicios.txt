@@ -1,5 +1,0 @@
-5- Los drivers son elementos de software que se almacenan en el kernel, son lso encargados de transformar los pedidos del OS en lenguaje entendible para los dispositivos E/S y viceversa
-
-	b- Como minimo deben proporcionar las operaciones de lectura, esctirtura.
-
-	c- 
