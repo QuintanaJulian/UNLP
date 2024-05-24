@@ -1,0 +1,44 @@
+programa T3E1
+
+procesos
+  proceso DepositarObjetos (E priAv: numero, E priCa: numero, E tipo: numero)
+  comenzar
+     si (tipo = 1)
+       mientras HayFlorEnLaBolsa | HayPapelEnLaEsquina
+         BloquearEsquina (10,10)
+         Pos (10,10)
+         si (tipo = 1)
+           depositarFlor
+         sino 
+		depositarPapel
+         Pos (priAv, priCa)
+         LiberarEsquina (10,10)
+
+  fin
+  
+areas
+  AreaF: AreaPC (1,1,5,10)
+  AreaP: AreaPC (6,1,10,9)
+  AreaC: AreaPC (10,10)
+
+robots
+  robot tipo1
+  comenzar
+    repetir 3
+      
+    
+    DepositarObjetos (priAv, priCa, tipo)
+  fin
+
+variables
+  robotF1: tipo1
+  robotF2: tipo1
+  robotP1: tipo2
+  robotP2: tipo2
+
+comenzar
+  AsignarArea ()
+  
+  Iniciar ()
+
+fin

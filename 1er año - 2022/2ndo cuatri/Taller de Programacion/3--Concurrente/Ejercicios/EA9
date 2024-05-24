@@ -1,0 +1,102 @@
+programa EA8
+procesos 
+  proceso Girar (E cant: numero)
+  comenzar
+    repetir cant
+      derecha
+  fin 
+  
+  
+  proceso TomarObjetos (ES flores: numero; ES papeles: numero )
+  comenzar
+    mientras HayFlorEnLaEsquina
+      tomarFlor
+      flores:= flores + 1
+    mientras HayPapelEnLaEsquina
+      tomarPapeles
+      papeles:= papeles + 1
+  fin
+  
+  proceso Recorrer (E cant: numero; ES flores: numero; ES papeles: numero)
+  comenzar
+    repetir cant
+      mover
+      TomarObjetos (flores, papeles)
+  fin
+  
+areas
+  area1: AreaPC (1,1,9,9)
+  area2: AreaPC (13,3,17,7)
+robots
+  robot tipo1
+  variables
+    flores, papeles, Av, Ca: numero
+    ida: boolean
+  comenzar
+    ida:= V
+    flores:= 0
+    papeles:= 0
+    Av:= PosAv
+    si ((Av = 9) | (Av = 17))
+      Girar (2)
+    
+    repetir 2
+      derecha
+      si ida = F
+        derecha  
+      Recorrer (3, flores, papeles)
+      si ida = V
+        Av:= PosAv + 1
+        Ca:= PosCa
+      sino
+        Av:= PosAv
+        Ca:= PosCa 1 - 1
+      BloquearEsquina (Av, Ca)
+      Recorrer (1, flores, papeles)
+      si ida = V
+        Girar (3)
+      sino
+        derecha
+      Recorrer (1, flores, papeles)
+      LiberarEsquina (Av, Ca)
+      Recorrer (2, flores, papeles)
+      Av:= PosAv
+      Ca:= PosCa + 1
+      BloquearEsquina (Av, Ca)
+      mover
+      TomarObjetos (flores, papeles)
+      si ida = V
+        Informar (flores)
+        Informar (papeles)
+        ida:= F
+      sino
+        ida:= V
+    
+  
+    
+  fin
+  
+  robot tipo2
+  comenzar
+    Girar (3)
+    mover
+  
+  fin 
+  
+  
+  
+variables
+  robotA1: tipo1
+  robotA2: tipo1
+  robotB1: tipo1
+  robotB2: tipo1
+comenzar
+  AsignarArea (robotA1, area1)
+  AsignarArea (robotA2, area1)
+  AsignarArea (robotB1, area2)
+  AsignarArea (robotB2, area2)
+  Iniciar (robotA1, 1, 5)
+  Iniciar (robotA2, 9, 5)
+  Iniciar (robotB1, 13, 3)
+  Iniciar (robotB2, 17, 7)
+fin

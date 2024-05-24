@@ -1,0 +1,9 @@
+    contarFlor1(contarFlor)
+    esquinaV:= (contarFlor >=5)
+    si esquinaV
+      mientras HayFlorEnLaEsquina
+        tomarFlor
+      mientras HayPapelEnLaEsquina
+        tomarPapel
+    sino
+      totalEsquinaF:= (totalEsquinaF + 1 ) 

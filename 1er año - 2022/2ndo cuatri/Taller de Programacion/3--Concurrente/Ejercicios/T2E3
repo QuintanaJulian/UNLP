@@ -1,0 +1,103 @@
+programa hola
+
+procesos
+  proceso JuntarFlores (ES Flor: numero)
+  comenzar
+    Flor:= 0
+    mientras HayFlorEnLaEsquina
+      tomarFlor
+      Flor:= Flor + 1
+  fin
+  
+areas
+  area1: AreaP (2,2,7,7)
+  area2: AreaP (8,2,13,7)
+  area3: AreaP (14,2,19,7)
+  area4: AreaP (1,1,1,1)
+
+robots
+  robot tipo1
+  variables
+    priCa: numero
+    priAv: numero
+    newCa: numero
+    newAv: numero
+    minCa, minAv: numero
+    maxCa, maxAv: numero
+    flores: numero
+    floresT: numero
+  comenzar
+    priCa:= PosCa
+    priAv:= PosAv
+    RecibirMensaje (minAv, Fiscal)
+    RecibirMensaje (minCa, Fiscal)
+    RecibirMensaje (maxAv, Fiscal)
+    RecibirMensaje (maxCa, Fiscal)
+    floresT:= 0
+    
+    repetir 3
+      Random (newCa, minCa, maxCa)
+      Random (newAv, minAv, maxAv)
+      Pos (newAv, newCa)
+      JuntarFlores (flores)
+      Pos (priAv, priCa)
+      floresT:= floresT + flores
+    
+    EnviarMensaje (floresT, Fiscal)    
+        
+  fin
+
+  robot tipo2
+  variables
+    flores, floresT : numero
+  comenzar
+    EnviarMensaje (2, Robot1)
+    EnviarMensaje (2, Robot1)
+    EnviarMensaje (7, Robot1)
+    EnviarMensaje (7, Robot1)
+    
+    EnviarMensaje (8, Robot2)
+    EnviarMensaje (2, Robot2)
+    EnviarMensaje (13, Robot2)
+    EnviarMensaje (7, Robot2)
+    
+    EnviarMensaje (14, Robot3)
+    EnviarMensaje (2, Robot3)
+    EnviarMensaje (19, Robot3)
+    EnviarMensaje (7, Robot3)
+    
+    floresT:= 0
+    RecibirMensaje (flores , *)
+    floresT:= floresT + flores
+    RecibirMensaje (flores , *)
+    floresT:= floresT + flores
+    RecibirMensaje (flores , *)
+    floresT:= floresT + flores
+    Informar (floresT)
+  fin
+
+
+
+variables
+  Robot1: tipo1
+  Robot2: tipo1
+  Robot3: tipo1
+  Fiscal: tipo2
+  
+comenzar
+  AsignarArea (Robot1, area1)
+  AsignarArea (Robot2, area2)
+  AsignarArea (Robot3, area3)
+  AsignarArea (Fiscal, area4)
+  
+  Iniciar (Fiscal, 1, 1)
+  Iniciar (Robot1, 2, 2)
+  Iniciar (Robot2, 8, 2)
+  Iniciar (Robot3, 15,2)
+  
+fin
+
+
+
+
+

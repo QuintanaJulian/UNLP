@@ -1,0 +1,76 @@
+;2)  PIO, el puerto de datos al PB del PIO, y 
+;los bits de busy y strobe se conectan a los bits 0 y 1 del PA.\-
+;d) * Escribir un programa que solicite ingresar caracteres por teclado 
+;y que recién al presionar la tecla F10 los envíe a la impresora a través de la PIO. 
+;No es necesario mostrar los caracteres en la pantalla. 
+
+
+org 40
+ dw 3000h
+
+
+org 1000h
+ inicio db "Ingrese el texto a imprimir (tecla F10 para terminar y mandar la impresion): "
+ texto db 
+
+org 2000h
+  cli
+  mov al, 0FEh
+  out 21h, al
+  mov al, 10
+  out 24h, al
+  
+  mov al, 00h
+  out 33h, al
+  in al, 32h
+  or al, 1h
+  out 32h, al
+  in al, 30h
+  and al, 0FDh
+  out 30h, al
+  
+  
+  sti
+  
+  mov bx, offset inicio
+  mov al, offset texto - offset inicio
+  int 7
+  
+  mov bx, texto
+  mov cl, 0
+
+  lazo: int 6
+        inc bx
+        inc cl
+        jmp lazo
+hlt
+  
+org 3000h
+   
+   push ax
+
+   
+seguir:   mov al, [bx]
+   out 31h, al
+   in al, 30h
+   or al, 02h
+   out 30h, al
+   and al, 0FDh
+   out 30h, al
+   inc bx
+   dec cl
+   jz fin
+   
+esperar: in al, 30h
+   and al, 1
+   jnz esperar
+   jmp seguir
+   ; si 30h = 1 jmp lazo
+   ; jmp mandar
+   
+fin: mov al, 20h
+   out 20h, al
+   pop ax
+   iret
+   
+end

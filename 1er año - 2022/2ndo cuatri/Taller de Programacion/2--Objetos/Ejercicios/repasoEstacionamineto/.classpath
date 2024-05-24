@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="src" path="RepasoEj02/src"/>
+	<classpathentry kind="lib" path="RepasoEj02/PaqueteLectura.jar"/>
+	<classpathentry kind="output" path="RepasoEj02/build/classes"/>
+</classpath>

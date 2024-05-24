@@ -1,0 +1,122 @@
+Program merge;
+Type 
+ lista =^nodo;
+ nodo = record
+  dato:string;
+  sig:lista;
+ end; 
+
+Procedure minimo(var e1,e2:lista; var min:string);
+Begin
+  min := ‘ZZZ’;
+  if (e1 <> nil) and (e2 <> nil)then
+       if (e1^.dato <= e2 ^.dato ) then 
+         begin
+           min:= e1^.dato;
+           e1:= e1 ^.sig; 
+         end; 
+       else begin
+         min:= e2 ^.dato;
+         e2:= e2 ^.sig;
+       end 
+  else 
+    if (e1 <> nil) and (e2 = nil) then begin
+      min:= e1^.dato;
+      e1:= e1 ^.sig;
+    end 
+    else 
+      if (e1 = nil) and (e2 <> nil) then begin
+         min:= e2 ^.dato;
+         e2:= e2 ^.sig; 
+       end;
+end;
+
+
+Procedure merge (E1,E2:lista; var Enuevo:lista);
+Var 
+ min: string;
+Begin
+  Enuevo:= nil;
+  minimo (E1,E2,min);
+  while (min <> ‘ZZZ’) do
+    begin
+     agregarAtras (Enuevo,min);
+     minimo (E1,E2,min);
+    end;
+End;  
+
+Var
+ estante1, estante2: lista;
+ estanteNuevo: lista; 
+
+Begin
+ generarEstante (estante1);
+ generarEstante (estante2);
+ merge (estante1,estante2,estanteNuevo);
+End.  
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////
+
+
+Program estantes;
+cantE=5; 
+Type 
+ lista =^nodo;
+ nodo = record
+  dato:string;
+  sig:lista;
+ end; 
+ estantes = array[1..cantE] of lista;
+
+
+Procedure minimo (var todos:estantes; var nomMin:string; var monto:real);
+
+Var
+ indiceMin,i:integer;
+
+Begin
+  nomMin:= ‘ZZZ’;
+  for i:= 1 to cantE do
+     if (todos[i] <> nil) then 
+       if (todos[i]^.dato.nombre <= nomMin) then begin
+                                            indiceMin:= i;
+                                            nomMin:= todos[i]^.dato.nombre;  
+                                           end; 
+  if (nomMin <> ‘ZZZ’) then 
+    begin
+      //nomMin:= todos[indiceMin]^.dato.nombre;
+      monto:= todos[indiceMin] ^.dato.monto;
+      todos[indiceMin]:= todos[indiceMin]^sig;
+    end;
+End;
+
+
+
+Procedure merge contador (todos:estantes; var Enuevo:lista);
+Begin
+  Enuevo:= nil;
+  minimo (todos,minNombre, monto);
+  while (minNombre <> ‘ZZZ’) do
+    begin
+     actual:= minNombre; montoTotal:=0;
+     while ((minNombre <> ‘ZZZ’) and (minNombre = actual) )do 
+     begin
+        montoTotal:= montoTotal + monto;
+        minimo (todos,minNombre,monto);
+     end;
+     agregarAtras(Enuevo,actual,montoTotal);
+    end;
+End; 
+
+ Var
+ todos: estantes;
+ estanteNuevo: lista; 
+
+Begin
+ generarEstantes (todos);
+ merge (todos,estanteNuevo);
+End.  
+
+
+0800 888 5465 link

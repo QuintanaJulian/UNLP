@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="PaqueteLectura">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/TP2022_ProyectoAlumnos/PaqueteLectura.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

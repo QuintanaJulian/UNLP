@@ -1,0 +1,51 @@
+programa hola
+procesos
+  proceso contarFlor1 (ES contarFlor: numero)
+  comenzar
+    contarFlor:= 0
+    mientras HayFlorEnLaEsquina
+      tomarFlor
+      contarFlor(contarFlor + 1)
+    repetir (contarFlor)
+      depositarFlor      
+  fin
+areas
+  ciudad: AreaC (1,1,100,100)
+robots
+  robot robot1
+  variables
+    esquinaV: boolean
+    esquinaF: boolean
+    contarFlor: numero
+    totalEsquinaF: numero
+  comenzar
+    contarFlor1(contarFlor)
+    esquinaV:= (contarFlor >=5)
+    esquinaF:= (contarFlor <5)
+    totalEsquinaF:= 0
+    repetir 99
+      si esquinaV
+        mientras HayFlorEnLaEsquina
+          tomarFlor
+        mientras HayPapelEnLaEsquina
+          tomarPapel
+      si esquinaF
+        totalEsquinaF:= (totalEsquinaF + 1 )
+      mover
+    si esquinaV
+      mientras HayFlorEnLaEsquina
+        tomarFlor
+      mientras HayPapelEnLaEsquina
+        tomarPapel
+    si esquinaF
+      totalEsquinaF:= (totalEsquinaF + 1 )    
+    Informar (totalEsquinaF)
+  fin
+variables
+  R-Info: robot1
+comenzar
+  AsignarArea (R-Info, ciudad)
+  Iniciar (R-Info, 1,1)
+fin
+
+

@@ -1,0 +1,74 @@
+programa ejercicio2a
+procesos
+  proceso maximo(ES max: numero; ES idMax:numero; E act:numero; E idAct:numero)
+  comenzar
+    si (act > max)
+      idMax:= idAct
+      max:= act
+  fin
+  proceso juntarFlores(ES flores: numero)
+  comenzar
+    mientras HayFlorEnLaEsquina
+      tomarFlor
+      flores:= flores + 1
+  fin
+  proceso rectangulo(E alto:numero; E ancho:numero; ES flores: numero)
+  comenzar
+    repetir 2
+      repetir alto
+        juntarFlores(flores)
+        mover
+      derecha
+      repetir ancho
+        juntarFlores(flores)
+        mover
+      derecha
+  fin
+areas
+  area1: AreaPC(1,1,20,20)
+robots
+  robot recorredor
+  variables
+    id, alto, ancho, flores:numero
+  comenzar
+    flores:= 0
+    RecibirMensaje(id,robot3)
+    RecibirMensaje(alto,robot3)
+    RecibirMensaje(ancho,robot3)
+    rectangulo(alto, ancho, flores)
+    EnviarMensaje(id,robot3)
+    EnviarMensaje(flores,robot3)
+  fin
+  robot coordinador
+  variables
+    idAct, act, max, idMax:numero
+  comenzar
+    EnviarMensaje(1,robot1)
+    EnviarMensaje(5,robot1)
+    EnviarMensaje(3,robot1)
+    EnviarMensaje(2,robot2)    
+    EnviarMensaje(8,robot2)
+    EnviarMensaje(2,robot2)
+    max:= 0
+    repetir 2
+      RecibirMensaje(idAct,*)
+      si (idAct = 1)
+        RecibirMensaje(act, robot1)
+      sino
+        RecibirMensaje(act, robot2)
+      maximo(max, idMax, act, idAct)
+    Informar(idMax)
+    Informar(max)
+  fin  
+variables
+  robot1: recorredor
+  robot2: recorredor  
+  robot3: coordinador
+comenzar 
+  AsignarArea(robot1,area1)
+  AsignarArea(robot2,area1)
+  AsignarArea(robot3,area1)
+  Iniciar(robot1, 2, 2)
+  Iniciar(robot2, 6, 2)
+  Iniciar(robot3, 1, 1)
+fin

@@ -1,0 +1,14 @@
+-Que tipos de pasaje  de parametros hay en una computadora
+-Diferencais entre salida de subrutina y interrupcion
+
+-Esquematizar un DMA y describir sus  partes
+-Explicar  procedimiento para el uso de E/S programada.
+
+-que cosas hay que tener en cuenta a la hora de crear una cache
+-
+
+-Que hace del paralelismo en un procesador super-escalar
+-Que ventajas tiene el renombramiento de registros.
+
+-Que cosas caracterizan a un bus
+-Que  es el MDMI segun flynn

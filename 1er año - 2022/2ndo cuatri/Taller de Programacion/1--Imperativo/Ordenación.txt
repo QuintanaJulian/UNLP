@@ -1,0 +1,44 @@
+program Ordenación;
+const 
+	dimF = 300;
+type 
+	rango = 0..dimF;
+	datos = record
+		codigo: integer;
+		dni: integer;
+		end;
+
+	 vector = array [1..dimF] of datos;
+
+Procedure Selección ( var v: vector; dimLog: rango );
+var i, j, p: rango; item : datos;	
+		
+begin
+ for i:=1 to dimLog-1 do begin {busca el mínimo y guarda en p la posición}
+          p := i;
+          for j := i+1 to dimLog do
+             if v[j].codigo < v[p].codigo then p:=j;
+
+         {intercambia v[i] y v[p]}
+         item := v[ p ];   
+         v[ p ] := v[ i ];   
+         v[ i ] := item;
+      end;
+end;
+
+
+Procedure Inserción ( var v: vector; dimLog: rango );
+var i, j: rango; actual: datos;	
+		
+begin
+ for i:=2 to dimLog do begin 
+     actual.codigo:= v[i].codigo;
+     j:= i-1; 
+     while (j > 0) and (v[j].codigo > actual.codigo) do      
+       begin
+         v[j+1]:= v[j];
+         j := j - 1;                  
+       end;  
+     v[j+1]:= actual; 
+ end;
+end;

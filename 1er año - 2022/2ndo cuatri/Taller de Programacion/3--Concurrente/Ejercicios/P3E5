@@ -1,0 +1,116 @@
+programa P4E5
+
+procesos
+  proceso IrEsquina (ES HayPapeles: boolean)
+  variables
+    Av, Ca: numero
+  comenzar
+    Av:= PosAv
+    Ca:= PosCa
+    BloquearEsquina (11,11)
+    Pos (11,11)
+    si HayPapelEnLaEsquina
+      tomarPapel
+    sino
+      HayPapeles:= F
+    Pos(Av, Ca)
+    LiberarEsquina (11, 11)
+  fin
+  
+  proceso Comparar (ES ID1: numero; ES pos1: numero; E IDAct: numero; E posAct: numero)
+  comenzar
+    si pos1 < posAct
+      pos1:= posAct
+      ID1:= IDAct
+  fin
+  
+  
+areas
+  area1: AreaP (4,1,4,100)
+  area2: AreaP (6,1,6,100)
+  area3: AreaP (8,1,8,100)
+  area4: AreaP (10,1,10,100)
+  areaComun: AreaPC (11,11,11,11)
+  areaCoordinador: AreaP (1,1,1,1)
+  
+robots
+  robot tipo1
+  variables
+    ID, Ca: numero
+    HayPapeles : boolean
+  comenzar
+    RecibirMensaje (ID, coordinador)
+    HayPapeles:= V
+    mientras ((PosCa < 100) & (HayPapeles = V))
+      IrEsquina (HayPapeles)
+      si HayPapeles = V
+        depositarPapel
+        mover
+    Ca:= PosCa
+    EnviarMensaje (ID, coordinador)
+    EnviarMensaje (Ca, coordinador)         
+  fin
+  
+  robot tipo2
+  variables
+    ID1, pos1, IDAct, posAct: numero
+  comenzar
+    EnviarMensaje (1, robot1)
+    EnviarMensaje (2, robot2)
+    EnviarMensaje (3, robot3)
+    EnviarMensaje (4, robot4)
+    ID1:= 0
+    pos1:= -1
+    repetir 4
+      RecibirMensaje (IDAct, *)
+      si IDAct = 1
+        RecibirMensaje (posAct, robot1)
+        Comparar (ID1, pos1, IDAct, posAct)
+      sino
+        si IDAct = 2
+          RecibirMensaje (posAct, robot2)
+          Comparar (ID1, pos1, IDAct, posAct)
+        sino
+          si IDAct = 3
+            RecibirMensaje (posAct, robot3)
+            Comparar (ID1, pos1, IDAct, posAct)
+          sino
+            RecibirMensaje (posAct, robot4)
+            Comparar (ID1, pos1, IDAct, posAct) 
+   
+    Informar (ID1)
+    Informar (pos1)
+  fin
+  
+variables
+  robot1: tipo1
+  robot2: tipo1
+  robot3: tipo1
+  robot4: tipo1
+  coordinador: tipo2
+comenzar 
+  AsignarArea (robot1, area1)
+  AsignarArea (robot1, areaComun)
+  AsignarArea (robot2, area2)
+  AsignarArea (robot2, areaComun)
+  AsignarArea (robot3, area3)
+  AsignarArea (robot3, areaComun)
+  AsignarArea (robot4, area4)
+  AsignarArea (robot4, areaComun)
+  AsignarArea (coordinador, areaCoordinador)
+  
+  Iniciar (coordinador, 1,1)
+  Iniciar (robot1, 4, 1)
+  Iniciar (robot2, 6,1)
+  Iniciar (robot3, 8,1)
+  Iniciar (robot4, 10,1)
+  
+  
+fin
+
+
+
+
+
+
+

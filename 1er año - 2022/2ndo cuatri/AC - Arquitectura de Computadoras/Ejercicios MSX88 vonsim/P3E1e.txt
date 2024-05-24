@@ -1,0 +1,80 @@
+;Escribir un programa que encienda una luz a la vez, 
+;de las ocho conectadas al puerto paralelo del
+;microprocesador a través de la PIO, en el siguiente orden de bits:  
+;0-1-2-3-4-5-6-7-6-5-4-3-2-1-0-1-2-3-4-5-6-7-6-5-4-3-2-1-0-1-...,
+;
+;es decir, 00000001, 00000010, 00000100, etc. Cada luz debe estar
+;encendida durante un segundo. El programa nunca termina.
+
+ORG 1000H 
+CLK EQU 10h
+CONT EQU 11h
+
+PIC EQU 20h
+IMR EQU 21h
+INT1 EQU 25h
+
+PA EQU 30h
+PB EQU 31h
+CA EQU 32h
+CB EQU 33h
+
+MSG  DB      "01234567"
+FIN  DB      ?
+ 
+ 
+ORG 40 
+     DW      3000h
+
+org 3000h
+push ax
+mov al, 1
+cmp byte PTR [bx], 110111b
+jz des
+cmp byte PTR [bx], 110001b
+jz asc
+
+cmp cl, 0
+jnz des
+asc: mov cl, 0
+inc bx
+int 7
+jmp fin
+des:mov cl, 1
+dec bx
+int 7
+
+
+
+fin: mov al, 0
+out CLK, al
+mov al, PIC
+OUT PIC, al
+pop ax
+iret
+
+
+ 
+ORG 2000H 
+     cli
+     mov al, 0ffh
+     out CA, al
+     mov al, 00h
+     out CB, al     ; PIO activado
+     mov al, 01111101b
+     out IMR, al    ; IMR configurado
+     
+     mov al, 1
+     mov bx, offset MSG
+     mov cl, 0      ; INT7 configurado
+     
+     mov al, 1
+     out CONT, al
+     mov al, 10
+     out INT1, al
+     mov al, 0
+     out CLK, al    ; CLOCK seteado
+     sti
+lazo: jmp lazo
+HLT
+END 

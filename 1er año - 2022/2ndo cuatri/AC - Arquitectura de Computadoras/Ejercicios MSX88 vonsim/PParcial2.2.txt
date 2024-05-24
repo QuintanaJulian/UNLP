@@ -1,0 +1,46 @@
+ORG 1000h
+cadena db "T) Elzxkf 213! $f%! oiasdaR. 8!RI5 C:ds!i..O:.L:Asld6asdsS"
+fin db ?
+
+org 40
+ dw 3000h
+
+org 3500h
+SELECCIONADO: push ax
+          mov cl, 0
+          mov dl, [bx]
+          cmp dl, 41h
+          js nega
+          cmp dl, 5Ah
+          jns nega
+          mov cl, 1
+       nega: pop ax
+          ret
+          
+
+org 2000h
+  cli
+  in al, 41h
+  and al, 01111101b
+  out 41h, al
+  mov bx, offset cadena
+  mov ch, offset fin - offset cadena
+  sti
+ 
+falta: call SELECCIONADO 
+      cmp cl, 0
+      jz sig
+esperar:in al, 41h
+      and al, 00000001b
+      jnz esperar
+      mov al, dl
+      out 40h, al
+  sig:inc bx
+      dec ch
+      jnz falta
+      
+terminar: hlt 
+
+    
+
+end
