@@ -21,7 +21,7 @@ public class Ej03QueImprimeB {
         p1.setNombre("Pablo Sotile");
         p1.setDNI(11200413);
         p1.setEdad(40);
-        p2 = new Persona("Juan jose", 44519639, 3);
+        p2 = new Persona("Juan jose", 44519600, 3);
     //    p2 = new Persona();
      //   p2.setNombre("Julio Toledo");
      //   p2.setDNI(22433516);
