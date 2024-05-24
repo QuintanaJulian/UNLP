@@ -1,8 +1,8 @@
 <h1 align="center">¡UNLP!</h1>
 
 
-Algunas teorias / clases no se subieron por que pesan demasiado.
-Las aplicaciones creadas para diferentes materias tampoco
+<p>Algunas teorias / clases no se subieron por que pesan demasiado.</p>
+<p>Las aplicaciones creadas para diferentes materias tampoco</p>
 
 <h4 align="center">Resumen y practicas de todas mis cursadas en ATIC y/o APU en la UNLP</h4>
 
