@@ -1,0 +1,52 @@
+;d) escribir un programa que solicite cinco caracteres por teclado 
+;y los almacene en memoria.los envíe a la impresora a través del hand-shake
+;tal cual fueron ingresados y a continuación en sentido inverso.
+;utilizar el hand-shake en modo consulta de estado
+
+;ahora utilizar el hand-shake en modo interrupciones
+
+org 1000h
+texto db "00000"
+fin db ?
+
+org 2000h
+
+   mov cl, 5
+   mov bx, offset texto
+falta: int 6
+       inc bx
+       dec cl
+       jnz falta
+   
+   cli 
+    in al, 41h
+    and al, 01111111b
+    out 41h, al
+   sti
+   
+   
+   mov bx, offset texto
+   mov cl, offset fin - offset texto
+   
+sig:  in al, 41h
+      and al, 1
+      jnz sig
+   mov al, byte ptr [bx]
+   out 40h, al
+   inc bx
+   dec cl
+   jnz sig
+   
+   dec bx
+   
+prox: in al, 41h
+      and al, 1
+      jnz prox
+      mov al, byte ptr [bx]
+      out 40h, al
+      dec bx
+      inc cl
+      cmp cl, 5
+      jnz prox
+hlt
+end

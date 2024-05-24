@@ -1,0 +1,53 @@
+public parcial {
+
+	
+
+	public String ej1 (ArbolGeneral<Nodo> AG){
+		Nodo dato = AG.getDato();
+		String respuesta = dato.getLetra();
+		ListaGeneria<ArbolGeneral<Nodo>> LHijos;
+
+		while (!AG.esHoja()){
+			LHijos = AG.getHijos();
+			AG = LHijos.getElemento(dato.getPosicion());
+			respuesta += dato.getLetra();
+		}
+
+		return respuesta;
+	}
+	
+	
+	
+	//ejercicio 2
+	public Personaje princesaAccesible (){
+		Personaje PJ = this.getDato();
+		if (!PJ.esPrincesa()){
+			ColaGenerica<ArbolBinario<Personajes>> cola;
+			boolean encontrado = false;
+			if (!PJ.esDragon()){
+				if (this.tieneHijoIzquierdo){
+					cola.encolar(this.getHijoIzquierdo());
+				}
+				if (this.tieneHijoDerecho()){
+					cola.encolar (this.getHijoDerecho());
+				}
+			}
+	
+
+			while ((!cola.esVacia()) && (!encontrado)){
+				ArbolBinario<Personajes> AB = cola.desencolar();
+				PJ = AB.getDato();
+				if (PJ.esPrincesa()){
+					encontrado = true;			
+				} else if (!PJ.esDragon()){
+					if (AB.tieneHijoIzquierdo()){
+						cola.encolar(AB.getHijoIzquierdo());
+					}
+					if (AB.tieneHijoDerecho()){
+						cola.encolar(AB.getHijoDerecho());
+					}
+			}
+		}
+		
+		return PJ;
+}

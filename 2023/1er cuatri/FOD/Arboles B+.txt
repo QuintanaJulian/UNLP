@@ -1,0 +1,135 @@
+todos los elementos del archivo se encuentran en las hojas
+los nodos internos unicamente son indices, 
+que poseen el valor que tiene (o tuvo) alguna de las hojas
+
+TODOS los hijos son parte de una lista enlazada.
+Es decir hay una lista entre TODAS las hojas del arbol
+
+
+Arbol B es mas eficiente para busqueda aleatoria.
+Arbol B+ siempre que busquemos un archivo vamos aterminar en alguna hoja
+Arbol B+ mejor para cuando se requiere recorrer todo el archivo
+Arbo B+ mayor costo de manutencion, codigo.
+
+el nodop padre tiene el valor el menor de sus hijos de la derecha/izquierda
+el dato igual al padre se encuenta a la izquierda o a la derecha por convencion
+
+
+
+Arbol B prefijos simple
+Es un arbol B pero que los nodos internos utilizan prefijos del nodo como separador.
+Estos separadores tienen la idea que ocupan menos, y pueden ser de dimension variable.
+
+
+
+			arbol b		vs	B+		vs		b#
+ubicacion datos		Cualquier nodo		nodo terminal			cualquier nodo
+tiempo de busqueda	=			=				=
+Procesamiento secuencial Lento			rapido (punteros)
+busqueda aleatorio	medio			menos				mas
+Insercion / eliminacion simple			puede requerir + tiempo		se complica con las altas
+
+
+
+accesos
+busqueda secuencial	n/2
+busqueda binarira	log2 n
+arboles			3o4 accesos
+hash			1o2 accesos
+
+hashing:
+Es un sistema el cual se caracteriza pro tener un orde n de acceso 1
+Para esto se realiza una cuent especifica con la clave primaria del registro. Dicha cuenta da una direccion del nodo donde se guardara dicho registro.
+Por lo tanto cada vez que se quiera accederal registro se lo tendra que buscar en la direccion que da la cuenta.
+Trabaja en un sistema simliar al de las memoria RAM de asosiativo por conjunto.
+Las claves de entrada se deberan transformar a un valor numerico.
+
+NO SE PUEDE ASIGNAR A ARCHIVOS DE LONGITUD VARIABLE.
+
+Los nodos pueden ser de distintos tamaños.
+Cuando 2 claves dan como resultado la misma direccion, si dicen que son SINONIMOS.
+Se dice que un hashing es EFICIENTE si la posibilidad de sinnimos es baja.
+Cuando 2 datos tienen la misma direccion se genera una COLISION.
+Si se genera una colision y no entran en el nodo, se gnera OVERFLOW.
+
+Pd: En hash se hace un promedio de 2 altas cada 8 consultas.
+
+La EFICIENCIA esta determinada por: La funcion de hash, tamaño de los nodos, densidad del empaquetamiento, metodo de tratamiento de desbordes.
+
+Pasos para realizar e lhashing:
+	-representar la llave en forma numerica (si es string)
+	-Aplicar la función.
+	-Relacionar el numero resultante con el espacio disponible.
+Tipos de ditribucion:
+	Uniforme: Cada clave tiene una unica direccion (no se forman colisiones). (Imposible en la actualidad).
+	Peor: Todas las claves van a la misma direccion de memoria.
+	Aceptable: Que haya una distribucion uniforme.(Que hayas algunas colisiones, pero pocas)
+
+Funciones  de Hashing:
+	Centros cuadrados:
+		Se multiplica la llave por si misma y se toman los digitos centrales del resultado.
+		Ese resultado posteriormente se lo ajusta al tamaño de memoria (es decir otra cuenta mas, previamente establecida).
+	
+	Division:
+		Se divide la clave por un numero similar a los espacios de memoria (Se elije un numero cercano pero primo).
+
+	
+	Desplazamiento:
+
+Tamaños de nodos:
+	Cantidad de registros que entran por direccion de memoria.
+	A mayor tamaño. Menor overflow, mayor fragmentacion, mayor tiempo de busqueda dento del nodo.
+
+Densidad de empaquetamiento:
+	Cantidad de espacio del archivo que esta realmente usado.
+	Densidad de empaquetamiento= Cantidad de registros/datos a guardados / cantidad total de espacios para registros.
+	FALTA
+
+	Estimacion de overflow:
+		N = Numero de nodos, C = capacidad de nodo, R = cantidad deregistro del archivo (datos a guardar).
+		DE= R / (C * N) %
+	Probabilidad de que un nodo reciba X cantidad de registros (I)
+		P(I) = (R!/(I!*(R-I)))*(1/N)I * (1-(1/N))(R-1)
+		P(I) = ((R/N)I * E(R/N))/I!
+		distribussion de Poisson.(?
+	Cantidad de direccion con I cantidad de registros = N* P(I)
+
+	Estimacion de overflow, cuanto mas overflow, mas redireccionamientos y menor cantidad de fragmentacion.
+	Menos overflow, mayor fragmentacion. NO ESTOY SEGURO
+
+Tratamiento de desbordes / overflow para DISPERSION ESTATICA:
+	
+	Saturacion Progresiva: (para nodos de 1 registro, para 2 cambia, ver en practica)
+		Cuando la direccion asignada esta llena, empieza a avanzar desde ahi buscando un nodo vacio, donde haya espacio se asigna.
+		Cuando se esta buscando dicho nodo se va a su direccion teorica asignada, en caso de que no este se empieza a avanzar buscandolo, hasta que se encuentre el buscado o un banco que estuvo simepre vacio(por lo tanto no esta).
+		La asignacion / busqueda es circular, si se llega al ultimo nodo se sigue buscando en el primero.
+		Si se realiza una baja se debecolocar una marca de borrado para que se sepa que no estuvo vacio.
+		
+	Saturacion progresiva encadenada:
+		Las altas se realizan igual, pero se va armando una lista con los datos sinonimos.
+		El acceso es mas eficiente, ya que se visitan unicamente los sinonimos.
+	
+
+	Area de desborde separado:
+		Se crean 2 areas separadas, la base donde van los datos por defecto.
+		Si entra un nuevo archivo sinonimo y se genera overflow, se manda dicho archivo al otro area (area de desbordes) y se guarda su direccion y se la asigna al sinonimo previo (estilo lista).
+		En el area de desbordes se van colocando los sinonimos en orden que entran, sin importar su direccion teorica.
+		El tamaño del area de desbordes se calcula de acuerdo a la estimacion de overflow vista previamente.
+
+
+	Doble dispersion:
+		Utiliza 2 funciones de dispersion de Hashing. La primera como uso normal y la segunda como uso exlusivo para casos de overflow.
+		Es decir cuando hay OVERFLOW se aplica otra nueva funcion de dispersion al dato. Se suma a la primera direccion el resultado de la segunda dispersion.
+		En caso de que la posicion resultante este ocupada se vuelve a sumar el resultado de segunda dispersion, asi hasta que de con una direccion con espacio disponible.
+		Debera asignar marca de borrado. 
+		
+	Resumen:
+	Los metodos de saturacion tiende a utilizar zonas contiguas. Busqueda largas para densidad -> 1
+	Dispersion busca utilizar los registros mas alejados.	
+	
+
+Tratamiento de desbores para DSIPERSION DINAMICA
+	Hashing extensible:
+
+
+La eficiencia se defien depediendo tamaño nodo, metodo de overflow

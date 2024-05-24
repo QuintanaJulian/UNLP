@@ -1,0 +1,9 @@
+INDEX VERSION 1.132+C:\Users\quint\OneDrive\FACU\2023\1er cuatri\AyED\.metadata\.plugins\org.eclipse.jdt.core
+1865797976.index
+3239923045.index
+421282516.index
+3806716246.index
+480434010.index
+207910721.index
+3126080307.index
+1836985971.index

@@ -1,0 +1,134 @@
+Colecciones
+
+Es un conjunto de intancias, que puedn ser de distinta clase pero comparten algo.
+Deberian al menos implementar una interfaz, para que todas respondan a los mismos mensajes
+Las colecciones no se deben modificar desde fuera de su clase
+Como todo en java se trabaja por referencia, si nos queremos quedar con una copia de la coleccion, debemos duplicarla. Sino estara cambiando en todos los lugares
+
+Tipo colecciones en java vamos a usar
+Lista = java.util.List
+	Comienza desde el indice 0, pueden ser de Dim fija o variable
+
+Set = java.util.Set	(conjuntos)
+	No admite duplicados, no esta indexado, ideal para checkear pertenencia
+
+Map = java.util.Map
+	Asocia objetos que actuan como claves a otro que actuan como valores
+	
+
+Queue = java.util.Queue
+	Maneja orden en que se recuperan los datos (LIFO, FIFO, prioridad, etc)
+
+
+Las COLECCIONES usan una misma interfaz que todas implementan
+	Siendo i=indice, O=objeto/valor, C=coleccion
+
+	add(D) :boolean, addAll(C) :boolean, contains(O): boolean, equals(C) :boolean, isEmpty() :boolean, remove(O) : boolean, size() : int, interator(): Interator
+
+
+LISTA (List)
+	add(i,O) :boolean, addAll(i, C) :boolean, get(i) :O, indexOF(O) :int, remove(i) :O, sort(c), subList(from, to) :List
+
+	ArrayList <<unsynchronized>>
+		Habria que controlar la concurrencia
+
+	Vector <<>synchronized>>
+
+
+CONJUNTOS (Set)
+	Se separan en Set, HashSet, TreeSet y SortedSet
+	Todos implementan collecciones
+	HashSet evita duplicados, SortedSet ordena, TreeSet no admite duplicados y ordena
+
+	SortedSet y TreeSet:
+	first() :O, last() :O, subSet(from, to) : SortedSet, comparator() : Comparator<O>
+
+	TreeSet:
+	TreeSet(Comparator C)
+
+
+
+
+Expreciones LAMBDA
+	pueden trabajar con mas de una variable (a, b, etc) y puede hacer una o mas lineas de codigo {}
+
+	figuras.forEach(fig -> fig.switchColor());
+
+	JButton button = new JButton("Click me");
+	button.addActionListener(e -> this.handleButtonAction(e));
+
+
+Streams
+	El streams transforma en una especia de lista al conjunto que reciba y permite ciertas aplicar ciertas acciones a esta lista.
+	Puede transformar Array, Colecciones, canales de i/o, etc.
+	Posteriormente permite filtrar, ordenar, convertir, mapear, etc.
+
+	List<String> palabras = Arrays.asList("HOLa", "Banana", Yapeyu", "BOCAAAAA");
+	List<String> conL = palabras.Stream().filter(p -> p.empiezaCon("L")).collect(Collectors.toList());
+
+ 
+
+
+
+OPERACIONES SOBRE COLECCIONES:
+	Ordenar, recorrer y hacer algo, encontrar, filtrar, map, reduce
+
+COMPARADOR (Comparator)
+	Comparator es una interfaz de java
+	Public class ComparadorFiguras implement Comparator<Figura>{
+		public int compare (Figura O1, Figura O2){
+			return float.compare(o1.getArea(), 02.getArea())<
+		}
+	}
+	Esta funcion va a devolver 
+	si o1<o2 -> <0;		si o1=o2 -> =0;		si o1>o2 -> >0;
+
+ORDENAR (Sort)
+	figuras.sort(new ComparadorFiguras());
+
+
+RECORRER (Interator)
+	Interator es una interfaz que toda coleccion entiende
+	Tiene los metodos
+	HasNExt() :boolean;	next(): O;	remove();	forEachRemaining(Consumer action);
+
+	for (Interator<Figura> fi = figuras.interator(); fi.hasNext(); ) {
+		Figura Fig = fi.next();
+		//Hago lo que pinte con fig
+	}  
+	Short Way:
+	for (Figura fig : figuras) {
+		//Hago lo que quiera con fig
+	}	
+ 
+
+
+FILTRAR (filter)
+	Permite filtrar, deja pasar a lo que devuelva Verdadero	
+
+	List<String> palabras = Arrays.asList("HOLa", "Banana", Yapeyu", "BOCAAAAA");
+	List<String> conL = palabras.Stream().filter(p -> p.empiezaCon("L")).collect(Collectors.toList());
+
+MAPEAR (map)
+	A cada elemento que reciba los tranforma o agarra una fraccion del mismo y devuelve un objeto
+
+	List<Factura> facturas = this.getFacturas();
+	Set<String> cuit = facturas.stream().map(fact -> fact.getCuit()).collect(Colecctors.toSet())
+	//A todo cuit, que devuelve el map, lo agregamos a la coleccion cuit
+
+	otros: mapToDouble()
+
+COLECTOR (collect)
+	Es una operacion terminal
+	Nos permite obtener un objeto o coleccion a partir de un strim
+	Existe:
+		Collectors.toSet() -> pone todo lo que recibe en una coleccion			:Set
+		Collectors.toList() -> todo lo que recibe lo pone en una lista			:List
+		Collectors.counting() -> cuenta cuantos valores recibe y lo decuelve al final 	:int / long
+
+
+
+OTRAS OPERACIONES:
+	.sum() -> es terminal y suma los valores que va recibiendo
+
+	.max(Comparator.comparing(cli -> cli.getDeuda())).orElse(null);

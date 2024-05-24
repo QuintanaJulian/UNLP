@@ -1,0 +1,147 @@
+programa P3E2
+
+procesos
+  proceso  TomarPapel (ES papel: numero)
+  comenzar
+    mientras HayPapelEnLaEsquina
+      tomarPapel
+      papel := papel + 1
+  fin
+  
+  proceso TomarFlor (ES flor: numero)
+  comenzar
+    mientras HayFlorEnLaEsquina
+      tomarFlor
+      flor:= flor + 1
+  fin
+  
+  proceso Izquierda
+  comenzar
+    repetir 3
+      derecha
+  fin
+    
+  proceso Mover (E lado: numero)
+  comenzar
+    repetir lado
+      mover
+  fin
+  
+areas
+  area: AreaC (1,1,100,100)
+
+robots
+  robot tipo1
+  variables
+    ID, lado, objeto :numero
+  comenzar
+    RecibirMensaje (ID, Jefe)
+    lado:= 5
+    objeto:= 0
+    
+    repetir 4
+      Mover (lado)
+      TomarFlor (objeto)
+      derecha
+      Mover (lado)
+      lado:= lado - 1
+      Izquierda
+      
+    mover
+    derecha
+    BloquearEsquina (15, 15)
+    mover
+    TomarFlor (objeto)
+    EnviarMensaje (ID, Jefe)
+    repetir 2
+      derecha
+    mover
+    LiberarEsquina (15, 15)    
+    lado:= 2
+    repetir 4
+      Mover (lado)
+      TomarFlor (objeto)
+      derecha
+      Mover (lado)
+      TomarFlor (objeto)
+      Izquierda
+      lado:= lado + 1
+      
+    EnviarMensaje (1, Jefe)
+    Informar (objeto)
+  fin
+
+  robot tipo2
+  variables
+    ID, lado, objeto :numero
+  comenzar
+    RecibirMensaje (ID, Jefe)
+    lado:= 5
+    objeto:= 0
+    
+    repetir 4
+      Mover (lado)
+      TomarPapel (objeto)
+      Izquierda
+      Mover (lado)
+      lado:= lado - 1
+      derecha
+      
+    mover
+    Izquierda
+    TomarPapel (objeto)
+    BloquearEsquina (15, 15)
+    mover
+    TomarPapel (objeto)
+    EnviarMensaje (ID, Jefe)
+    repetir 2
+      derecha
+    mover
+    LiberarEsquina (15, 15)    
+    lado:= 2
+    repetir 4
+      Mover (lado)
+      TomarPapel (objeto)
+      Izquierda
+      Mover (lado)
+      TomarPapel (objeto)
+      derecha
+      lado:= lado + 1
+      
+    EnviarMensaje (1, Jefe)
+    Informar (objeto)
+  fin
+
+
+  
+  robot tipo3
+  variables
+    ID1, ID2, termino : numero
+  comenzar
+    EnviarMensaje (1, Robot1)
+    EnviarMensaje (2, Robot2)
+    
+    RecibirMensaje (ID1, * )
+    RecibirMensaje (ID2, * )
+    
+    RecibirMensaje (termino, *)
+    RecibirMensaje (termino, *)
+    
+    Informar (ID1)
+  fin
+  
+variables
+  Robot1: tipo1
+  Robot2: tipo2  
+  Jefe: tipo3
+  
+comenzar
+  AsignarArea (Robot1, area)
+  AsignarArea (Robot2, area)
+  AsignarArea (Jefe, area)
+  
+  Iniciar(Jefe, 15, 1)
+  Iniciar(Robot1, 1, 1)
+  Iniciar(Robot2, 31, 1)
+  
+fin

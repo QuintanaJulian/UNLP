@@ -1,0 +1,147 @@
+TCP 
+
+
+TLS
+
+ALPN => extension de TLS
+
+
+
+
+HTTP 3
+	QUICK UDP
+
+
+
+
+DNS
+	Corre sobre UDP y TCP
+
+	Root server: 
+		Son 13, 7 de estos con redundancia
+		Deberia delegar a TLD, no deberia permitir recursivas
+
+	TLD: (Top Level Domains)
+		Van despues de los root
+		Se clasifican en 3: 
+			gTLDs: Son dominios de propositos particulares. para actividades politicas definidos por el ICANN (UnSponsored TLD) o por otra organizacion (Sponsored TLD). Ej: .com .org .net .info
+
+			ccTLD: Country Code TLD: pertenecientes a lso paises. Ej: .us .ar .eu
+	
+			.ARPA TLD: es un dominio especial usado internamente, para resolucion de reversos
+
+	Tipos de servidores:
+		Autoritativo: Servidor con una zona o sub-dominos de nombres a cargo.
+			Respuesta autoritativa: Cuando dicho server responde sobre un dominio del cual tiene la autoridad
+			Respueta No autoritativa: Cuando la respuesta ess de otro dominio
+
+		Local/Resolver Recursivo o Caching Name Server: Esun servidor que es consuoltado dentro de una red (Local). 
+			Puede tambien ser un servidor autoritativo, pero tiene la capacida de tener una cache. Permite concultas recursivas internas.
+
+		
+		ONS (Open name Server):
+			Servidores que funcionan como locales para cualquier cliente. Ej: 8.8.8.8, 8.8.4.4, 4.2.2.3.
+
+		Fowarder Name Server:
+			Interactuan directamente con el sistema DNS exterior, Son DNS proxies de otros DNS internos.
+
+		Servidores primarios y secundariops:
+			Los servidores prmarios son lso servidores que guardan la configuracion y datos de un dominio.
+			Los secundarios son los que unicamente duplican al dominio del primario. Para mantener consistencia y facilidad. La copia de datos se llama "Transferencia de zona"
+
+	Tipos de consulta:
+		Interativa:
+			Cada servidor DNS interativo unicamente me devolvera una respuesta parcial de donde continual la busqueda del  dominio requerido. Si a un server interativo se le consulta de manera recursiva, devolvera 				interativo.
+			Ej: Root server
+
+
+		Recursiva:
+			Los servidores DNS recursivos intentaran buscar el dominio por su propia cuenta simulando ser el cliente. Devolviendo, en medida de lo posible, el dominio completo. 
+			Ej: resolver, local server
+
+
+	Proceso de obtencion de IP:
+		
+		Resolver -> Local -> Root server -> Se sigue de manera interativa hasta llegar al -> Servidor Autoritativo del dominio consultado que devielve la IP
+
+		El local server cachea la IP y la pasa al resolver, El resolver cache la IP y este finalmente se la da al cliente.
+
+
+
+
+	Tipos de registros DNS
+		Los servidores DNS guardan sitintos tipos de RR (Resource Record), estos son:
+		
+		- A: Mapean nombre de dominio a IPV4, pueden habervarios regfistros con el mismo nombre, difeerente IP
+
+		-AAAA: Mapean el nombre de dominio auna direccion IPv6
+
+		-NS: Indica los servidores con nombre autoritativo para un sub-dominio. Basicamente son los que permiten la conexion entre todos linkeando sub-dominio con otro sub-dominio mas especifico.
+
+		-MX: Indica para un dominio cuales son los servidores de mail SMPTP encargados de recibir los mensajes para dicho dominio. Se asigna prioridades para servidores del mismo dominio
+
+		-CNAME: Mapean el nombre de un dominio a otro nombre. Mapea el ALIAS al nombre canonico / original.
+
+		-PTR: Mapean direcciones IP a nombre de dominio, son lo inverso a A. Trabajan en el dominio especial in-addr.arpa
+
+		-SOA: Se utiliza para dar informacion autoritativa sobre un dominio, solo puede haber un regitro SOA por zona. Permite que servidores autoritativos de la misma zona se puedan modificar.
+			Contiene entre susregistros las variables: Serial (version del ultimo  cambio YYYYMMDDSS), Refresh (indica cada cuanto lso SV secunbdarios deben actualizar desde el primario), Retry (si falla en refrescar indica 			cuanto tiene que esperar para volver a intentarlo), Expiry (Indica cuando ddeja de ser autoritativa la zona y debe volver a chekear el serial de SOA) y TTL de cache negativa(Cuanto debe esperar para poder volver 			a consutlar algo a lo que el servidor le respondio negativo)
+
+		-TXT: Son registros que mapean un nombre de dominioo a direccion extra asociadacon el equipo que tiene dicho nombre.
+
+		-SRV: Se utilioza par asociar servicios o recursos a nomrbes de dominio.
+
+		
+	
+
+	TTL: Es aasisgnado por el servidor autoritario del dominio. Indica cuanto itmepo debe almacenarse en cache una pieza de infromacion antes de considerse obsoleta
+
+	FTP (File Transfer Protocol):
+		Protocolo de transferencia de archivos, tal como NFC, CIFS/SMB, iSCSI
+		Version segura FTPS, SFTP, SCP
+		Tiene un modelo cliente/servidor, corre sobre TCP, no requiere interfaz grafica
+		Soportado por browsers, se puede acceder por fetch ftp://
+		Usa 2 conecciones una de control (port 21) y una de datos (port 20)
+		Comandos: RETR(retrieve), STOR(store), LIST(ls), DELE(delete), SIZE,STAT(info srv), cd, pwd, rmd, mkd
+		Posee 2 modos:
+			FTP activo: version vieja, el servidor se conecta de manera activa con el cliente para generar la conexion
+			FTP pasivo: nuevo, mas rapido y eficiente. Puerto de control 21, puerto de datos el servidor indica dinamicamente.
+		Tipo de datos: ASCII (default), EBCDIC (text), IMAGE I (mas usado actualmente), LOCAL L
+		
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		

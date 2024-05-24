@@ -1,0 +1,205 @@
+Dirigido: Cuando todos las aristas poseen un unico sentido
+No dirigido: Cuando todas las aristas conectan un par de vertices en ambos sentidos.
+
+Conexo: Cuando UN recorrido desde cualquier vertice visitara todos lso vertices (dirigido).
+No conexo: Cuando se requiere mas de un recorrido par visitar todos los vertices. Esto generaria multiples COMPONENTES CONEXOS.
+Fuertemente Conexo: Unicamente para grafos dirigidos. Cuanod existe un camino de cualquier vertice a cualquier vertice.
+
+Ciclico: Cuando hay un ARCO BACK.
+
+Arista de retroceso: arissta que conecta un vertice con un vertice que ya habia sido visitado. Siempre las aristas van a ser A <= V^2
+
+Ciclo: Se genera un ciclo cuando existe una arista de retroceso, es de cir que desde un nodo actua lse puede acceder a un nodo que ya fue previamente visitado.
+
+
+arco back / retroceso: Arco cuyo vertice destino ya esta visitado, y es un antecesor en el arbol
+
+arco foward: Arco cuyo vertice destino ya esta visitado, pero es un sucesor en el arbol. Pero no es hijo.
+
+arco cruce: cuando el vertice proximo ya esta visitado pero no es arco back ni foward, CREO que cuando queda en otroa arbol.
+
+
+DFS:		(Depth First Search)		(V + E)
+
+	Recorrido en profundidad recursivo, similar preorden.
+	Visita el vertice adyacente no visitado.
+	Si no tiene vertice por visitar vuelve al vertice anterior
+	Consulta si tiene vertice sino vuelve a retroceder.
+	
+	Si se termina la recursion y quedan vertices sin visitar, se vuelve a aplicar el DFS usando como base alguno de los nodos no visitados.
+
+
+BFS:		(Breath First Search)
+	O (V + E)
+	Recorrido interativo, similar por niveles
+	
+	de 1 a cantidad de vertices, si no fue visitado llama BFS (vertice actual).
+	Mediante una cola, se encola el origen.
+	Se desencola y se marca como visitado, se encola adyacentes no visitados.
+	Si cola es vacia y quedan vertices sin visitar, se vuelve a realizar BFS, pero como vertice de origen se elige algun vertice no visitado
+
+	La marca de visitado se pone cuando se necola el vertice
+
+Ordenacion topologica:
+	Se realiza en matrices asiclicas, PUEDE que SOLO DIRIGIDO
+	hAY 3 metodos para realizar una ordenacion topologica:
+
+
+	metodo version 1: 	O(|V|^2 + |A|)
+		Se crea un erreglo donde se pone el grado de entrada (GE) de cada vertice.
+		Se debe seleccionar un vertice con GE = 0.		
+		Se marca dicho vertice como visitado, y se resta 1 al GE de cada adyacente.
+		Se repite visitando los vertices con GE = 0 que no hayan sido visitados.
+
+
+	metodo version 2: O(|V| + |A|)
+		Se crea u narreglo donde se guarda el GE de todos lso vertices.d
+		Se busca un vertice con GE=0, encola el dato y marca como visitado
+		Mientras la cola no sea vacia
+		Desencolar vertice.
+		Disminuir el GE de sus adyacentes.
+		Si el GE de algun adyacente = 0 entonces encolar y marcar como visitado.
+		
+		Se puede usar una vvariable contados de vertices visitados, si al terminar el recorrido ese contados no es igual a la cantidad de vertices, entonces el es ciclico
+
+	metodo version 3:
+		Mediante DFS, se numeran o se apilan los vertices en post orden.
+		En caso de pila, una vez terminado DFS, se desapilan y se numeran en orden que salen.
+		
+
+
+Caminos minimo
+
+	Camnio desde un origen:
+	
+	Se hace una tabla donde para cada V:
+		-Dv: camino minimo desde origen al vertice actual (v). (Se inicia en infinito, salvo e lorigen con costo 0)
+		-Pv: Vertice previo, por el que paso en el caminio minimo (Inicializan en 0)
+		-Conocido: Indica si el vertice esta procesado (Se inician todos lso vertices en 0)
+
+	Grafos sin pesos: Recorrido en amplitud (BFS):
+		Se inicializa para todo V (Dv, Pv) y para Base S (Ds=0, Ps=0) y se encola s.
+		Mientras cola no este vacia. 
+			Se desencola V
+			Para cada adyacente de V, llamado W
+			Si Dw = infinito
+				Dw = Dv + 1;
+				Pw = V
+				Encolar W
+
+	Grafos con pesos positivos: Algoritmo Dijkstra  	O(V^2)	con HEAP: (|V| log|V| + |E| log|V|)  O(|E| log|V|)
+		Se realiza la tabla, inicalizando los registros. Cuenta tambien con el registro de visitado/conocido
+		Minetras no esten visitado todo los nodos
+		Se obtiene el minimo de la tabla	(se puede buscar en la tabla, o se puede implementar una heap para mas eficiencia)
+		Se actualiza el costo si Dw > (Dv + CCamino(v, w).
+		Se llama a su adyacente, si ete no fue visitado
+
+	
+	Grafos con pesos positivos y negativos:
+		Se encola el origen.
+		Mientras la cola no este vacia:
+		Se desencola.
+		Si Dv > (Du + C(v,u))
+		Se actualiza (Dv, Pv)
+		Se encola. Es decir cada vez que se cambie el valor de un vertice, se encola el vertice.	
+
+
+	Grafos asiclicos	(|V| + |E|)
+		Requiere orden topologico, usa dijkstra.
+
+		encolar los de GE = 0
+		mientras vola no sea vacia
+		desencolar
+		disminuir GE adyacentes, encolar los de GE =0
+		si Dw > (Du + c(U,W)) 
+		Dw = Du + c(u,w)
+		Pw = u 
+
+
+
+		pasos:
+		Ordenar topologicamente los vertices de G
+		Inicializar tabla de G, con tabla de GE de G
+		
+		para cada vertice (U) del orden topologico
+		para cada vertice (W) adyacente de U
+		si Dw > (Du + c(U,W)) 
+		Dw = Du + c(u,w)
+		Pw = u 
+
+	
+	Camino desde multiples origen:
+	Algoritmo de FLOYD:			O(|V|^3)
+		Haya los caminos minimos para todos los conjuntos de vertices
+		
+
+
+
+
+Arbol de expansion minimo:
+	Para un grafo no dirigido y conexo.
+	Un arbol de expansion minima es un arbol formado por las aristas y vertices de un grafo, donde el coste de la conexion de TODOS los vertices es minima.
+	Es decir se forma un grafo asiclico, donde la suma de las aristas sea la minima posible.
+
+	
+	Algoritmo de prim:
+		Si se  implementa con tabla secuencia O(|V|^2) si se realizacon una HEAP O(|E| log|V|)
+		Crece por etapas
+		Se selecciona una raiz.
+		Se va seleccionando la arista de coste minimo que no pertenezca al arbol.
+		Se repite el proceso hasta que se hayan agregado todos lso vertices	
+
+		Implementacion:
+		Se arma la tabla de dijsktra
+		Se elige un nodo raiz.
+		Se actualiza la tabla con los adyacentes de la raiz.
+		Se agrega el vertice de coste minimo al arbol que no pertenezca al arbol
+		Se repite hasta que se agregan todos lso vertices
+		Si no se puede seguir con ningun adyacente por que ya estan todos agregados, se seguira con el nodo no añadido de coste minimo.
+
+
+
+
+
+	Algoritmo de KRUSKAL:
+		Coste con Heap ed de O(|E| log|V|)
+		Ordena las arista de forma creciente segun su peso y las acepta si no crean un ciclo
+		Se crean |V| conjuntos unitarios.
+		Se oirdenan de forma creciente los vertices, usando algun algoritmo de ordenacion o una HEAP.
+		Se van eligiendo las aristas mas chicas
+		Si dicha aristas hace refercia a 2 vertices que no son parte de un mismo conjunto
+		Entonces se unen los 2 vertices, formando un conjunto entre ellos.
+		Si no si ambos vertices ya se encuentran en el mimos conjunto, se procede a descartar el vertice.
+		Se prosigue hasta añadir todos lso vertices a un mismo conjunto
+
+
+
+Matriz de adyacencia
+	Es adecuada para grafos chivos y densos.
+
+
+Lista de adyacencia:
+	Es adecuada para grafos grandes y dispersos.
+
+
+
+
+BOSQUE DE EXPANSION
+	Tdodo recorrido de lgrafo se puede tomar com olque genera un arbol de expansion de nodos visitados.
+	Cuando se requieren multiples recorrido se generan multiples arboles de expansion, es decir un BOSQUE de expansion.
+
+	Los bosques se generan con grafos no conexos, o puede generarse con grafos dirigidos.
+
+
+
+
+
+
+Algoritmo Kosaraju
+	Forma par obtener componentes FUERTEMENTE CONEXOS.
+	O(V+ E)
+	Pasos:
+		Recorrido DFS, numerando los vertices en post-orden.
+		Construir grafo reverso.
+		Aplicar DFS al grafo reverso, comenzando en el vertice de mayor numero.
+	Esto Da como resultado componentes fuertemente conexos.

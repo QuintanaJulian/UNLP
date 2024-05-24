@@ -1,0 +1,44 @@
+Operaciones	T = tabla	p = predicado	a = atributo
+
+O	Seleccion σp (T)	σ nombre='Carlos' (persona)		=> Selecciona las tuplas que cumplan la condicion
+
+PI	Proyeccion πa (T)	π nombre,direccion (persona)		=> Imprime las columnas deseadas, eliminando duplicados
+
+U	Union T1 ∪ T2		futbol ∪ tenis				=> Hace unions de las tablas, elimina duplicados, la firma de los atributos debe ser igual en cantidad, posicion y dominio
+
+^	Intersección T1 ∩ T2	futbol ∩ tenis				=> Hace una tabla con los valores repetidos, tambien el esquema de la tabla debe ser compatible
+
+	Producto T1 x T2	futbol x tenis				=> Hace producto de todas las tablas
+
+	Producto Natural T1 |x| T2 futbol |x| tenis			=> Hace producto natural, usando los nombres de atributos que coincidan en ambas tablas
+
+	Diferencias T1 - T2	furbol - tenis				=> Le saca a T1 las tuplas que esten en T2, las tablas deben ser compatibles
+
+	Division T1 % T2	futbol % tenis				=> Le saca a T1 las columnas de atributos en comun con T2; y con la columna que coincide hace un filtro con los valores en ambas tablas		(nombre, apellido) % (apellido) => nombre y  quedan los nombres que tienen apellido en ambas columnas
+
+p	Renombre ρT (T1)	ρX (T1)					=> A T1 le asigna el nombre X
+
+	Asignacion A <= Consulta					=> Vuelca en A los resultados de consulta, se puede usar A posteriormente (como un tabla temporal)
+
+
+
+
+
+
+Actualizacion de tablas
+
+	Incorporar	=> Anadir a Tabla Producto una nueva linea
+			Producto <= Producto U {(1235, "Tuerca del 9mm", 10, $20)}
+
+	Eliminar	=> Eliminar dato de la tabla Producto
+			Producto <= Producto - σ codProd=1235(Producto)
+
+	Modificar	=> Aumentar en 20% el valor de todos los productos
+			δprecio <= precio*1.2(Producto)	
+
+
+Condicionales
+
+	^	=>	and
+	
+	 

@@ -1,0 +1,126 @@
+programa P4E1
+
+procesos
+  proceso JuntarFlores (E cantFlores: numero)
+  comenzar
+    repetir cantFlores
+      tomarFlor
+  fin
+  
+  proceso SolicitarFlores (E ID: numero)
+  variables
+    cantFlores, OK: numero
+  comenzar
+    Random (cantFlores, 1, 4)
+    EnviarMensaje (ID, servidor)
+    EnviarMensaje (cantFlores, servidor)
+    EnviarMensaje (PosAv, servidor)
+    EnviarMensaje (PosCa + 1, servidor)
+    RecibirMensaje (OK, servidor)
+    mover
+    JuntarFlores (cantFlores)
+    depositarFlor
+  fin
+  
+  proceso Colocar (E Flores: numero; E Av: numero; E Ca: numero)
+  comenzar
+    Pos (Av, Ca)
+    repetir Flores
+      depositarFlor
+    Pos (100,100)
+  fin
+  
+  proceso Recibir (ES terminaron: numero)
+  variables
+    ID, cantFlores, Av, Ca : numero
+  comenzar
+    RecibirMensaje (ID, *)
+    si ID = 1
+      RecibirMensaje (cantFlores, cliente1)
+      si cantFlores <> 0
+        RecibirMensaje (Av, cliente1)
+        RecibirMensaje (Ca, cliente1)
+        Colocar (cantFlores, Av, Ca)
+        EnviarMensaje (0, cliente1)
+      sino 
+        terminaron:= terminaron + 1
+    sino 
+      si ID = 2
+        RecibirMensaje (cantFlores, cliente2)
+        si cantFlores <> 0
+          RecibirMensaje (Av, cliente2)
+          RecibirMensaje (Ca, cliente2)
+          Colocar (cantFlores, Av, Ca)
+          EnviarMensaje (0, cliente2)
+        sino
+          terminaron:= terminaron + 1
+      sino 
+        si ID = 3
+          RecibirMensaje (cantFlores, cliente3)
+          si cantFlores <> 0
+            RecibirMensaje (Av, cliente3)
+            RecibirMensaje (Ca, cliente3)
+            Colocar (cantFlores, Av, Ca)
+            EnviarMensaje (0, cliente3)
+          sino 
+            terminaron:= terminaron + 1
+  fin
+  
+areas
+  areaServidor: AreaP (100,100,100,100)
+  areaClientes: AreaC (1,1,3,100)
+  
+robots
+  robot tipo1
+  variables
+    ID: numero
+  comenzar
+    RecibirMensaje (ID, servidor) 
+    mientras (PosCa < 100)
+      si ((HayFlorEnLaBolsa)
+        mover
+        depositarFlor
+      sino 
+        si (HayFloresEnLaBolsa = F)
+          SolicitarFlores (ID)
+    EnviarMensaje (ID, servidor)
+    EnviarMensaje (0, servidor)
+  fin
+  
+  robot tipo2
+  variables
+    terminaron : numero
+  comenzar
+    EnviarMensaje (1, cliente1)
+    EnviarMensaje (2, cliente2)
+    EnviarMensaje (3, cliente3)
+    terminaron:= 0
+    mientras (terminaron < 3)
+      Recibir (terminaron) 
+  fin
+  
+variables
+  cliente1: tipo1
+  cliente2: tipo1
+  cliente3: tipo1
+  servidor: tipo2
+  
+comenzar
+  AsignarArea (cliente1, areaClientes)
+  AsignarArea (cliente2, areaClientes)
+  AsignarArea (cliente3, areaClientes)
+  AsignarArea (servidor, areaServidor)
+  AsignarArea (servidor, areaClientes)
+  
+  Iniciar (servidor, 100, 100)
+  Iniciar (cliente1, 1, 1)
+  Iniciar (cliente2, 2, 1)
+  Iniciar (cliente3, 3, 1)
+  
+  
+fin
+
+
+
+
+

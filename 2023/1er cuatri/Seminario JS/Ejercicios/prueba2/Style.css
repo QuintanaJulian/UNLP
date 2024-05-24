@@ -1,0 +1,34 @@
+* {
+  text-decoration: none;
+  font-size: 20px;
+  font-family: Arial;
+  text-align: center;
+}
+#titulo {
+  font-size: 30px;
+  text-decoration: underline;
+}
+#texto {
+  max-width: 80%;
+  display: inline-block;
+}
+
+#imagen {
+  position: relative;
+  margin: 100px, 20px;
+  width: 30%;
+}
+
+.boton {
+  padding: 10px;
+  margin: 20px;
+  background-color: #5c24df38;
+  border-radius: 5%;
+}
+.boton:hover {
+  background-color: #fff;
+}
+
+.boton:active {
+  background-color: gray;
+}

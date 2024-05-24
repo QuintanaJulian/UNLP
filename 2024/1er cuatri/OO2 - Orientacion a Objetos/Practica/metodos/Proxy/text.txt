@@ -1,0 +1,9 @@
+Patron Proxy
+
+
+Proxy de proteccion
+
+Sirve para requerir un login de algo que originalmente no tiene.
+
+No se deberia modificar el original, se ejecutaria como una especie de middleware
+

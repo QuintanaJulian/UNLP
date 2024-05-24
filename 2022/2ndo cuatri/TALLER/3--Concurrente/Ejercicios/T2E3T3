@@ -1,0 +1,97 @@
+programa hola
+
+procesos
+  proceso JuntarFlores (ES Flor: numero)
+  comenzar
+    Flor:= 0
+    mientras HayFlorEnLaEsquina
+      tomarFlor
+      Flor:= Flor + 1
+  fin
+  
+areas
+  area1: AreaPC (2,2,19,7)
+  area2: AreaP (1,1,1,1)
+
+robots
+  robot tipo1
+  variables
+    priCa: numero
+    priAv: numero
+    newCa: numero
+    newAv: numero
+    maxCa: numero
+    maxAv: numero
+    flores: numero
+    floresT: numero
+  comenzar
+    priCa:= PosCa
+    priAv:= PosAv
+    RecibirMensaje (maxAv, Fiscal)
+    RecibirMensaje (maxCa, Fiscal)
+    floresT:= 0
+    
+    repetir 3
+      Random (newCa, priCa, maxCa)
+      Random (newAv, priAv, maxAv)
+      BloquearEsquina (newAv, newCa)
+      Pos (newAv, newCa)
+      JuntarFlores (flores)
+      Pos (priAv, priCa)
+      LiberarEsquina (newAv, newCa)
+      floresT:= floresT + flores
+    
+    EnviarMensaje (floresT, Fiscal)    
+        
+  fin
+
+  robot tipo2
+  variables
+    flores, floresT : numero
+  comenzar
+    EnviarMensaje (19, Robot1)
+    EnviarMensaje (7, Robot1)
+    
+    EnviarMensaje (19, Robot2)
+    EnviarMensaje (7, Robot2)
+  
+    EnviarMensaje (19, Robot3)
+    EnviarMensaje (7, Robot3)
+    
+
+    
+    floresT:= 0
+    repetir 3
+      RecibirMensaje (flores , *)
+      floresT:= floresT + flores
+ 
+    Informar (floresT)
+  fin
+
+
+
+variables
+  Robot1: tipo1
+  Robot2: tipo1
+  Robot3: tipo1
+  Fiscal: tipo2
+  
+comenzar
+  AsignarArea (Robot1, area1)
+  AsignarArea (Robot2, area1)
+  AsignarArea (Robot3, area1)
+  AsignarArea (Fiscal, area2)
+  
+  Iniciar (Fiscal, 1, 1)
+  Iniciar (Robot1, 2, 2)
+  Iniciar (Robot2, 8, 2)
+  Iniciar (Robot3, 14,2)
+  
+fin
+
+
+
+
+
+
+

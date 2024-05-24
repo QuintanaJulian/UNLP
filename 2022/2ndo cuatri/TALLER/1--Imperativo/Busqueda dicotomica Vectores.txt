@@ -1,0 +1,17 @@
+Procedure  BusquedaDicotomica ( Var vec: números; dimL: integer;
+                             bus: integer; var ok : boolean);
+ Var 
+    pri, ult, medio : integer;
+
+ Begin
+     ok:= false;
+     pri:= 1 ;  ult:= dimL;  medio := (pri + ult ) div 2 ;
+
+     While  ( pri < = ult ) and ( bus <> vec[medio]) do begin
+         if ( bus < vec[medio] ) then 
+           ult:= medio -1 ;
+         else pri:= medio+1 ;
+         medio := ( pri + ult ) div 2 ;
+     end;
+     if (pri <=ult) and (bus = vec[medio]) then ok:=true; 
+  end;

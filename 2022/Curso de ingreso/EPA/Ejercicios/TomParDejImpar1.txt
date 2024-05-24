@@ -1,0 +1,86 @@
+programa ejercicio
+procesos
+  procesos calle (ES flores=numero)
+  variables
+  comenzar
+      mientras hayFlorEnLaEsquina
+        tomarFlor
+        flores:= flores + 1
+      Pos (PosAv, PosCa + 1)
+      mientras hayFlorEnLaBolsa
+        depositarFlor
+      Pos (PosAv, PosCa - 1)
+      mover       
+  fin
+areas
+  area: ciudadC (1,1,100,100)
+robots
+  robot:robot1
+    variables
+    flor, florT = numero
+  comenzar
+    repetir 44
+      repetir 99
+        calle (flor)
+      calle (flor)
+    repetir 99
+      calle (flor)
+    calle (flor)
+  fin
+variables
+  robot1: R-Info
+  AsignarArea (R-info 1,1)
+fin
+    
+
+
+
+
+
+
+
+
+
+
+
+programa ejercicio
+procesos
+  proceso calle (ES flores:numero)
+  comenzar
+    mientras HayFlorEnLaEsquina
+      tomarFlor
+      flores:= flores + 1
+    si HayFlorEnLaBolsa
+      Pos (PosAv, PosCa + 1)
+      mientras HayFlorEnLaBolsa
+        depositarFlor
+      Pos (PosAv, PosCa - 1)      
+  fin
+areas
+  ciudad: AreaC (1,1,100,100)
+robots
+  robot robot1
+  variables
+    flor: numero
+  comenzar
+    derecha
+    repetir 49
+      repetir 99
+        calle (flor)
+        mover
+      calle (flor)
+      Pos (1, PosCa + 2)
+    repetir 99
+      calle (flor)
+      mover
+    calle (flor)
+    Informar (flor)
+  fin
+variables
+  R-Info: robot1
+comenzar
+  AsignarArea(R-Info, ciudad)
+  Iniciar (R-Info, 1,1)
+fin
+
+

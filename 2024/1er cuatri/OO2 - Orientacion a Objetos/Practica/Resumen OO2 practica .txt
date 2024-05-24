@@ -1,0 +1,28 @@
+OO2 Practica 
+Vi	=> Expl Prac 22-28Abril
+Patrones OO2
+
+
+Composite
+	El elemento padre tiene un metodo abstracto que implementan sus hijos
+
+
+
+Template
+
+Strategy
+
+Decorator
+
+
+
+Metodos de construccion
+
+Factory
+	Por defecto es el metodo a utilizar
+	Cada factory va a ser de un producto convinado, el codigo va aa ser similar a la inicializacion de un programa
+	
+
+Builder
+	En casos mas complejos se puede usar
+	Mas complejo que Factory

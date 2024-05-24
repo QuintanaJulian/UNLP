@@ -1,0 +1,86 @@
+{Realice un programa donde el robot 1 debe realizar un rectangulo de 5 (alto) x 3 (ancho) 
+juntando flores y el robot 2 un rectangulo de 8 (alto) x 2 (ancho) juntando flores.
+Un robot jefe debe informar la cantidad de flores juntada por cada robot y su ID. 
+Nota: Inicialmente los robots se encuentran en la esquina (2,2) y (6,2) respectivamente
+y el jefe en (1,1). 
+}
+programa Ejercicio2c
+procesos
+  proceso juntarFlores(ES flor:numero)
+  comenzar
+    mientras (HayFlorEnLaEsquina)
+      tomarFlor
+      flor:= flor + 1
+  fin    
+  
+  proceso rectangulo(E alto: numero; E ancho: numero; ES flo: numero)
+  comenzar
+    repetir 2
+      {alto}
+      repetir alto
+        juntarFlores(flo)
+        mover
+      derecha
+      {ancho}
+      repetir ancho
+        juntarFlores(flo)
+        mover
+      derecha
+  fin
+
+areas
+  area1 : AreaP(2,2,5,7)
+  area2:  AreaP(6,2,8,10)
+  areaJ:  AreaP(1,1,1,1)
+robots 
+  robot tipo1  {tipo trabajador}
+  variables
+    altura,ancho,flo,id:numero
+  comenzar
+    {Recibe identificacion, altura y ancho}
+    RecibirMensaje(id,robot3)
+    RecibirMensaje(altura,robot3)
+    RecibirMensaje(ancho,robot3)
+    {Trabaja}
+    flo:=0
+    rectangulo(altura,ancho,flo)
+    {Envia id y cantidad juntada al jefe}
+    EnviarMensaje(id,robot3) 
+    EnviarMensaje(flo,robot3)  
+  fin
+  
+  robot tipo2  {tipo jefe}
+  variables
+    flo,id:numero
+  comenzar
+    {Envia identificacion}
+    EnviarMensaje (1,robot1)
+    EnviarMensaje (2,robot2)
+    {Envia alto y ancho  }
+    EnviarMensaje (5,robot1)
+    EnviarMensaje (3,robot1)
+    EnviarMensaje (8,robot2)
+    EnviarMensaje (2,robot2)
+    {Informa lo juntado por cada robot y el ID del robot}
+    repetir 2     
+      RecibirMensaje(id,*)
+      si id = 1
+        RecibirMensaje(flo,robot1)
+      sino
+        RecibirMensaje(flo,robot2)        
+      Informar(id, flo)  
+  fin
+ 
+     
+variables 
+  robot1: tipo1 {trabajador}
+  robot2: tipo1 {trabajador}
+  robot3: tipo2 {jefe}
+comenzar 
+  AsignarArea(robot1,area1)
+  AsignarArea(robot2,area2)
+  AsignarArea(robot3,areaJ)
+  Iniciar(robot1, 2, 2)
+  Iniciar(robot2, 6, 2)
+  Iniciar(robot3, 1, 1)
+fin

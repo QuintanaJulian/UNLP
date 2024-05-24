@@ -1,0 +1,76 @@
+
+ALTAS BAJAS CLAVES Y CONSULTAS
+
+ORDEN DE FRECUENCIA 
+	Frecuencia con la que se suele realizar cada operacion de archivos.
+	-CONSULTAS
+	-ALTAS, BAJAS Y CLAVES.
+	
+
+
+Eliminado
+	Baja logico
+		Cuando se requiere eliminar un registro se marca dicho archivo, pero sigue ocupando espacio en memoria.
+	
+	Baja fisico
+		Cuando se desea borrar un archivo se elimina dicho espacio de memoria, haciendo que se deba reacomodar los registros.
+		Para reacomodarlo se puede:
+			-Generar un nuevo archivo sin los archivos que se desean borrar
+			-En el mismo archivo se desplazan para adelante los archivos.
+
+	Se puede hacer una mezcla de eliminacion logica / fisica. Es de cir se puede hacer normalmente baja logicas, pero cada X bajas logicas se hace una fisica.	
+
+
+Alta 
+	Recupear espacio secuencial
+		Se debe recorrer todo el archivo de manera secuencial buscando los espacio libre, existiendo la posibilida de que no haya ningun epacio disponible y se deba almacenar el registro al final habiendo recorrido sin sentido todo el archivo.
+		Archivos de longitud variable: Al ser espacios variables ademas esta la desventaja de que se encuentre un lugar pero dicho espacio no sea suficiente para el dato requerido.  Generando FRAGMENTACION.
+
+	Recuperar espacio indexada
+		Se crea una lista con el nodo principal al inicio del archivo, creando nodos en cada espacio libre del archivo. Cada nodo almacena la direccion del proximo espacio disponible. El ultimo nodo guarda direccion -1 para indicar fin
+		archivos longitud fija: Cada nodo almacena el inice de la prox direccion libre
+
+		archivos longitud variable: Cada nodo almacena la direccion de memoria del proximo campo libre. Cada Espacio puede tener una longitud mas chica que la buscada por lo que se puuede requerir recorrer todo el archivo incluso con la posibilidad de qeu no haya espacio reqeurido y tener que inseetar al final. Generando FRAGMENTACION.
+
+	
+	
+
+Fragmentacion de archivos: 
+	Interna: 
+		Cuando es un espacio reservado por un registro, pero dicho registro utiliza menos espacio del que reservo.
+		El espacio de fragmentacion interna ya no se puede ocupar.
+		Ej: Strings [30] pero utiliza unicamente 20 dejando 10 byte asignados pero libres dentro del mismo registro. 
+
+	
+	Esterna: 
+		Se genera con los archivos de longitud variable con baja logica cuando se inserta un registro de menor dimension que el espacio libre. Generando esta fragmentacion la cual depende su tamaño puede ser inutil.
+		El espacio de fragmentacion externa puede ser reutilizado dependiendo sus dimensiones.
+
+Estrategias de colocacion en registros de LONGITUD VARIABLE:
+	Primer ajuste
+		Almacena el archivo en el primer espacio que sea >= al archivo a almacenar. El Primero que encuentre sin importar el tamaño.
+		Utiliza la totalidad del espacio disponible. Haciendo que sobre espacio sin utilizar, generando fragmentaion interna.
+		Es el mas rapido ya que utilizar el primer lugar aceptable.
+
+	Mejor ajuste
+		Busca que la diferencia entre  el tamaño a insertar y el disponible sea el menor posible. 
+		Va a encontrar el mas ajustado,  pero tambien se le asigna el espacio completo generando fragmentacion interna.
+		Requiere recorrer todos los espacios para encontrar el mejor. Salvo que encuentre un lugar de dmension exactamnte igua al archivo a insertar, en este caso lo inserta y deja de recorrer.
+
+	Peor ajuste
+		Busca el espacio mas grande para almacenar el registro. Requiere recorrer todo el archivo.
+		Utiliza el espacio justo necesario por el archivo, generando fragmentacion externa.
+
+
+
+
+
+
+
+
+
+
+
+
+
+

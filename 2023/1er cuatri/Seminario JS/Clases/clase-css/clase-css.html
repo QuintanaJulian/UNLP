@@ -1,0 +1,281 @@
+<!doctype html>
+<html lang="es">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Seminario de Lenguajes JavaScript</title>
+
+		<link rel="stylesheet" href="dist/reset.css">
+		<link rel="stylesheet" href="dist/reveal.css">
+		<link rel="stylesheet" href="dist/theme/black.css">
+        <link rel="stylesheet" href="css/custom.css">
+		<!-- Theme used for syntax highlighted code -->
+		<link rel="stylesheet" href="plugin/highlight/monokai.css">          
+        
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section>                                        
+                    <section>
+                        <h1>Seminario de Lenguajes. JavaScript</h1>
+                    </section>
+                    <section>
+                        <h2>Cascading Style Sheets - CSS</h2>
+                        <ul>
+                            <li>Describe como el contenido de la página Web va a ser visualizado. Permite ahorrar muchísimo trabajo para visualizar con el mismo estilo a todas las páginas del sitio Web, en distintos dispositivos y tamaños de pantalla. </li>
+                            <li>Las hojas de estilos se almacenan en archivos .css externos. Un código HTML no debe tener código CSS.</li>
+                            <li>Estandard definido por la W3C.</li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h2>Reglas CSS</h2>
+                        <p>Consiste de un selector y un bloque de declaraciones. </p>
+                        <a ahref="https://www.w3schools.com/css/css_syntax.asp"> Sintaxis CSS</a> <br>
+                        <img src="https://www.w3schools.com/css/img_selector.gif" alt="Sintaxis CSS">
+                    </section>
+                    <section>
+                        <h2>Reglas CSS</h2>
+                        <ul>                            
+                            <li>Selector: selecciona el elemento HTML a aplicar el estilo.</li>
+                            <li>Bloque de declaraciones {}: una o más declaraciones separadas por ;</li>
+                            <li>Cada declaración incluye una propiedad, nombre y valor separadas por ,</li>
+                        </ul>                        
+                    </section>
+                    <section>
+                        <h2>Ejemplo de una regla CSS</h2>
+                        <pre><code>
+                            p {
+                                color: red;
+                                text-align: center;
+                              }
+                        </code></pre>
+                        Selector: p <br>
+                        Propiedades: color y text-align<br>
+                        Valores de la propiedad: red y center <br>
+                        <a href="https://www.w3schools.com/css/tryit.asp?filename=trycss_syntax1">Probarlo</a>
+                    </section>
+                    <section>
+                        <h2>Selectores CSS</h2>
+                        <p>Un selector se usa para encontrar el elemento HTML al cual aplicarle el estilo. Categorías:
+                        <ul>
+                            <li>Simples: por id, name, class. </li>
+                            <li>Combinados: elementos relacionados.</li>
+                            <li>Pseudo-clase: basado en ciertos estados.</li>
+                            <li>Pseudo-elementos: aplica un estilo a una parte del elemento.</li>
+                            <li>Atributo: basado en un atributo o en el valor de un atributo.</li>
+                        </ul>
+                        <a href="./clase2/css-simple-selector.html">Ver ejemplo de selectores simples.</a>
+                        </p>
+                    </section>                    
+                    <section>
+                        <h2>Selectores CSS. Universal y Agrupamiento</h2>
+                        <p> * : selecciona todos los elementos HTML de la página. </p>
+                        <pre><code>
+                            * {
+                                text-align: center;
+                                color: blue;
+                              }
+                        </code></pre>
+                        <pre><code>
+                            h1, h2, p {
+                                text-align: center;
+                                color: red;
+                              }
+                        </code></pre>                          
+                    </section>
+                    <section>
+                        <h2>Selectores Simples</h2>
+                        <table>
+                            <thead><tr>
+                                <th>Selector</th>
+                                <th>Ejemplo</th>
+                                <th>Selecciona a:</th>
+                            </tr></thead>
+                            <tbody><tr>
+                                <td>#id</td>
+                                <td>#par1</td>
+                                <td>Selecciona el elemento p con id par1</td>
+                            </tr>
+                            <tr>
+                                <td>.class</td>
+                                <td>.descripcion</td>
+                                <td>Selecciona todos los elementos con la clase descripcion</td>
+                            </tr>
+                            </tbody>
+                            </table>
+                    </section>
+                    <section>
+                        <h2>Selectores simples - Continuación</h2>
+                        <table class="r-fit-text">
+                            <thead><tr>
+                                <th>Selector</th>
+                                <th>Ejemplo</th>
+                                <th>Selecciona a:</th>
+                            </tr></thead>
+                            <tbody><tr>                                             
+                                <td>element.class</td>
+                                <td>p.descripcion</td>
+                                <td>Todos los p con clase intro </td>
+                            </tr>
+                            <tr>
+                                <td>element</td>
+                                <td>h1</td>
+                                <td>Todos los elementos h1  </td>
+                            </tr>
+                            <tr>
+                                <td>element,element</td>
+                                <td>h1, h2, ..</td>
+                                <td>Todos los elementos h1 y h2  </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </section>
+                    <section>
+                        <h2>Incluir CSS en un documento HTML</h2>
+                        <ul>
+                            <li> internal: style </li>
+                            <li> external: en un archivo css. No debe contener tags HTML.</li>
+                            <li> en línea con el tag HTML </li> 
+                        </ul>                        
+                    </section>
+                    <section>
+                        <h2>Comentarios </h2>
+                        <p> Se incluyen para documentación y ayudan a editar el código en el futuro. Son ignorados por el cliente. </p>
+                        <pre data-id="code-animation"><code class="hljs">
+                            <head>
+                                <style>
+                                /* This is a single-line comment */
+                                p {
+                                  color: red;
+                                } 
+                                </style>
+                                </head>
+                                <body>
+                                
+                                <p> Hola Mundo!</p>
+                                <p> Párrafo con estilos del CSS .</p>
+                                <p> Los comentarios no se muestran en la salida .</p>                                
+                        </code>
+                        </pre>
+                    </section>
+                    <section>
+                        <h2>Colores</h2>
+                        <p  class="r-fit-text">Soportados por la mayoría de los navegadores, se especifican a través de: 
+                           <ul> 
+                                <li> Palabras claves <a href="https://www.w3schools.com/colors/colors_names.asp">(140 nombres estandard)</a> </li>
+                                <li> RGB: (red, green, blue) </li>
+                                <li> HEX: valor hexadecimal </li>
+                                <li> RGBA: RGB + canal alpha de transparencia de la imágen </li>
+                                <li> HSL y HSLA: indican tono, saturación y luminosidad </li>
+                           </ul>
+                           <a href="https://www.w3schools.com/colors/colors_picker.asp?colorhex=00FFFF" alt="Paleta de colores estándard">HTML Color Picker</a> <br>
+                           <a href="https://rgbacolorpicker.com/" alt="Paleta de colores con transparencia">RGBA Color Picker</a>                           
+                        </p>
+                    </section>
+                   <section>
+                    <h2>CSS - Propiedades Backgrounds</h2>
+                    <p>
+                        Se utilizan para efectos en el fondo de los elementos.
+                        <ul>
+                            <li> background-color </li>
+                            <li> background-image </li>
+                            <li> <a href="https://www.w3schools.com/css/tryit.asp?filename=trycss_background-image_gradient2">background-repeat: repeat-x / repeat-y </a></li>
+                            <li> background-attachment: scroll / fixed </li>                            
+                        </ul> 
+                    </p>
+                   </section> 
+                   <section>
+                    <h2>CSS - Propiedades Backgrounds</h2>
+                    <h3>Background Position</h3>
+                    <p> Relacionado con background-image, es posible especificar la ubicación de una imágen. <br>
+                    Valores posibles: rigth, left, center seguido de top, center, bottom. Ej. right top
+                    </p>
+                    <a href="https://www.w3schools.com/css/tryit.asp?filename=trycss_background-image_position" alt="Ejemplo de background-position">Ver ejemplo</a>
+                   </section>
+                   <section>
+                    <h2>Propiedades CSS de los elementos HTML</h2>
+                    <p>Cada elemento de HTML tiene un conjunto de propiedades CSS que pueden consultarse en el tutorial de <a href="https://www.w3schools.com/css/default.asp"></a>CSS de W3 Schools</p>
+                   </section>
+                   <section>
+                    <h2>Modelo de cajas</h2>
+                    <p>Cada elemento HTML posee ciertas dimensiones manipulables a través de CSS:
+                        <img src="https://lenguajecss.com/css/modelo-de-cajas/que-es/modelo-de-cajas.png" alt="Modelo de Cajas">                        
+                    </p>
+                   </section>
+                   <section>
+                    <h2>Ancho y alto de un elemento</h2>
+                    <p> Ancho Total = width + left padding + right padding + left border + right border + left margin + right margin <br>
+                        Alto Total = height + top padding + bottom padding + top border + bottom border + top margin + bottom margin
+                    </p>                                        
+                   </section>
+                   <section>
+                    <h2>Herencia CSS</h2>
+                    <p class="r-fit-text">Ciertos elementos pueden heredar ciertas propiedades de padres a hijos, como color y font-family, modificando el comportamiento por defecto. <br> 
+                        border no se hereda. <br>
+                        <pre><code>
+                            .container {
+                                color: green;
+                                border: 1px solid red;
+                              }
+                              
+                              .child {
+                                color: inherit;
+                              }
+                        </code></pre>
+                    </p>                     
+                   </section>
+                  <section>
+                    <h2>CSS Herencia - Palabras Claves</h2>
+                    <ul>
+                        <li>inherit</li>
+                        <li>initial</li>
+                        <li>unset</li>
+                        <li>revert</li>
+                    </ul>
+                  </section> 
+                   <section>
+                        <h2>Maquetación y layouts</h2>
+                        <p>Los elementos HTML tienen "tipo de representación visual": inline y block<br>
+                            Pueden modificarse a través de CSS.                                                    
+                            <a href="./clase2/css-maquetacion.html">Ver ejemplo display</a>
+                        </p>                        
+                   </section>
+                   <section>
+                        <h2>Cascada CSS</h2>
+                        <p class="r-fit-text">Conjunto de reglas y normas del navegador para aplicar estilos CSS a un elemento. <br>
+                        El tema es cuando se superponen los estilos para un mismo elemento, ¿cuál aplica? En general la última definida aunque puede haber salvedades respecto a importancia, origen, orden de aparición y especificidad.<br>
+                    </p>
+                   </section>                                      
+                    <section>
+                        <h2>BootStrap CSS</h2>
+                        <p> Framework para el desarrollo de sitios Web responsivos. <br>
+                        Brinda un conjunto de plantillas, tipografías, botones, etc. <br>
+                        Sólo para front-end</p>
+                    </section>
+                    <section>
+                        <h2>Referencias</h2>                        
+                        <a href="https://www.w3.org/Style/CSS/Overview.en.html">W3C - Cascading Style Sheets </a><br>
+                        <a href="https://www.w3schools.com/css/default.asp">CSS Tutorial</a>
+                        <a href="https://lenguajecss.com/css/cascada-css/que-es-cascada/">Cascada CSS </a><br>
+                        <a href="https://es.wikipedia.org/wiki/Bootstrap_(framework)">BootStrap. Wikipedia</a>
+                    </section>
+                </section>                
+		<script src="dist/reveal.js"></script>
+		<script src="plugin/notes/notes.js"></script>
+		<script src="plugin/markdown/markdown.js"></script>
+		<script src="plugin/highlight/highlight.js"></script>
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+			Reveal.initialize({
+				hash: true,
+
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
+			});
+		</script>
+	</body>
+</html>

@@ -1,0 +1,296 @@
+En un programa construido con objetos
+
+Select one:
+a. Es imprescindible especificar siempre un objeto que será la raiz del sistema en todas las operaciones.
+b. Todas las operaciones comienzan con un método especial del objeto main
+c. Cada operacion puede comenzar por un objeto diferente, de acuerdo a decisiones de diseño. 
+Feedback
+
+The correct answer is: Cada operacion puede comenzar por un objeto diferente, de acuerdo a decisiones de diseño.
+
+
+
+Creamos clases para
+
+Select one:
+a. Para poder encapsular la estructura de los objetos de forma que no sea accesible
+b. Representar la estructura y el comportamiento de todos los objetos que son instancias de la clase 
+c. Para indicar el codigo que se ejecutara cada vez que una clase es invocada
+Feedback
+
+The correct answer is: Representar la estructura y el comportamiento de todos los objetos que son instancias de la clase
+
+
+Cuando un objeto recibe un mensaje
+
+Select one:
+a. Decide que variables puede modificar para cumplir con la acción que le requieren
+b. Invoca un procedimiento que decide cual es la acción a realizarse
+c. Ejecuta el método que corresponde al mensaje recibido 
+Feedback
+
+The correct answer is: Ejecuta el método que corresponde al mensaje recibido
+
+
+
+A los objetos de nuestra aplicación los crean...
+
+Select one:
+a. Los objetos que pertenecen a una clase especial que controla el flujo del codigo
+b. Un conjunto de procedimientos especiales que se ejecutan al comenzar la aplicación
+c. Otros objetos de acuerdo a la lógica de la aplicación 
+Feedback
+
+The correct answer is: Otros objetos de acuerdo a la lógica de la aplicación
+
+
+
+Cuando en el objeto a de la clase  A ejecutamos el  método m que tiene el siguiente código:
+
+e = new Estudiante ()
+
+Select one:
+a. Todos los objetos de la clase A pueden enviarle mensajes a ese estudiante
+b. Creamos un objeto de la clase Estudiante, que será conocido por a  mediante la variable  e 
+c. Indicamos que la variable a puede enviarle mensajes a los estudiantes
+Feedback
+
+The correct answer is: Creamos un objeto de la clase Estudiante, que será conocido por a  mediante la variable  e
+
+
+
+Seleccione la afirmación correcta
+
+Select one:
+a. En un lenguaje de programación orientado a objetos las clases no constituyen tipos, solo las interfaces lo hacen
+b. En un lenguaje de programación orientado a objetos, un tipo es lo mismo que una clase
+c. Las interfaces en Java son el mecanismo para dar tipo a las clases
+d. Java es un lenguaje orientado a objetos sin tipos porque solo tiene clases
+e. Un tipo en un lenguaje orientado a objetos es un conjunto de firmas de métodos 
+Feedback
+
+The correct answer is: Un tipo en un lenguaje orientado a objetos es un conjunto de firmas de métodos
+
+
+
+¿Por qué decimos que solo el objeto que es “dueño” de una colección puede modificarla?
+
+Select one:
+a. Porque otros objetos no tienen acceso a la misma
+b. Porque las colecciones son parte de la estructura del objeto
+c. Porque los métodos que devuelven colecciones siempre devuelven copias
+d. Porque si no lo hacemos así, estamos rompiendo encapsulamiento 
+Feedback
+
+The correct answer is: Porque si no lo hacemos así, estamos rompiendo encapsulamiento
+
+
+
+Seleccione la afirmación correcta
+
+Select one:
+a. En Java, solo es posible agregar a una colección instancias de una misma clase, o de clases que comparten alguna superclase.
+b. En Java, es recomendable que todos los objetos en una colección sean de la misma clase.
+c. En Java, es recomendable que todos los objetos en una colección compartan un tipo. 
+d. En java, las colecciones solo admiten como contenido instancias de clases que implementan interfaces.
+Feedback
+
+The correct answer is: En Java, es recomendable que todos los objetos en una colección compartan un tipo.
+
+
+
+
+Indique cuál de estas afirmaciones es correcta:
+
+
+Select one:
+a. La notación para indicar que una clase es abstracta es escribiendo su nombre en cursiva, y la notación para indicar que una operación es abstracta es con el prefijo #.
+b. La notación para indicar que una clase es abstracta es poniendo su nombre en cursiva o con el estereotipo <<abstract>>. La notación para indicar que una operación es abstracta es similar (en cursiva o con el estereotipo <<abstract>>). 
+c. La notación para indicar que una clase es abstracta es únicamente con el estereotipo <<abstract>>
+Feedback
+
+The correct answer is: La notación para indicar que una clase es abstracta es poniendo su nombre en cursiva o con el estereotipo <<abstract>>. La notación para indicar que una operación es abstracta es similar (en cursiva o con el estereotipo <<abstract>>).
+
+
+
+
+Cuál es el propósito principal de un diagrama de secuencia? 
+
+
+Select one:
+a. Visualizar las interacciones entre objetos a lo largo del tiempo 
+b. Describir las relaciones entre las clases de un sistema
+c. Mostrar la estructura de un sistema
+d. Representar la distribución física de los componentes
+Feedback
+
+The correct answer is: Visualizar las interacciones entre objetos a lo largo del tiempo
+
+
+
+
+Seleccione la opción correcta:
+
+
+Select one:
+a. Los diagramas de UML de Clase y Secuencia expresan las mismas características del modelo
+b. Al construir diagramas de UML de Clases y de Secuencia se debe tener en cuenta el lenguaje de programación en el que se implementará el programa
+c. Los diagramas de UML de Clase y Secuencia se construyen con independencia del lenguaje en el que luego se implementará el programa. 
+d. Al construir un diagramas de UML de Clases sólo deben utilizarse interfaces (interface) si para la implementación se dispone de un lenguaje que las soporte (por ejemplo, Java)
+Feedback
+
+The correct answer is: Los diagramas de UML de Clase y Secuencia se construyen con independencia del lenguaje en el que luego se implementará el programa.
+
+
+
+
+Marque la opción correcta
+
+
+Select one:
+a. En los diagramas UML es recomendable evitar el uso de atributos con visibilidad pública para fomentar el encapsulamiento 
+b. En los diagramas UML es recomendable utilizar atributos con visibilidad pública para favorecer el acoplamiento
+c. En los diagramas UML podemos usar atributos con visibilidad pública siempre y cuando programemos en Java.
+d. En los diagramas UML no utilizamos atributos con visibilidad pública porque UML no lo permite. UML solo permite tener atributos con visibilidad privada y protegida.
+Feedback
+
+The correct answer is: En los diagramas UML es recomendable evitar el uso de atributos con visibilidad pública para fomentar el encapsulamiento
+
+
+
+
+El Modelo Conceptual o del Dominio es útil para:
+
+Select one:
+a. representar las interacciones entre los objetos candidatos del Sistema
+b. representar el dominio del problema en la etapa de Análisis 
+c. mostrar el comportamiento (métodos) de las clases candidatas.
+d. representar la solución del Sistema OO, mostrando la vista estática del Diseño final.
+Feedback
+
+The correct answer is: representar el dominio del problema en la etapa de Análisis
+
+
+
+
+En Reuso de código (Herencia): 
+
+Select one:
+a. Extendemos pensando que la nueva subclase puede redefinir y anular lo que hereda y no corresponde a su funcionalidad
+b. Extendemos pensando en "Herencia de Estructura" para cumplir con "Is-a"
+c. Extendemos pensando en "Herencia de comportamiento", para cumplir con "Is-a" 
+d. Extendemos pensando que usamos sólo lo que nos sirva, que no heredamos atributos y comportamiento de la cadena de superclases
+Feedback
+
+The correct answer is: Extendemos pensando en "Herencia de comportamiento", para cumplir con "Is-a"
+
+
+
+Seleccione la opción correcta
+
+Select one:
+a. Hacer testeo de unidad en objetos es asegurarse de que el programa no tiene malos olores de diseño (por ejemplo, métodos largos)
+b. Hacer testeo de unidad en objetos es asegurarse de que el diseño hace una adecuada asignación de responsabilidades.
+c. Hacer testeo de unidad en objetos es asegurarse de que el programa hace lo que se espera, lo hace como se espera, y no falla. 
+d. Hacer testeo de unidad en objetos es asegurarse de no romper el encapsulamiento de los objetos.
+Feedback
+
+The correct answer is: Hacer testeo de unidad en objetos es asegurarse de que el programa hace lo que se espera, lo hace como se espera, y no falla.
+
+
+
+Las Heurísticas para Asignación de Responsabilidades (HAR) y Principios SOLID:
+
+Select one:
+a. Son Principios del Paradigma OO que no tienen ningún punto en común
+b. Promueven ambos Alta Cohesión y Bajo Acoplamiento 
+c. Promueven ambos Baja Cohesión y Alto Acoplamiento
+d. Consideran que una Interfaz y/o una clase pueden cubrir funcionalidades diversas y tener protocolo voluminoso
+Feedback
+
+The correct answer is: Promueven ambos Alta Cohesión y Bajo Acoplamiento
+
+
+
+
+Seleccione la afirmación correcta
+
+Select one:
+a. Es importante testear todos los métodos hasta alcanzar una cobertura mayor al 80% del código.
+b. Es importante testear ni bien se termina de escribir el programa, y con tanta cobertura como sea posible.
+c. Es importante testear temprano, y tanto como sea el riesgo del artefacto a testear 
+d. Es importante diseñar bien el programa y chequearlo entre pares para evitar escribir tests de unidad.
+Feedback
+
+The correct answer is: Es importante testear temprano, y tanto como sea el riesgo del artefacto a testear
+
+
+
+
+Seleccione la afirmación correcta:
+
+Select one:
+a. Smalltalk es un lenguaje fuertemente tipado, en el que se declara el tipo de cada variable y parámetro, utilizando clases.
+b. Smalltalk es un lenguaje fuertemente tipado, en el que se declara el tipo de cada variable y parámetro, utilizando interfaces.
+c. Smalltalk es un lenguaje dinámico, en el que no se indica explícitamente el tipo de las variables. 
+d. Smalltalk puede utilizarse tanto como un lenguaje dinámico, en el que no es necesario indicar explícitamente el tipo de las variables o como un lenguaje fuertemente tipado.
+Feedback
+
+The correct answer is: Smalltalk es un lenguaje dinámico, en el que no se indica explícitamente el tipo de las variables.
+
+
+
+
+Seleccione la afirmación correcta
+
+Select one:
+a. Las clases de Smalltalk son objetos especiales, que solo entienden mensajes predefinidos para crear instancias. No es posible extender una clase para que entienda otros mensajes.
+b. En Smalltalk, no existen las clases. El lenguaje se basa en prototipos que se clonan y especializan.
+c. En Smalltalk, al igual que en java, tenemos métodos estáticos que se definen en las clases y se invocan directamente.
+d. En Smalltalk las clases también son objetos, tienen sus propios atributos y métodos. El new, por ejemplo, es un mensaje de clase. 
+Feedback
+
+The correct answer is: En Smalltalk las clases también son objetos, tienen sus propios atributos y métodos. El new, por ejemplo, es un mensaje de clase.
+
+
+
+Seleccione la afirmación correcta
+
+Select one:
+a. En ECMAScript, cada objeto hereda estado de su prototipo. El comportamiento no se hereda.
+b. Al no ser basado en clases sino en prototipos, ECMAScript no implementa el concepto de herencia.
+c. En ECMAScript, cada objeto hereda comportamiento de su prototipo. El estado no se hereda.
+d. En ECMAScript, cada objeto hereda comportamiento y estado de su prototipo. 
+Feedback
+
+The correct answer is: En ECMAScript, cada objeto hereda comportamiento y estado de su prototipo.
+
+
+
+
+Seleccione la afirmación correcta
+
+Select one:
+a. ECMAScript es un lenguaje basado en clases si se lo usa en el servidor, y basado en prototipos si se lo usa en el navegador.
+b. ECMAScript es un lenguaje basado en clases si se lo usa en el navegador, y basado en prototipos si se lo usa en el servidor.
+c. Al igual que Java y Smalltalk, que son lenguajes orientados a objetos basados en clases, ECMAScript es también basado en clases.
+d. A diferencia de Java y Smalltalk, que son lenguajes orientados a objetos basados en clases, ECMAScript es basado en prototipos. 
+Feedback
+
+The correct answer is: A diferencia de Java y Smalltalk, que son lenguajes orientados a objetos basados en clases, ECMAScript es basado en prototipos.
+
+
+
+
+
+Seleccione la afirmación correcta
+
+Select one:
+a. ECMAScript puede utilizarse tanto como un lenguaje dinámico, en el que no es necesario indicar explícitamente el tipo de las variables o como un lenguaje fuertemente tipado.
+b. ECMAScript es un lenguaje fuertemente tipado, en el que se declara el tipo de cada variable y parámetro, utilizando clases.
+c. ECMAScript es un lenguaje dinámico, en el que no se indica explícitamente el tipo de las variables. 
+d. ECMAScript es un lenguaje fuertemente tipado, en el que se declara el tipo de cada variable y parámetro, utilizando interfaces.
+Feedback
+
+The correct answer is: ECMAScript es un lenguaje dinámico, en el que no se indica explícitamente el tipo de las variables.
+

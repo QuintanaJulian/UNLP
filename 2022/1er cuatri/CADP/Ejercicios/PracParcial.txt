@@ -1,0 +1,90 @@
+program parcial; 
+
+datos = record
+	dni: integer;
+	nombre: integer;
+	end; 
+
+lista: ^nodo;
+
+nodo = record	-------------------------
+	dato: datos;
+	sig: lista;
+	end;
+
+procedure insertarAdelante (var pI: lista; dato: datos);
+var
+nuevo: lista;
+
+begin
+new (nuevo); nuevo^.datos:= dato; nuevo^.sig:= nil;
+if (pI = nil) then
+	pI:= nuevo
+else begin
+	nuevo^.sig := pI; -------------------------
+	pI := nuevo;
+	end;
+end;
+
+procedure insertarAtras (VAR pI: lista; VAR pU: lista; dato: datos);
+var
+nuevo: lista;
+
+begin
+new (nuevo); nuevo^.dato:= dato; nuevo^.sig:= nil;
+if (pI = nil) then begin
+	pI:= nuevo;
+	pU:= nuevo;
+end
+else begin 
+	pU^.sig := nuevo;
+	pU:= nuevo;
+end;
+end;
+
+procedure insertarOrdenado (VAR pI: lista; dato: datos);
+var
+nuevo, actual, ant: lista;
+
+begin
+	new (nuevo); nuevo^.datos:= dato; nuevo^.sig:= nil;
+	while (actual <> nil) and (actual^.datos.dni </> datos.dni) do begin
+		ant:= actual;
+		actual:= actual^.sig;	
+	end;
+	
+	if (actual = pI) then begin 
+		nuevo^.sig:= pI;
+		pI:= nuevo;
+	end
+	else begin
+	nuevo^.sig: ant^.sig;
+	ant^.sig: nuevo;
+	end; 
+end;
+
+procedure analizarDatos (VAR )
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

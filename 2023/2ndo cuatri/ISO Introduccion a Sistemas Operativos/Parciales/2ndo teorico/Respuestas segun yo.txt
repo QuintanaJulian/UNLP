@@ -1,0 +1,102 @@
+1- Verdadero, el desplazamiento es lo que hace poder movernos dentro
+
+2- Falso, el tamaño de la pagina es siempre el mismo sin importar el tamaño del proceso. Por lo que puede haber siempre la misma cantidad maxima de paginas
+
+3- Si tenemos paginas mas grandes, tenesmo por consecuencia menos cantidad de paginas en memoria por lo que tenemos mas chnace de tener page faul, pero por otro lado si las paginas son muy chicas se requerira mas entradas a memoria para cargar multiples paginas de un proceso
+
+4- Las arquitectura trabaja mejor cargando multiples paguinas pequeñas a una muy grande. por lo que esto sumado a lo anterior determina el tamaño optimo de una pagina. Hay que tener en cuenta qwue si una pagina es muy grande puede generar fragmentacion interna
+
+5- Verdadero		------------------------------------------------------------------------------------
+
+6- La hiperpaginacion tiene como consecuencia que va arequerir mucho uso de cpu y del bus para andar cargando paginas nuevas, lo cual decrementa la posibilidad de ejecutar procesos y reduce el paralelismo
+
+7- Si el delta del WS es muy chico no sera suficiente para abarcar todos lso marcos requeridos por el programa, pero si es muy grande tendra marcos lso cuales no van a ser utilizados, ocupando espacio que podria ser util para otros procesos
+
+8- El remplazo de paginas global lo que hace es que cuando hay un PF se busca el marco victima de entre todos los marcos segun el algoritmo pero sin importar a quien esta asosiado dicho marco. Por otro lado en el remplazo local se busca un marco segun el algoritmo pero que pretenezca al mismo procesos que el que realiza el PF.
+
+9- V
+
+10- La asignacion equitativa divide la totalidad de marcos entre la cantidad  de programas y a cada programa le asigna una misma cantidad de marcos. Por otro lado la distribucion proporcional le asigna a cada proceso una cantida de marcos segun la cantida dtotal de paginas de cada proceso, quedando de esta forma cada programa con uan cantidad distinta de marcos
+
+11- Se genera el PF, se busca en la TLB, si se encuentra aqui la pagina se obtiene la direccion fisica. En caso de que no este se accede a la tabla de paginas de la memoria principal y se busca aqui, si se encuentra se actualiza la TLB y se obiene la direccion fisica. Si no se encuentra tampoco en memoria principal se avisa al CPU que la busque en momoria secundaria, una vez encontada la pagina se procede a cargar la pagina en memoria principal si hay espacio. En caso de que no hay espacio se realiza un remplazo de alguna pagina. y se vuelve a arrancar el procedimiento desde el comienzo.
+
+12- Segun internet la ideal seria una pagina no referenciada (R) ni modificada (M), despues iria una no referencia da pero modificada y despues una referenciada pero no modificada
+
+
+
+
+
+13- Si el usuario puede acceder a un archivo se corrobora en el open			------------------------------------------------------------------------------------
+
+14- Si, si se cambia la diraccion a la referencia de otro i-nodo
+
+15- Si, si se modifica algo que este en otro i-nodo del mismo archivo
+
+16- Si, ya que estas seran de acceso mas rapido
+
+17- Diria que si				------------------------------------------------------------------------------------
+
+18- Diria que no		 		------------------------------------------------------------------------------------
+
+19- No
+
+20- Al agregar un archivo a lfile system se modificara la tabla de nodos y el directorio
+
+21- no
+
+22- si
+
+23- no, no se pone en 0 los bloques, pero se marcan los mismos para que saber que estan borrados
+
+24- no
+
+25- no
+
+
+
+
+
+
+26- Se
+
+27- Verdero
+
+28- diria que verdadero
+
+29- ni idea
+
+30- verdadero
+
+31- Verdadedro
+
+32- Falso, sirve para buscar por cualquier bloque que este libre o delayed write
+
+33- Falso, puede haber mas de uno
+
+34- Verdadero (Creo)
+
+35- Nope
+
+36- Se incorpora al final de la free list
+
+37- Falso, queda a la espera de que se libere un buffer
+
+38- 
+
+39-
+
+40- Conviene mas cantidad e hash queues con pocos elementos, se busca la mayor  dispersion.
+
+
+
+
+ALT + Z 
+
+
+
+
+
+
+
+
+

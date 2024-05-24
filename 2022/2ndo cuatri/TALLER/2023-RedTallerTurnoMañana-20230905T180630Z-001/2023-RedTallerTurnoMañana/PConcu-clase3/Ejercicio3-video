@@ -1,0 +1,65 @@
+{Realice un programa para que 2 robots junten todas las flores de los perimetros (15,15)-(30,35) y (40,40)-(55,60) respectivamente. 
+Luego, deben posicionarse en la esquina (10,10) y depositar todas las flores juntadas ** de a una **.
+Los robots se encuentran posicionados originalmente en la esquina (15,15) y (40,40).
+}
+
+programa Ejercicio3 
+procesos
+  proceso juntarFlores (ES flor:numero)
+  comenzar
+    mientras (HayFlorEnLaEsquina)
+      tomarFlor
+      flor:= flor + 1
+  fin
+
+  proceso rectangulo(E alto: numero; E ancho: numero; ES flores: numero)
+  comenzar
+    repetir 2
+      {alto}
+      repetir alto
+        juntarFlores(flores)
+        mover
+      derecha
+      {ancho}
+      repetir ancho
+        juntarFlores(flores)
+        mover
+      derecha
+  fin
+
+areas
+  area1: AreaP(15,15,30,35)
+  area2: AreaP(40,40,55,60)
+  areaDeposito: AreaC(10,10,10,10)
+robots 
+  robot tipo1
+  variables
+    flores:numero
+    avOrig,caOrig: numero
+  comenzar
+    {Hace rectangulo}
+    flores:=0
+    rectangulo(20,15,flores)
+    {Deposita en 10,10 las flores juntadas de a una}
+    avOrig:= PosAv
+    caOrig:= PosCa
+    repetir flores
+      BloquearEsquina(10,10)
+      Pos(10,10)
+      depositarFlor
+      Pos(avOrig,caOrig)
+      LiberarEsquina(10,10)      
+  fin
+      
+variables 
+  robot1: tipo1
+  robot2: tipo1
+comenzar 
+  AsignarArea(robot1,area1)
+  AsignarArea(robot2,area2)
+  AsignarArea(robot1,areaDeposito)
+  AsignarArea(robot2,areaDeposito)
+  Iniciar(robot1, 15, 15)
+  Iniciar(robot2, 40, 40)
+fin
+{Pensar: que ocurre si cada robot deposita todas juntas las flores en la esquina (10,10).}

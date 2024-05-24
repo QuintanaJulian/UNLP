@@ -1,0 +1,497 @@
+<!doctype html>
+<html lang="es">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Seminario de Lenguajes JavaScript</title>
+
+		<link rel="stylesheet" href="dist/reset.css">
+		<link rel="stylesheet" href="dist/reveal.css">
+		<link rel="stylesheet" href="dist/theme/black.css">
+        <link rel="stylesheet" href="css/custom.css">
+		<!-- Theme used for syntax highlighted code -->
+		<link rel="stylesheet" href="plugin/highlight/monokai.css">          
+        
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section>                                        
+                    <section>
+                        <h1>Seminario de Lenguajes. JavaScript</h1>
+                    </section>
+                    <section>
+                        <h2>Clientes y servidores</h2>
+                        <p>
+                            Cuando visitamos un sitio web con nuestro navegador predilecto (Firefox, Chrome, Edge, etc.) se produce una conexión vía Internet entre un cliente ─quien inicia la conexión y
+                            solicita el contenido del sitio web─ y un servidor ─quien recibe la conexión y envía el contenido solicitado.
+                        </p>
+                    </section>
+                    <section>
+                        <h2>Clientes y servidores</h2>
+                        <img src="./clase6/c6-cliente-servidor.PNG" alt = "Los clientes hacen peticiones, son dispositivos de distinto tipo. Los servidores son como un negocio, atienden las peticiones de los clientes." />
+                    </section>
+                    <section>
+                        <h2>Clientes y servidores - Protocolo de comunicación </h2>
+                        <p>                            
+                            El navegador se conecta con el DNS  para localizar la dirección del servidor (la dirección de la tienda) <br>
+                            El navegador envía un mensaje de petición HTTP al servidor pidiéndole que envíe una copia de la página Web del cliente. Este mensaje se envía a través de la conexión a Internet usando TCP/IP <br>                             
+                        </p>                        
+                    </section>
+                    <section>
+                        <h2>Clientes y servidores - Protocolo de comunicación </h2>
+                        Si el servidor aprueba la solicitud del cliente, envía “200 OK” y comienza a enviar los archivos de la solicitud, en trozos pequeños llamados “paquetes de datos”. <br>
+                        El navegador reúne todos esos trozos, forma el sitio Web completo y te lo muestra (tus nuevas compras de la tienda están en casa).
+                    </section>
+                    <section>
+                        <h2>Clientes y servidores - DNS </h2>
+                        <ul>
+                           <li>Las direcciones Web están formadas caracteres que se transforman en secuencias de números denominadas direcciones IP.
+                            <li> Una dirección IP representa un único lugar en la Web.</li>
+                            <li>Para que puedan recordarse fácilmente se crearon los servidores de nombres de dominio, que se ocupan de coincidir la dirección IP con la dirección tecleada en el navegador.</li> 
+                        </ul> 
+                        <a href="https://ipinfo.info/html/ip_checker.php">IPChecker</a>
+                    </section>
+                    <section>
+                        <h2>Clientes y servidores - DNS </h2>
+                        <img src="./clase6/c6-dns.png" title="URL literal y otra con la dirección IP" alt="Imagen de dos navegadores Web. En el primero, la barra de direcciones con la url literal. En el segunda con la dirección IP.">
+                    </section>
+                    <section>
+                        <h2>Protocolo HTTP</h2>
+                        <a href="https://www.youtube.com/watch?v=J-lJC_Zl-Rs&t=327s">¿QUÉ ES HTTP Y HTTPS? | Aprende que es http, https y para que utiliza en menos 5 minutos!</a>
+                        Y repasamos... <a href="https://play.kahoot.it/v2/?quizId=8bd71c19-fbe7-475d-ae13-82c2461c4ed6">Kahoot</a>    
+                    </section>
+                    <section>
+                        <h2>Funciones sincrónicas</h2>
+                        <p>JavaScript tiene un hilo de proceso único, lo que significa que dos porciones del script no pueden ejecutarse al mismo tiempo, deben hacerlo una después de la otra</p>
+                        Veamos un ejemplo <br>
+                        <a href="http://latinflip.com/loupe">Simulación de pila de ejecución y llamadas</a>
+                    </section>
+                    <section>
+                        <h2>Funciones sincrónicas</h2>      
+                        <pre><code class="hljs" data-trim contenteditable>
+                            function saludar(name) {
+                                    return `Hola, mi nombre es ${name}!`;
+                                }
+                    
+                            const name ='Trinidad';
+                            const saludo = saludar(name);
+                            console.log(saludo);		                                                          
+                        </code></pre>
+                        <p>saludar() espera a que se termine de ejecutar para continuar con el resto del código</p>
+                    </section>
+                    <section>
+                        <h2>Asincronismo en JS</h2>
+                        <p>El asincronismo es una técnica que permite al programador habilitar una tarea que potencialmente va a demorar y en lugar de esperar continua respondiendo a otros eventos miesntras la tarea se sigue ejecutando.
+                            Es similar a la atención de un mozo en un restaurant.
+                        </p>
+                        <img src="clase6/c6-moz-feliz.png" alt="Un mozo atiende muchas mesas" height="300px" width="300px"/>
+                    </section>
+                    <section>
+                        <h2>Asincronismo en JS</h2>
+                        <p>En JS se da también,por ejemplo cuando tenemos que acceder a un archivo, a una base de datos, a una API, entre otras posibilidades.} </p>
+                    </section>
+                    <section>
+                        <h2>Funciones asincrónicas en JS</h2>      
+                        <ul>                  
+                            <li>fetch() para hacer requirimientos HTTP</li>
+                            <li>getUserMedia() para acceder a la cámara o microfono del usuario</li>
+                            <li>showOpenFilePicker() para permitir al usuario subir un archivo</li>
+                        </ul>
+                    </section>                                                
+                    <section>
+                        <p>¿Qué sucede si una función tarda demasiado en ejecutar? <br>
+                            Es bloqueado y no es posible seguir ejecutando.
+                        </p>
+                        <a href="./clase6/ej2-generar-primos.html">Ejemplo de generar primos</a>
+                    </section>
+                    <section>
+                        <h2>Funciones asincrónicas</h2>                        
+                            <p>En algunos casos, sería ideal: </p>
+                            <ul>
+                                <li>Ejecutar una función que lleva un tiempo</li>
+                                    <li>Mientras se ejecuta, el programa continúa ejecutando otros eventos</li>
+                                    <li>Ser notificado del resultado de la ejecución</li>
+                             </ul>
+                    </section>
+                    <section>
+                        <h2>Funciones asincrónicas</h2>
+                        <p>Temporizador. Recibe la función a ejecutar <strong> callback </strong>luego del tiempo que esperará para ejecutarla <strong>time</strong><br>                        
+                            setTimeOut(callback,time);</p>
+                        <pre><code>
+                            // Se ejecuta la función luego de 2 segundos (2000 milisegundos)
+                            setTimeout(function() {
+                                console.log("Función ejecutada!");
+                              }, 2000);
+
+                            // Función =>. Más legible
+                            setTimeout(() => console.log("Función ejecutada!"), 2000);
+                        </code></pre>                              
+                    </section>   
+                    </section>                                                    
+                    <section>
+                        <h2>Funciones asincrónicas </h2>                        
+                        <p>Se utiliza la API XMLHttpRequest para asociar eventos asincrónicos, con un manejador de eventos.
+                            Es un mecanismo muy confuso y con algunos problemas en la gestión de las funciones callbacks.
+                            La opción es usar Promesas o Promise.
+                        </p>
+                    </section>                                       
+                    <section> 
+                        <h2>Objeto promise o promesas</h2>
+                        <p>Imaginemos que somos un cantante de rock y nuestros fans preguntan día y noche cuando va a estar nuestra próxima canción.
+                            Generás una lista para que dejen ahí su email y les avisarás cuando esté la canción, para que todos la reciban cuando la canción esté disponible.
+                            Si algo sale mal, un incendio en el estudio por ejemplo, también le vas a avisar.
+                            Nadie sale abrumado y los fanáticos no se pierden la canción. 
+                        </p>
+                    </section>
+                    <section>
+                        <h2>Promesas en JS</h2>
+                        <p>En la vida real tenemos:</p>
+                        <ul>
+                            <li>Un código productor (el cantante) que se toma su tiempo para cargar los datos a travès de una red </li>
+                            <li>Un código consumidor, que requiere el resultado del código consumidor. Muchas funciones pueden requerir este código, son los fans</li>
+                            <li>Una promesa es el código de JS que une al productor con el consumidor</li>
+                        </ul>
+                        La analogía no es tan precisa porque las promesas son más complejas, pero sirven para empezar.
+                    </section>
+                    <section>
+                        <h2> Promesas </h2>
+                        <p>Las promesas cuentan de 2 partes: cómo se crean (preparar una función para que use promesas y se puedan consumir) y cómo se utilizan (se consumen)</p>
+                        <img src="./clase6/c6-promise.png" alt="Promesas"/>
+                        <a href="https://www.w3schools.com/js/js_promise.asp">JavaScript Promise. w3schools</a>
+                    </section>
+                    <section>
+                        <h2>Objeto promesa</h2>
+                        <img src=".clase6/c6-objecto-Promesa.png" alt="Contructor del objeto promesa: let promise=new Promise(function(resolve, reject) {//código del productor o cantante}})" />
+                       <p>La función se denomina ejecutor. resolve y reject son funciones callbacks proporcionadas por JS. <br>
+                        El ejecutor corre automáticamente e intenta realizar una tarea. <br>
+                        Cuando termina con el intento, llama a resolve si fue exitoso o reject si hubo un error.
+                       </p> 
+                    </section>
+                    <section>
+                        <h2>Objeto Promise - Propiedades</h2>
+                        <ul> 
+                            <li>state: inicialmente "pendiente", luego cambia a "cumplido" cuando se llama a resolve o "rechazado" cuando se llama a reject.</li>
+                            <li>result: inicialmente undefined, luego cambia a valor cuando se llama a resolve(valor) o error cuando se llama a reject(error).</li>
+                        </ul>
+                        Estos estados se acceden con los métodos .then/.catch/.finally                   
+                    </section>
+                    <section>
+                        <h2>Estado de una promesa</h2>
+                        <img src="./clase6/c6-promesas-estados.png" alt="Promesas en JS. Promesa Pendiente (pending) y luego pasa a Cumplida (Fullfiled) o Rechazada (Rejected)">
+                        <a href="https://lenguajejs.com/javascript/asincronia/promesas/" target="_blank" title ="JS Asincronía. Promesas"></a>
+                    </section>                    
+                    <section>
+                        <h2>Objeto Promise - Métodos</h2>                        
+                        <p>Las funciones consumidoras (los “fanáticos”), recibirán el resultado o error. 
+                            Las funciones de consumo pueden registrarse (suscribirse) utilizando los métodos .then, .catch y .finally.
+                        </p>
+                    </section>   
+                    <section>
+                        <h2>Objeto Promise - Llamado</h2>
+                        <ul>
+                            <li>.then() cuando se ejecuta correctamente</li>
+                            <li>.catch() cuando hubo error</li>
+                        </ul>
+                    </section>                 
+                    <section>
+                        <h2>Objeto Promise - Ejemplo</h2>                        
+                        <img src="clase6/c6-promise-metodos.PNG" lt="Métodos de promise"/>
+                    </section>
+                    <section>
+                        <h2>Objeto Promise - Ejemplo</h2>                        
+                        <img src="clase6/c6-promise-error.PNG" lt="Métodos de promise"/>
+                    </section>                    
+                    <section>
+                        <h2>Objeto Promise - Finally</h2>
+                        <p>Es similar a .then(f, f). Se ejecuta siempre más allá del resultado. <br>
+                            f siempre se ejecuta cuando se resuelve la promesa: ya sea que se resuelva o rechace.
+                            Útil para realizar la limpieza 
+                        </p>
+                        <img src="/clase6/c6-finally.png" alt="Finally()"/>
+                     </section>
+                     <section>
+                        <h2>Ejemplos Completo</h2>
+                        <a href="clase6/ej3-ejemplo-promise.html">Ejemplo función loadScript</a>
+                     </section>                     
+                    <section>
+                        <h2>Ventajas de las promesas</h2>
+                        <ul>
+                            <li>Permiten hacer las cosas en el orden natural. Primero, ejecutamos loadScript (script), y .then escribimos qué hacer con el resultado.</li>
+                            <li>Podemos llamar a “.then” en una promesa tantas veces como queramos. Cada vez, estamos agregando un nuevo “fan”, una nueva función de suscripción, a la “lista de suscripción”.</li>
+                            <li>Las promesas se pueden encadenar en una <a src="https://es.javascript.info/promise-chaining">Cadena de promesas</a></li>
+                        </ul>                        
+                    </section> 
+                    <section>
+                        <h2>Async await</h2>
+                        <p>Es similar al anterior, es una mejora en la sintaxis. <br>
+                            Permite escribir código asíncrono</p>
+                    </section>
+                    <section>
+                        <h2>Application Programming Interface - API</h2>
+                        <p>Una API es una interfaz para manipular aspectos del navegador y del SO donde se ejecuta la aplicación. <br>
+                            Los lenguajes de programación brindan herramientas para construir y consumir APIs.</p>
+                        <img src="https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Client-side_web_APIs/Introduction/plug-socket.png" alt="Enchufes de distintos colores y tamaños enchufados a distintos enchufes">
+                    </section>
+                    <section>
+                        <h2>Web APIs</h2>
+                        <p>En el entorno de la Web, del lado del cliente existen muchas APIs que están construidas sobre el núcleo del lenguaje de programación.<br>
+                            Se dividen en 2 categorías:
+                            <ul>
+                                <li>APIs del navegador o Brower API. Extender la funcionalidad del navegador, por ejemplo para gestionar audio.</li>
+                                <li>APIs de terceros, como Twitter, Facebook, ...</li>
+                            </ul>
+                        </p>
+                    </section>
+                    <section>
+                        <h2>¿Qué podemos hacer con una API?</h2>
+                        <ul>
+                            <li>API DOM para manipular documentos.</li>
+                            <li>API Fetch para recuperar datos de un servidor, usadas para actualizar pequeñas partes de un sitio Web.Ajax.</li>
+                            <li>API para manipular gráficos, como Canvas.</li>
+                            <li>API de audio y video</li>
+                            <li>API de almacenamiento, como Web Storage.</li>
+                            <li>API de dispositivos, como geolocalización.</li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h2>Ejemplo de Ajax</h2>
+                        <img src="./clase6/c6-ajax-ejemplo.png" alt="Ejemplo de Booking donde empezar a escribir la palabra y aparecen los términos que retonra el servidor">
+                    </section>
+                    <section>
+                        <h2>¿Cómo funcionan las APIs?</h2>
+                        <p>Las APIs interactuan usando objetos JS que sirven como contenedores de los datos de la API (propiedades) y brinda la funcionalidad que la API provee.<br>
+                        Es necesario sus puntos de acceso. Por ejemplo, para la API DOM contamos con createElement("em"), querySelector("p") </p>
+                    </section>                                                           
+                    <section>
+                        <h2>API Fetch</h2>
+                        <ul>
+                            <li>Provee un método global fetch() para proporcionar recursos de la red en forma asincrónica utilizando objetos Promise. </li>
+                            <li>Genera código más legible y menos verbose.</li>
+                            <li>Es sencillo y permite asociar otros conceptos relacionados con HTTP como CORS y extensiones HTTP.</li>
+                        </ul>                            
+                        <img src="./clase6/c6-fetch.PNG" />                            
+                    </section>
+                    <section>
+                        <h2>Ejemplo de uso de fetch()</h2>
+                        <pre><code>
+                            // Realizamos la petición y guardamos la promesa
+                            const request = fetch("/mis-gatitos.txt");
+
+                            // Si es resuelta, entonces ejecuta esta función...
+                            request.then(function(response) { ... });
+                            //Será rechazada si por alguna razón no pudo completar la petición, como fallo en la red.
+                        </code></pre>
+                    </section>                    
+                    <section>
+                        <h2>Objeto Response</h2>
+                        <p>Cuando se ejecuta una promesa, se retorna una instancia de Response</p>
+                    </section>
+                    <section>
+                        <h2>El Objeto Response - Propiedades </h2>
+                        <img src="./clase6/c6-objeto-response.PNG" />
+                    </section>
+                    <section>
+                        <h2>El Objeto Response. Métodos </h2>
+                        <img src="./clase6/c6-response-metodos.PNG">
+                    </section>
+                    <section>
+                        <h2>Objeto Response</h2>
+                        <img src="clase6/c6-fetch-ejemplo.PNG" />
+                        <img src="clase6/c6-fetch-simplificado.PNG" />
+                    </section>
+                    <section>
+                        <h2>Ejemplo de uso de fetch()</h2>
+                        <p>Forma habitual</p>
+                        <pre><code>
+                            fetch("/mis-gatitos.txt")
+                                .then(function(response) {
+                                /** Código que procesa la respuesta **/
+                                });
+                        </code></pre>                                                
+                    </section>
+                    <section>
+                        <h2>Ejemplo de uso de fetch()</h2>
+                        <pre><code>
+                            fetch("https://mdn.github.io/learning-area/javascript/oojs/json/superheroes.json")
+                                .then(response => response.text())
+                                .then(data => console.log(data))
+                                .finally(() => console.log("Terminado!"))
+                        </code></pre> 
+                    </section>
+                    <section>
+                        <h2>API Fetch</h2>
+                        <img src="./clase6/c6-fetch-gatitos.PNG" />
+                    </section>                    
+                    <section>
+                        <h2>fetch(url, options)</h2>
+                        <p>
+                            url: obligatorio <br>                            
+                            options: objeto con los siguientes parámetros. 
+                        </p>
+                        <ul>    
+                            <li>method: string. Método de la petición HTTP. Por defecto GET. </li>
+                            <li>headers: objeto. Cabeceras HTTP. Por defecto {}, es posible indicar el Content-type y el encoding por ejemplo.</li>
+                            <li>body: cuerpo de la petición HTTP. Puede ser de distinto tipo, como String, Blob, etc.</li>
+                            <li>credentials: string. Modo de las credenciales. Por defecto omit. same-origin utiliza las credenciales del mismo dominio. Include incluye las credenciales incluso en otros dominios. Fetch, por defecto, no envía ni recibe cookies resultando en peticiones no autenticadas. Si es necesario, configurar credentials la opción init. </li>
+                            <li>cors: Cross-origin Resource Shearing. Para realizar peticiones a otros dominios. Por defecto las peticiones se realizan en el mismo dominio. no-cors </li>                            
+                        </ul>
+                    </section>
+                    <section>
+                        <h2>fetch() - Parametros - Opciones</h2>
+
+                        <img src="./clase6/c6-fetch-parametros-ejemplos.PNG" />                        
+                    </section>
+                    <section>
+                        <h2>fetch() - Encadenamiento</h2>
+                        <pre><code>
+                            fetch("/mis-gatitos.txt")
+                                .then(response => {
+                                    return response.text(); // Retorna una promesa
+                                })
+                                .then(data => {
+                                    console.log(data);
+                                })
+                                .catch(error => { /* Código a ejecutar cuando se rechaza la promesa */ 
+                                });
+                        </code></pre>
+                    </section>
+                    <section>
+                        <h2>fetch() - Encadenamiento con arrow functions</h2>
+                        <pre><code>
+                        // Petición HTTP
+                        fetch("https://mdn.github.io/learning-area/javascript/oojs/json/superheroes.json")
+                            .then(response => response.text())
+                            .then(data => console.log(data))
+                            .finally(() => console.log("Terminado."))
+                            .catch(error => console.error(data));
+                        </code></pre>
+                        <p> Las arrow functions tienen un return implícito. En este caso, el primer .then() devuelve la promesa que retorna el método .text(). Esta promesa usa el segundo .then() (encadenamiento). <br> 
+                            El objeto response tiene la respuesta a la petición. </p>
+                    </section>                                        
+                    <section>
+                        <h2>Async-Await</h2>
+                        <img src="clase6/c6-async-await.PNG" />
+                    </section>
+                    <section>
+                        <h2>Objeto Request </h2>
+                        <ul>
+                         <li>JS permite crear nuestros propios objetos request, constructor Request.</li>
+                         <li>Se puede utilizar para pasar como parámetro a fetch</li>                         
+                        </ul>                        
+                        <img src="clase6/c6-objeto-request.png" height="500px" width="450px"/>
+                    </section>
+                    <section>
+                        <h2>JavaScript Object Notation - JSON</h2>
+                        <p>Es un formato ligero de datos, con una estructura específica, que es totalmente compatible con JavaScript y el intercambio de datos. Popularizado por Douglas Crockford.<br>
+                        Formado por un subconjunto de JS. Standard ECMA-262 3rd Edition - Diciembre 1999 <br>
+                        Leerlo y escribirlo es simple para humanos y fácil para las maquinas interpretarlo y generarlo.<br>
+                        Los JSON son cadenas, que deben ser convertidas a Javascript para acceder a sus datos. <br> </p>
+                        <pre><code>
+                            {
+                                // Objeto vacío
+                            }
+                        </code></pre>                        
+                    </section>
+                    <section>
+                        JSON está constituido por dos estructuras:
+                        <ul>
+                            <li>Una colección de pares de nombre/valor</li>
+                            <li>Una lista ordenada de valores.</li>
+                        </ul>
+                    </section>                                            
+                    <section>
+                        <h2>JSON</h2>
+                        <img src="./clase6/c6-json.png" />
+                    </section>
+                    <section>
+                        <h2>JSON Formas </h2>
+                        <ul>
+                           <li> Objetos </li>
+                            <li>Strings</li>
+                            <li>Arreglos</li>
+                            <li>Number</li>
+                            <li>Espacios en blanco</li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h2>JSON - Parser y Stringification </h2>
+                        <p>Convertir una cadena a un objeto nativo se denomina parsing, mientras que convertir un objeto nativo a una cadena para que pueda ser transferido a través de la red se denomina stringification
+                        </p>                        
+                    </section>
+                    <section>
+                        <h2>JSON - Parser() </h2>
+                        <pre><code>                        
+                            const json = `{
+                                "nombre": "Cato",
+                                "edad": 9
+                            }`;
+                          
+                            const mascota = JSON.parse(json);
+                          
+                            mascota.nombre;  // "Cato"
+                            mascota.edad;  // 9
+                        </code></pre> 
+                    </section>                 
+                    <section>
+                        <h2>JSON - Stringify() </h2>
+                        <pre><code>
+                        const mascota = {
+                            nombre: "Cato",
+                            edad: 9,
+                            talk: function () {
+                              return "Miau!";
+                            },
+                          };
+                          
+                          JSON.stringify(mascota);       // '{"mascota":"Cato","edad":9}' Las funciones No son soportadas
+                        </code></pre>
+                    </section>   
+                    <section>
+                        <h2>JSON Ejemplo</h2>
+                        <pre><code class="hljs" data-trim contenteditable>
+                            superHeroes.homeTown
+                            superHeroes['active']    
+                            superHeroes['members'][1]['powers'][2]   
+                        </code></pre>                        
+                    </section>
+                    <section>
+                        <h2>JSON</h2>
+                        <p>Algunas consideraciones importantes.. 
+                            <ul>
+                                <li>JSON es sólo un formato de datos — contiene sólo propiedades, no métodos. </li>
+                                <li>JSON requiere usar comillas dobles para las cadenas y los nombres de propiedades. Las comillas simples no son válidas.</li>
+                                <li>validar JSON utilizando una aplicación como <a href="https://jsonlint.com/">JSonlint</a></li>
+                            </ul>
+                        </p>
+                    </section>                
+                    <section>
+                        <h2>Referencias</h2>
+                        <a href="https://www.youtube.com/watch?v=rgmej4Jx4WM&t=8s">Asincronía en JS </a><br>
+                        <a href="https://www.freecodecamp.org/espanol/news/promesas-javascript-explicado/">Promesas en JS </a><br>
+                        <a href="https://es.javascript.info/promise-basics">Promise Basics </a><br>
+                        <a href="https://developer.mozilla.org/es/docs/Web/API/Fetch_API/Using_Fetch">Using Fetch </a><br>
+                        <a href="https://developer.mozilla.org/es/docs/Web/JavaScript/Inheritance_and_the_prototype_chain">Herencia de cadenas de prototipos</a><br>
+                        <a href="https://www.freecodecamp.org/espanol/news/como-utilizar-la-interpolacion-de-cadenas-en-javascript/">Interpolación de cadenas en JS</a><br>
+                        <a href="https://developer.mozilla.org/es/docs/Learn/JavaScript/Objects/JSON">JSon Specification</a><br>
+                        <a href="https://developer.mozilla.org/es/docs/Learn/JavaScript/Client-side_web_APIs">Client-side Web APIs. MDN Documentation</a>
+                    </section>
+                </section>                
+		<script src="dist/reveal.js"></script>
+		<script src="plugin/notes/notes.js"></script>
+		<script src="plugin/markdown/markdown.js"></script>
+		<script src="plugin/highlight/highlight.js"></script>
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+			Reveal.initialize({
+				hash: true,
+
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
+			});
+		</script>
+	</body>
+</html>

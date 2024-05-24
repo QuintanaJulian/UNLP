@@ -1,0 +1,24 @@
+Historia de Usuario:
+
+
+
+
+
+
+ID: Iniciar Sesion
+titulo: Como usuario registrado quiero iniciar secion para poder tener accesos a reservar turno
+Regla de negocio: Maximo 3 intentos fallidos de iniciar sesion
+Criterios de aceptacion:
+	Escenario 1: Escenario Exitoso
+	Dado: Que un usuario registrado ingresa el mail "JQ@gmail.com"  perteneciente al sistema y la contrasena "123" coincidente con el usuario
+	Cuando un usuario ingresa mail "JQ@gmail.com"
+
+ID: Cerrar Sesion
+titulo: Como usuario con sesion iniciada quiero cerrar sesion para dejar de usar el sistema
+
+ID: Registrar Usuario
+titulo: Como usuario quiere registrarme para poder sacar turno de cancha
+
+ID: Obtener turno
+titulo: Como Usuario Registrado quiero sacar turno para jugar en una  cancha
+

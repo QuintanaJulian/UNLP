@@ -1,0 +1,20 @@
+Utiliza el guión visto en teoría para la entrevista:	Cumple parcialmente
+	Estan armando una misma entrevista para perfiles y personas diferentes
+
+
+El tiempo estimado para la entrevista es adecuado para el problema:	No cumple
+	No estaría bien porque no se sabe como la van aimplementar, usan la misma para todos o todos a la vez?
+
+
+La entrevista tiene una organización claramente definida, según lo visto en teoría:	Cumple parcialmente
+	No se especifica , se deduce embudo
+
+
+La explicación/presentación del cuestionario es clara e indica el objetivo:	No cumple
+	No está la presentación para el que va a responder si pusieron un objetivo pero no es para el encuestado
+
+
+La explicación/presentación de cuestionario tiene un estilo ameno y no amenazante:	No cumple
+
+
+EL RESTO DE LAS RUBRICAS LAS SIGUE A TODAS

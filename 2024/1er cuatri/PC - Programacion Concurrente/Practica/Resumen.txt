@@ -1,0 +1,68 @@
+int Actual = -1;
+bool Listo = false;
+
+
+
+
+Process Alumno [id: 0..29]
+{
+}
+Process Docente {}
+
+
+
+<await (Actual == id)>;
+<await (Listo)>
+
+
+Funciones atomicas:
+<Actual = Actual + 1;>
+
+
+Cola
+cola C;
+push(C, (id, S); 	-> de la cola "C" se guardan las variables id y S		
+pop(C, (usuario, S);	-> de la cola "C" se popean y se guarda en usuario y S
+if (empty (C)) libre = true else {}
+
+
+
+Semaforo
+Declaracion:
+	sem mutex = 1;
+	sem espera[5] = ([5]1);	array semaforo
+Operaciones:
+	P(mutex)	->	<await (mutex > 0) mutex = mutex - 1;>
+	V(mutex)	->	<mutex = mutex + 1;>
+Estructuras:
+	Exlusion mutua:	P(free)
+			//seccion critica
+			V(free)
+
+	Semaforo sincronizacion:	Process worker{ V(llega1); P(llega2); }
+					Process worker2{ V(llega2); P(llega1);}
+
+
+
+
+
+
+while (true) {}
+
+if (contador == C) {} else {}
+
+for i = 1..C -> V(barrera);
+
+
+
+Monitor
+
+cond var;
+
+wait (var);	=> El proceso se agrega a lfina lde la cola "var" y espera a ser despertado
+signal (var); 	=> Se despierta el primer proceso de la cola de "var"
+signal_all (var);	=> Se despiertan todos los elementosde la cola "var" quedando esta totlamente vacia
+
+tipos:
+	signal and continue: cuando un proceso hace el signal, este sigue su ejecucuion y el procesos despertado pasa a pelear por el monitor
+	signal and wait: cuando un procesos hacec el signal este abandona el monitor y pasa a competir por el mismo, mientras el proceso despertado pasa a su ejecucuon en el monitor
